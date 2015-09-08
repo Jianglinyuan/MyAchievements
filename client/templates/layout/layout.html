@@ -1,0 +1,70 @@
+<template name="layout">
+    {{> header}} 
+    <div id="container">
+        <div class="wrapper">
+           <section id="content" >
+               {{> yield}}
+            </section>
+        </div>
+    </div>
+    <div class="hiddendiv common"></div>
+    <div class="drag-target" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); left: 0px;"></div>
+    <div class="drag-target" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); left: 0px;"></div>
+    <div id="toast-container"></div>    
+</template>
+
+<template name="header">
+    <header id="header" class="page-topbar">
+        <!-- start header nav-->
+        <div class="navbar-fixed">
+            <nav class="blue darken-1">
+                <div class="nav-wrapper">
+                <a href="{{pathFor 'index'}}" class="nav-title"><span class="title">My Achievement</span></a>
+                    <ul class="right hide-on-med-and-down">
+                        {{#if loggingln}}
+                            {{#if isTeacher}}
+                                <li><a class="header-icon" href="{{pathFor 'newhomework'}}">+homework</a></li>
+                            {{/if}}
+                            <li><a href="#" class="right header-icon"><img class="circle" width="35px" height="35px" src="{{headSculpture}}"></a></li>
+                            <li><a class="header-icon  modal-trigger" href="{{pathFor 'changePassword'}}">{{username}}</a></li>
+                            <li><a class="loginOut header-icon"><i class="material-icons">power_settings_new</i></a></li>
+                        {{/if}}
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        {{#if loggingln}}
+                            {{#if isTeacher}}
+                                <li><a class="header-icon" href="{{pathFor 'newhomework'}}">+homework</a></li>
+                            {{/if}}
+                            <li><a href="#" class="right header-icon"><img class="circle" width="35px" height="35px" src="{{headSculpture}}"></a></li>
+                            <li><a class="header-icon  modal-trigger" href="{{pathFor 'changePassword'}}">{{username}}</a></li>
+                            <li><a class="loginOut header-icon">logout</a></li>
+                        {{/if}}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- end header nav-->
+    </header>
+</template>
+
+<template name="index">
+    <div class="container">
+        {{#if isTeacher}}
+            {{> homeworklist}}
+        {{else}}
+            {{> myachievements}}       
+            {{> homeworklist}} 
+        {{/if}}
+    </div>
+</template>
+
+<template name="footer">
+    <footer class="page-footer">
+        <div class="footer-copyright2">
+            <div class="container">
+                SYSU School of Mathematics and Computational Science <a class="grey-text text-lighten-4" href="" target="_blank">My Achivement</a> © 2015
+                <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://geekslabs.com/">江南西人</a></span>
+            </div>
+        </div>
+    </footer>
+</template>

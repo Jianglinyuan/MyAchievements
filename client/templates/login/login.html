@@ -1,0 +1,160 @@
+<template name="login">
+	<div class="light-blue login">
+		<br/>
+		<br/>
+		<br/>
+		<div class="row">
+		<form>
+			<div class="col s10 offset-s1 m4 offset-m4 white z-depth-5">
+				<div class="center">
+					<img src="logo.jpg"  class="responsive-img logo circle" alt="my achievements logo"/>
+					<h5>My Achievements</h5>				
+				</div>
+				<div class="input-field col s12">
+			          <i class="material-icons prefix">contacts</i>
+			          <input id="id" value="{{id}}" name="id" autofocus type="text" class="validate">
+			          <label class="label active" for="id">Username/Email</label>
+			    </div>
+				<div class="input-field col s12">
+			          <i class="material-icons prefix">vpn_key</i>
+			          <input id="password" value="{{password}}"  name="password" type="password" class="validate">
+			          <label for="password" class="active">Password</label>
+			    </div>
+			    <div class="login-icon col s12">
+				      <input type="checkbox" name="remember" value="remember" id="test5" />
+				      <label for="test5">Rememeber me</label>
+			   		<div id="error-message" class="red-text center"></div>
+			   		<br/>
+				      <button class="btn waves-effect waves-light col s12 pink accent-2" type="submit">Login
+					    <i class="material-icons">send</i>
+					  </button>
+			    </div>
+			    <div class="login-icon col s12">
+				      <a href="{{pathFor 'register'}}" class="left">Register Now!</a>
+				      <a href="{{pathFor 'findPassword'}}" class="right">Forget password?</a>
+			    </div>
+			    <br/>	
+			</div>
+			</form>
+		</div>
+		<br/>
+		<br/>
+		<br/>
+	</div>
+</template>
+
+<template name="register">
+	<div class="light-blue login">
+		<br/>
+		<br/>
+		<br/>
+		<div class="row">
+			<form>
+			<div class="col s10 offset-s1 m4 offset-m4 white z-depth-5">
+				<div class="center">
+					<h1>Register</h1>				
+				</div>
+				 <div class="file-field input-field col s12 center">
+			   			 <div class="btn-floating">
+					        <i class="material-icons">backup</i>
+					        <input class="myFileInput" type="file" />
+					      </div>&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;
+			   			 <a class="camera btn-floating waves-effect waves-light red"><i class="material-icons">camera</i></a>
+			   			 &nbsp;&nbsp;&nbsp;
+			   			 <img style="display: none;width:42px;height:42px" class="circle" id="tmpImg" src="{{default}}">
+							<div id="alert" class="center"></div>
+			   	</div>
+				<div class="input-field col s12">
+			          <i class="material-icons prefix ">perm_contact_calendar</i>
+			          <input class="username " id="username" name="username" type="text">
+			          <label for="username">Username</label>
+			          <div id="error-username" class="red-text center"></div>
+			    </div>
+			    <div class="input-field col s12">
+			          <i class="material-icons prefix">email</i>
+			          <input class="email" id="email" name="email" type="email" >
+			          <label for="emial">Email</label>
+			          <div id="error-email" class="red-text center"></div>
+			    </div>
+			    <div class="input-field col s12">
+			          <i class="material-icons prefix">contacts</i>
+			          <input class="id" id="id" name="id" type="number">
+			          <label class="changeId" for="id">Student Id</label>
+			    </div>
+			    <div class="input-field col s12">
+			          <i class="material-icons prefix">vpn_key</i>
+			          <input class="password" id="password" name="password" type="password">
+			          <label for="password">Password</label>
+			          <div id="error-password" class="red-text center"></div>
+			    </div>
+			    <div class="input-field col s12">
+			          <i class="material-icons prefix">vpn_key</i>
+			          <input class="password2" id="password2" name="password2" type="password">
+			          <label for="password2">Password again</label>
+			          <div id="error-password2" class="red-text center"></div>
+			    </div>
+			     <div class="input-field col s12">
+			      <i class="material-icons prefix">receipt</i>
+			   		  <input class="with-gap" checked name="power" value="student" type="radio" id="test2" />
+      				  <label for="test2">Student</label>&nbsp;
+				      <input class="with-gap" name="power" value="teacher" type="radio" id="test1" />
+				      <label for="test1">Teacher</label>&nbsp;			
+			    </div>
+			   	<div class="input-field col s12 center">
+			   		<div id="error-message" class="red-text center"></div>
+			   	</div>
+			    <div class="register-icon col s12">
+			    		<br/>
+				      <button class="btn waves-effect waves-light col s12 pink accent-2" type="submit">Register Now!
+					    <i class="material-icons">send</i>
+					  </button>
+				      <br/>
+			    </div>
+			     <div class="register-icon col s12">
+				      <a href="{{pathFor 'login'}}" class="right">Go back to login</a>
+			    </div>
+			</div>
+			</form>
+		</div>
+		<br/>
+		<br/>
+		<br/>
+	</div>
+</template>
+
+
+<template name="findPassword">
+	<div class="light-blue">
+		<br/>
+		<br/>
+		<br/>
+		<div class="row">
+		<form>
+			<div class="col s10 offset-s1 m6 offset-m3 white z-depth-5">
+				<div class="center">
+					<h1>Find Your Password</h1>				
+				</div>
+				<div class="input-field col s12">
+			          <i class="material-icons prefix">email</i>
+			          <input id="email" name="email" type="email">
+			          <label for="email">Your Email</label>
+			          <div id="error-message" class="red-text center"></div>
+			    </div>
+				<div class="findPassword-icon col s12">
+			    	  <br/>
+				      <button class="btn waves-effect waves-light col s12 pink accent-2" type="submit">Submit
+					    <i class="material-icons">send</i>
+					  </button>
+				      <br/>
+			    </div>
+			     <div class="findPassword-icon col s12">
+				      <a href="{{pathFor 'login'}}" class="right">Go back to login</a>
+			    </div>	
+			</div>
+			</form>
+		</div>
+		<br/>
+		<br/>
+		<br/>
+	</div>
+</template>

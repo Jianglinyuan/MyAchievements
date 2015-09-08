@@ -36,6 +36,7 @@ Template.previous.events({
             group_rank: group_rank,
             class_rank: class_rank
         });
+        location.reload(true);
     }
 });
 Template.previous.helpers({

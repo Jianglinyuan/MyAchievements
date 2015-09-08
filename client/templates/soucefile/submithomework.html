@@ -18,9 +18,9 @@
 <template name="sourcetable">
     <tr>
         <td><a href="{{url}}" class="download" >{{metadata.filename}}</a></td>
+        <td>{{metadata.size}}KB</td>
         <td>{{metadata.studentName}}</td>
         <td>{{metadata.time}}</td>
-        <td>{{metadata.team}}</td>
     </tr>
 </template>
 
@@ -30,9 +30,9 @@
             <thead>
                 <tr>
                     <th data-field="id">FileName</th>
+                    <th data-field="size">Size</th>
                     <th data-field="name">Creator</th>
                     <th data-field="date">Creation Date</th>
-                    <th data-field="review">Score</th>
                 </tr>
             </thead>
             <tbody>

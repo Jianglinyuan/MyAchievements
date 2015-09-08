@@ -58,7 +58,8 @@ Template.index.onRendered(function(){
                         color: '#ffffff'
                     }
                 },
-                categories:['hw1','hw2']
+                categories:categories
+
             },
             yAxis: {
                 max:100,
@@ -108,7 +109,7 @@ Template.index.onRendered(function(){
                         color: '#ffffff'
                     }
                 },
-                categories:[categories]
+                categories:categories
             },
             yAxis: [{
                 max:100,

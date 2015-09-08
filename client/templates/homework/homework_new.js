@@ -14,13 +14,15 @@ Template.newhomework.events({
         var year = new Date().getFullYear();
         var month = new Date().getMonth()+1;
         var day = new Date().getDate();
+        var hour = new Date().getHours();
+        var min = new Date().getMinutes();
         if (month < 10){
             month = '0' + month;
         }
         if (day < 10){
             day = '0' + day;
         }
-        var date = year + '-' + month + '-' + day;
+        var date = year + '-' + month + '-' + day + 'T' + hour + ':' + min;
         var state;
         if (date >= starttime && date <= deadline){
             state = "present";
@@ -37,5 +39,5 @@ Template.newhomework.events({
             count: count+1
         });
         Router.go('index');
-    }
+    },
 });

@@ -4,3 +4,13 @@
 .end-time{
     width:260px;
 }
+.file-container{
+    width:265px;
+}
+.select-container{
+    width:200px;
+}
+.select-container select{
+    display:block;
+    height:30px;
+}

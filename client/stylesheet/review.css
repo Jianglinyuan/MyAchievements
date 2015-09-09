@@ -1,0 +1,36 @@
+.teamselector2-container{
+    display:inline-block;
+    width:260px;
+    margin:10px 0 0 10px;
+}
+.teamselector2-container select{
+    display:block;
+}
+.work-container{
+    padding:5px;
+    border: solid 1px gray;
+    height:120px;
+    border-radius:5px;
+}
+.work-container .work-con-left{
+    width:25%;
+    height:110px;
+    background-color:orange;
+    float:left;
+}
+.work-con-center{
+    margin:0 1%;
+    width:50%;
+    height:110px;
+    float:left;
+}
+.work-con-center textarea{
+    width:100%;
+    height:100%;
+}
+.work-con-right{
+    width:22%;
+    background-color:gray;
+    height:110px;
+    float:left;
+}

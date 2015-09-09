@@ -2,17 +2,9 @@
     <label>Homework List</label>
     <div class="card-widgets">
         <div class="row">
-            {{#each homeworks}}
-                {{#if isPrevious}}
-                    {{> previous}}
-                {{/if}}
-                {{#if isPresent}}
-                    {{> present}}
-                {{/if}}
-                {{#if isFuture}}
-                    {{> future}}
-                {{/if}}
-            {{/each}}
+            {{> previous}}
+            {{> present}}
+            {{> future}}
         </div>
     </div>
 </template>
@@ -23,14 +15,11 @@
              <li class="collection-header green">
                  <h4 class="task-card-title">Previous Job</h4>                                      
                  <p class="ctask-card-date">Review
-                    {{#if currentUser}}
-                        <a href="#" class="test">test</a>
-                    {{/if}}
                  </p>
              </li>
 
              <li class="bold" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-                 <a class="blue-text center-align collapsible-header waves-effect waves-cyan be-balck" href="{{url}}">HW{{count}}: {{title}}</a>
+                 <a class="blue-text center-align collapsible-header waves-effect waves-cyan be-balck" href="{{url}}">titel</a>
              </li>
              <li class="card-content-bg white-text">
                  <img src="/sample-2.png">
@@ -38,11 +27,11 @@
              <li class="bold fir-blank" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                  <div class="container">
                      <p class="have-blank"> Score:
-                     <span class="be-left1">{{score}}</span>
-                     <span class="other-tag badge waves-effect"><a href="{{url}}">HW Spec</a></span>
+                     <span class="be-left1">score</span>
+                     <span class="other-tag badge waves-effect"><a href="#">HW Spec</a></span>
                      </p>
                      <p class="have-blank"> Group ranking: 
-                     <span class="be-left2">{{groupRank}}</span>
+                     <span class="be-left2">groupRank</span>
                      <span class="other-tag badge waves-effect"><a href="#">View Online</a></span>
                      </p>
                      <p class="have-blank"> Class ranking: 
@@ -64,14 +53,14 @@
                 <p class="ctask-card-date">Submit</p>                                       
             </li>
             <li class="bold" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-                <a class="center-align blue-text collapsible-header waves-effect waves-cyan be-balck" href="{{url}}"> HW{{count}}: {{title}}</a>
+                <a class="center-align blue-text collapsible-header waves-effect waves-cyan be-balck" href="{{url}}"> title</a>
             </li>
             <li class="card-content-bg white-text">
                 <img src="/sample-1.png">
             </li>
             <li class="bold" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                 <div class="container">
-                    <p class="other-tag badge"><a href="{{url}}">HW Spec</a></p>
+                    <p class="other-tag badge"><a href="#">HW Spec</a></p>
                     <p class="center-red">Due: Less than 5 hours</p>
                     <p class="other-tag2 badge"><a href="#">Submit</a></p>
                 </div>
@@ -90,17 +79,17 @@
             </li>
             <li class="bold" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
 
-                <a class="collapsible-header waves-effect waves-cyan be-balck center-align blue-text" href="{{url}}">HW{{count}}: {{title}}</a>
+                <a class="collapsible-header waves-effect waves-cyan be-balck center-align blue-text" href="{{url}}">title</a>
             </li>
             <li class="card-content-bg white-text">
                 <img src="/sample-3.png">
             </li>
             <li class="bold" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                 <div class="container">
-                    <p class="other-tag3 badge"><a href="{{url}}">HW Spec</a></p>
+                    <p class="other-tag3 badge"><a href="#">HW Spec</a></p>
                     <p class="other-tag3 badge"><a href="#">View Online</a></p>
-                    <p class="other-tag3 badge"><a href="{{pathFor 'sourcefile'}}">Source File</a></p>
-                    <p class="other-tag4 badge"><a href="{{pathFor 'review'}}">Rereview</a></p>
+                    <p class="other-tag3 badge"><a href="#">Source File</a></p>
+                    <p class="other-tag4 badge"><a href="#">Rereview</a></p>
                 </div>
             </li>
         </ul>

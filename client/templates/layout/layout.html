@@ -19,13 +19,12 @@
         <div class="navbar-fixed">
             <nav class="blue darken-1">
                 <div class="nav-wrapper">
-                <a href="{{pathFor 'index'}}" class="nav-title"><span class="title">My Achievement</span></a>
+                <a href="{{pathFor 'index'}}" class="nav-title"><span class="title"><img src="/test-logo.png"></span></a>
                     <ul class="right hide-on-med-and-down">
                         {{#if loggingln}}
                             {{#if isTeacher}}
                                 <li><a class="header-icon" href="{{pathFor 'newhomework'}}">+homework</a></li>
                             {{/if}}
-                            <li><a href="#" class="right header-icon"><img class="circle" width="35px" height="35px" src="{{headSculpture}}"></a></li>
                             <li><a class="header-icon  modal-trigger" href="{{pathFor 'changePassword'}}">{{username}}</a></li>
                             <li><a class="loginOut header-icon" href="#"><i class="material-icons">exit_to_app</i></a></li>
                         {{/if}}
@@ -52,7 +51,6 @@
         {{#if isTeacher}}
             {{> homeworklist}}
         {{else}}
-            {{> myachievements}}       
             {{> homeworklist}} 
         {{/if}}
     </div>

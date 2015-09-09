@@ -14,6 +14,5 @@ cfs:standard-packages
 cfs:gridfs
 materialize:materialize
 cfs:filesystem
-twbs:bootstrap
 mdg:camera
 cfs:s3

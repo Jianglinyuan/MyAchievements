@@ -7,7 +7,7 @@
 meteor-platform
 iron:router
 jquery
-insecure
+#insecure
 accounts-ui
 accounts-password
 cfs:standard-packages
@@ -16,3 +16,4 @@ materialize:materialize
 cfs:filesystem
 mdg:camera
 cfs:s3
+

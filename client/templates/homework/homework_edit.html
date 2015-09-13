@@ -1,4 +1,4 @@
-<template name="homeWorkEdit">
+<template name="homeworkedit">
 	<div class="container" style="width:80%; left:10%;">
         <h4>作业 {{count}}</h4>
         <form>
@@ -11,14 +11,14 @@
             <div class="row">
                 <div class="col s12 m6 l6">
                     <label for="enddate" class="active">截止日期</label>
-                    <input type="text" id="enddate" class="datepicker" value="{{deaddate}}">
+                    <input type="text" id="enddate" class="datepicker" value="{{deadDate}}">
                 </div>
                 <div class="col s12 m6 l6">
                     <label for="endtime" class="active">截止时间</label>
-                    <input type="text" id="endtime" class="timepicker" value="{{deadtime}}">
+                    <input type="text" id="endtime" class="timepicker" value="{{deadTime}}">
                 </div>
             </div>
-            <input type="submit" value="修改" class="btn waves-effect waves-light">
+            <input type="submit" value="提交" class="btn waves-effect waves-light">
         </form>
     </div>
 </template>

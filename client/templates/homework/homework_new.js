@@ -5,10 +5,10 @@ $(function(){
     });
 });
 Template.newhomework.helpers({
-    // count: function(){
-    //     var count = HomeworkList.find().count();
-    //     return count+1;
-    // }
+    count: function(){
+        var count = HomeworkList.find().count();
+        return count+1;
+    }
 });
 Template.newhomework.events({
    
@@ -18,11 +18,11 @@ Template.newhomework.events({
         var count = HomeworkList.find().count()+1;
         var title = $(e.target).find('[id=title]').val();                       
         var url = $(e.target).find('[id=url]').val();
-        var deaddate = $(e.target).find('[id=enddate]').val();
-        var deadtime = $(e.target).find('[id=endtime]').val();
+        var deadDate = $(e.target).find('[id=enddate]').val();
+        var deadTime = $(e.target).find('[id=endtime]').val();
 
-        var showdeadline = convertDeadline(deaddate,deadtime);
-        var convertTohour = convertDeadtime(deaddate,deadtime);
+        var showDeadLine = convertDeadline(deadDate,deadTime);
+        var convertToHour = convertDeadtime(deadDate,deadTime);
         // test
         // console.log('截止日期是 : '+showdeadline+"  "+convertTohour);
         
@@ -31,12 +31,24 @@ Template.newhomework.events({
             count : count,
             title : title,
             url : url,
-            deaddate : deaddate,
-            deadtime : deadtime,
-            showdeadline : showdeadline,
-            convertTohour : convertTohour,
+            deadDate : deadDate,
+            deadTime : deadTime,
+            showDeadLine : showDeadLine,
+            convertToHour : convertToHour,
             state : 'present',
         }
+
+        // var sendHomeWork = function(id){
+        //     var users = Meteor.users.find().fetch();
+        //     console.log(users);
+        //     for(var i = 0 ;i<users.length ; i++){
+        //         var attr = {
+        //             homeworkId : id,
+        //             userId : users[i]._id,
+        //         };
+        //         Homeworks.insert(attr);
+        //     }
+        // };
         
         Meteor.call('HomeworkListInsert',homework,function(error,result){
             if(error)
@@ -48,8 +60,9 @@ Template.newhomework.events({
                     Materialize.toast('输入未完成！',3000,'rounded');
                 }
                 else{
+                // sendHomeWork(result._id);
                 Materialize.toast('作业新建成功',3000,'rounded');
-                Router.go('allHomeWork');
+                Router.go('index');
                 }
             }
         });

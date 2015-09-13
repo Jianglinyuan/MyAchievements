@@ -49,9 +49,9 @@
 <template name="index">
     <div class="container">
         {{#if isTeacher}}
-            {{> homeworklist}}
+            {{> allhomework}}
         {{else}}
-            {{> homeworklist}} 
+            <a>这里显示学生视图..</a>
         {{/if}}
     </div>
 </template>

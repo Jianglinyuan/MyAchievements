@@ -1,6 +1,9 @@
-Template.allHomeWork.helpers({
+Template.allhomework.helpers({
+	ifhashomeworks : function(){
+		return HomeworkList.find().count();
+	},
 	homeworks : function(){
-		return HomeworkList.find({},{sort : {count : 1}});
+		return HomeworkList.find({},{sort : {count : -1}});
 	},
 	ownHomeWork : function(){
 		return this.userId === Meteor.userId();
@@ -17,7 +20,7 @@ Template.allHomeWork.helpers({
 	// }
 });
 
-Template.allHomeWork.events({
+Template.allhomework.events({
 	'click #delete' : function(e){
 		e.preventDefault();
 		if(confirm('确定删除这条作业吗？')){

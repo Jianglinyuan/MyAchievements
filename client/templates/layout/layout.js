@@ -36,5 +36,8 @@ Template.index.helpers({
         }else{
             return false;
         }
-    }
+    },
+    homeworks : function(){
+        return HomeworkList.find({},{sort : {count : 1}});
+    },
 });

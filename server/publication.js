@@ -24,3 +24,6 @@ Meteor.publish('images',function(options){
 Meteor.publish("subhomeworks",function(){
 	return subHomeworks.find({});
 });
+Meteor.publish("userdata",function(){
+    return Meteor.users.find();
+});

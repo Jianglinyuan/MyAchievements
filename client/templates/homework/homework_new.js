@@ -20,12 +20,11 @@ Template.newhomework.events({
         var url = $(e.target).find('[id=url]').val();
         var deadDate = $(e.target).find('[id=enddate]').val();
         var deadTime = $(e.target).find('[id=endtime]').val();
-
         var showDeadLine = convertDeadline(deadDate,deadTime);
         var convertToHour = convertDeadtime(deadDate,deadTime);
-        // test
-        // console.log('截止日期是 : '+showdeadline+"  "+convertTohour);
-        
+        //取到所有的非教师和助教用户
+        var users = Meteor.users.find({'profile.power': "student"}).fetch();
+        console.log(typeof(users));
         //数据封装
         var homework = {
             count : count,
@@ -38,19 +37,7 @@ Template.newhomework.events({
             state : 'present',
         }
 
-        // var sendHomeWork = function(id){
-        //     var users = Meteor.users.find().fetch();
-        //     console.log(users);
-        //     for(var i = 0 ;i<users.length ; i++){
-        //         var attr = {
-        //             homeworkId : id,
-        //             userId : users[i]._id,
-        //         };
-        //         Homeworks.insert(attr);
-        //     }
-        // };
-        
-        Meteor.call('HomeworkListInsert',homework,function(error,result){
+        Meteor.call('HomeworkListInsert',homework,users,function(error,result){
             if(error)
                 Materialize.toast(error.reason,3000,'rounded');
             else{

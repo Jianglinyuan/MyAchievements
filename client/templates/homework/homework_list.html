@@ -2,14 +2,14 @@
     <label>Homework List</label>
     <div class="card-widgets">
         <div class="row">
-            {{> previous}}
-            {{> present}}
+            {{#each homeworks}}
             {{> future}}
+            {{/each}}
         </div>
     </div>
 </template>
 <template name="previous">
-     <!-- review-->
+     <!-- ended-->
      <div class="col s12 m12 l4 ">
          <ul id="task-card" class="collection with-header">
              <li class="collection-header green">
@@ -53,16 +53,29 @@
                 <p class="ctask-card-date">Submit</p>                                       
             </li>
             <li class="bold" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-                <a class="center-align blue-text collapsible-header waves-effect waves-cyan be-balck" href="{{url}}"> title</a>
+                <a class="center-align blue-text collapsible-header waves-effect waves-cyan be-balck" href="{{url}}">{{title}}</a>
             </li>
             <li class="card-content-bg white-text">
                 <img src="/sample-1.png">
             </li>
             <li class="bold" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                 <div class="container">
-                    <p class="other-tag badge"><a href="#">HW Spec</a></p>
+                    <p class="other-tag badge"><a href="{{url}}">HW Spec</a></p>
                     <p class="center-red">Due: Less than 5 hours</p>
-                    <p class="other-tag2 badge"><a href="#">Submit</a></p>
+                    <p class="other-tag2 badge">
+                        <a href="#modal1" class="modal-trigger waves-effect waves-light">Submit</a>
+                        <div id="modal1" class="modal modal-fixed-footer">
+                            <div class="modal-content">
+                                <h4>Modal Header</h4>
+                                <p>A bunch of text</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Submit</a>
+                            </div>
+                        </div>
+                    </p>
+                    
                 </div>
             </li>
         </ul>
@@ -70,7 +83,7 @@
 </template>
 
 <template name="present">
-    <!-- Rreview-->
+    <!-- review-->
     <div class="col s12 m6 l4 ">
         <ul id="task-card" class="collection with-header">
             <li class="collection-header light-blue">

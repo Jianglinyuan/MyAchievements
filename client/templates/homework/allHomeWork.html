@@ -1,28 +1,36 @@
-<template name="allHomeWork">
+<template name="allhomework">
 <div class="container" style="width:80%; left:10%;">
 	
 		<div class="row">
+		{{#if ifhashomeworks}}
 		{{#each homeworks}}
 			<div class="col l6 m12 s12">
 				<div class="card blue darken-4 hoverable">
 					<div class="card-content white-text">
-						<span class="card-title">作业（{{count}}）</span>
-						<p>
+						<span class="card-title">作业 {{count}} :</span>
+						<p class="truncate">
 						{{title}} 
-						<span class="right">截止时间：{{showdeadline}}</span>
 						</p>
+						<br>
+						<p><span class="right">截止时间：{{showDeadLine}}</span></p>
 					</div>
 					<div class="card-action">
 						<a href="{{url}}">spec</a>
+						<!-- <a>{{>autostate}}</a> -->
 						{{#if ownHomeWork}}
 						<a href="#" class="right" id="check">评审</a>
-						<a href="{{pathFor 'homeWorkEdit'}}" class="right" id="edit">编辑</a>
+						<a href="{{pathFor 'homeworkedit'}}" class="right" id="edit">编辑</a>
 						<a href="#" class="right" id="delete">删除</a>
 						{{/if}}
 					</div>
 				</div>
 			</div>
 			{{/each}}
+
+			{{else}}
+					<br>
+					<p>当前没有作业，可以<a href="{{pathFor 'newhomework'}}" class="waves-effect waves-teal btn-flat"><span style="color: blue">添加</span></a></p>
+			{{/if}}
 		</div>
 	
 </div>

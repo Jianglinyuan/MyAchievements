@@ -1,3 +1,21 @@
+Template.login.onRendered(function(){
+	$("div.username input").focus(function(){
+		$("div.username").css("opacity","1");
+		$(this).css("border-bottom","1px solid white");
+	});
+	$("div.password input").focus(function(){
+		$("div.password").css("opacity","1");
+	$(this).css("border-bottom","1px solid white");
+	});
+	$("div.username input").blur(function(){
+		$("div.username").css("opacity","0.4");
+	$(this).css("border-bottom","1px solid white");
+	});
+	$("div.password input").blur(function(){
+		$("div.password").css("opacity","0.4");
+	$(this).css("border-bottom","1px solid white");
+	})
+});
 Template.login.helpers({
 	id: function(){
 			return localStorage.userId;
@@ -13,16 +31,20 @@ Template.login.events({
 		var password = $(e.target).find('[name=password]').val();
 		var remember = $(e.target).find('[name=remember]');
 		if(id=="" || password==""){
-			$('div#error-message').html("<i class='material-icons red-text'>volume_up</i>&nbsp;Every space needs to be filled!");
+			$('div#error-message').html("用户名或密码不能为空");
 			Meteor.setTimeout(function () {	
 			$('div#error-message').html("");	    
 			  }, 3000);
 		}else{
 				Meteor.loginWithPassword(id,password,function(error){
-				if(error)
-					$('div#error-message').html("<i class='material-icons red-text'>volume_up</i>&nbsp;"+error.reason);
-				else 
-					Router.go('index');
+					if(error)
+						$('div#error-message').html("请检查用户名或密码是否正确");
+					else{
+						if(id === "123456")
+							Router.go('register');
+						else
+							Router.go('index');
+					}
 				});
 				if(remember.is(":checked")){//记住密码
 					localStorage.userId=id;
@@ -33,141 +55,114 @@ Template.login.events({
 });
 
 
-
-
 Template.register.onRendered(function(){
-			 while(Tmp.find().count()){
-				var tmp = Tmp.findOne();
-				Tmp.remove(tmp._id);
-			};
-});
-Template.register.helpers({
-	default: function(){
-		var tmp = Tmp.findOne();
-		if(tmp)
-			return tmp.url;
-		else
-			return "./default.jpeg";
-	}
+	 $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+	  $(document).ready(function() {
+    $('select').material_select();
+  });
 });
 Template.register.events({
-	'click .camera': function(){
-		/*点击照相机进行拍照，使用了camera package*/
-		if(Tmp.find().count()){
-			var tmp = Tmp.findOne();
-			Tmp.remove(tmp._id);
-		}
-		var options={
-			width: '100px',
-			height: '100px',
-			quality: '100',
-		};
-		MeteorCamera.getPicture([options],function(error,data){
-			if(!data)
-				data = "./default.jpeg";
-				var url={
-					url: data,
-				};	
-			Tmp.insert(url);
-			$("img#tmpImg").attr("src",data).show();
-		});
-	},
-	'change .myFileInput': function(event,template) {
-		/*点击上传图片，使用了cfs package*/
-				
-	    var files = event.target.files;
-	    for (var i = 0, ln = files.length; i < ln; i++) {
-		    var img =  Images.insert(files[i], function (err, fileObj) {
-		        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-		       	  // console.log(fileObj.url().uploading);	 
-		      });
+	'change .upfile': function(e){
+		 var files = e.target.files;
+		  var i,f,k,s;
+		  /* package of huaming:js-xlsx , a wrap package for js-xlsx, which can parse excel like files in the browser.*/
+		  for (i = 0, f = files[i]; i != files.length; ++i) {
+		    var reader = new FileReader();
+		    var name = f.name;
+		    reader.readAsBinaryString(f);
+		    reader.onload = function(e) {
+		      var data = e.target.result;
+		      var workbook = XLSX.read(data, {type: 'binary'});
+
+		      /* DO SOMETHING WITH workbook HERE */
+		       var first_sheet_name = workbook.SheetNames[0];
+				/* Get worksheet */
+				var worksheet = workbook.Sheets[first_sheet_name];
+
+				var id,data,choose,address_of_cell;
+				//console.log(worksheet['!range'].e.r);
+				for(s= 0;s<3;s++){
+							for(k= 1;k<=worksheet['!range'].e.r;k++){
+								if(s==0){
+										choose = "student";
+										address_of_cell= "A"+k+"";
+								};
+								if(s==1){
+									choose = "teacher";
+										address_of_cell = "B"+k+"";
+								};
+								if(s==2){
+									choose = "assistant";
+										address_of_cell = "C"+k+"";
+								};						
+							var desired_cell = worksheet[address_of_cell];
+							var desired_value = desired_cell.v;
+							if(desired_value){
+					        	data = {
+					                username: ""+desired_value,
+					                password: ""+desired_value,
+					                email: "",
+					                profile: {
+					                    name: ""+desired_value,
+					                    root: choose,
+					                    group: "",
+					                },
+					            };
+					        	Accounts.createUser(data,function(error){
+					        		if(error)
+					        				Materialize.toast("One of the users already exists,Please check it", 3000);
+									 else
+				        	Materialize.toast("Data insert successfully", 3000);
+					        	});
+					        	Meteor.loginWithPassword("123456","admin");
+							};
+						};
+						
+				};
+				        	
+		    };
+		  }
+		 
 			
-	   	 };
-	   	  var url = "/cfs/files/images/"+img._id+"/"+img.name();
-	   			if(!img)
-					var data = "./default.jpeg";
-				else
-					var data = url;	
-				
-				Tmp.insert({url:data});
-				$("div#alert").html("This Photo '<span class='red-text'>"+img.name()+"</span>' has been uploaded successfully!");
-				Meteor.setTimeout(function () {	
-					$('div#alert').html("");	    
-					  }, 4000);
-				 
- 	 },
- 	 'click .with-gap':function(){
- 	 	var power = $("input[type=radio]:checked").val();
- 	 	if(power == "teacher")
- 	 		$("label.changeId")[0].innerHTML = "Teacher Id";
- 	 	else
- 	 		$("label.changeId")[0].innerHTML = "Student Id";
- 	 },
-	'blur .password2': function(){
-		var value1 =$('input#password').val();
-		var value2 =$('input#password2').val();
-		if(value1 != value2){
-					$('div#error-password2').html("<i class='material-icons red-text'>volume_up</i>&nbsp;The two password do not match!");
-					$('input#password2').val("");
-		}else
-			$('div#error-password2').html("");
 	},
-	'submit form': function(e){
-		e.preventDefault();
-
-		var username = $(e.target).find('[name=username]').val();
-		var password = $(e.target).find('[name=password]').val();
-		var password2 = $(e.target).find('[name=password2]').val();
-		var id = $(e.target).find('[name=id]').val();
-		var email = $(e.target).find('[name=email]').val();
-		if(username=="" || password=="" || id=="" || email==""){
-			$('div#error-message').html("<i class='material-icons red-text'>volume_up</i>&nbsp;Every space needs to be filled！");
-			Meteor.setTimeout(function () {	
-			$('div#error-message').html("");	    
-			  }, 4000);
-		}else if(password != password2){
-			$('div#error-password2').html("<i class='material-icons red-text'>volume_up</i>&nbsp;The two password do not match!");
-					$('input#password2').val("");
-		}else{
-			var tmp = Tmp.findOne();
-			if(tmp)
-				var url = tmp.url;
-			else
-				var url = "./default.jpeg";
-			var data = {
-				username: username,
-				password: password,
-				email: email,
-				profile: {
-					id: id,
-					power: $(e.target).find('[name=power]:checked').val(),
-					headSculpture: url,
-				}
-			};
-
-			Accounts.createUser(data,function(error){
-				if(error){
-					switch(error.reason){
-						case "Email already exists.":{
-									$('div#error-email').html("<i class='material-icons red-text'>volume_up</i> Email ' "+email+" ' already exists!");
-									Meteor.setTimeout(function () {	
-									$('div#error-email').html("");	    
-									  }, 4000);
-									break;
-							}
-						case "Username already exists.":{
-									$('div#error-username').html("<i class='material-icons red-text'>volume_up</i> Username '"+username+"' already exists!");
-									Meteor.setTimeout(function () {	
-									$('div#error-username').html("");	    
-									  }, 4000);
-							}
-					}
-				}else{
-										Router.go('index');}
-			});
+	'click .adduser': function(){
+		var newusercount = $("input#adduser").val();
+		var oldcount = $("input.s5").length;
+		for(var i=0;i<newusercount;i++){
+			var newcount = oldcount+i;
+					$("div#userinput").append("<input class='col s5 offset-s1' type='number' id='user"+newcount+"'>");
 		};
 	},
+	'click .submit': function(){
+		var choose = $(":selected").val();
+        var count = $("input.s5").length;
+        var id="",data="";
+        for(var i=0;i<count;i++){
+        	id = $("input#user"+i+"").val();
+        	data = {
+                username: id,//学号
+                password: id,//初始密码是学号
+                email: "",
+                profile: {
+                    name: id,
+                    root: choose,
+                    group: "",
+                },
+            };
+        	Accounts.createUser(data,function(error){
+        		if(error)
+        			Materialize.toast("One of the users already exists,Please check it", 3000);
+		        else
+		        	Materialize.toast("Data insert successfully", 3000);
+        	});
+        	Meteor.loginWithPassword("123456","admin");
+        };        	
+	}
 });
+
+
 
 Template.findPassword.events({
 	'submit form': function(e){

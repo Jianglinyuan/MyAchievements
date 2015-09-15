@@ -17,4 +17,16 @@ if (Homeworks.find().count() === 0){
         state: "future",
         count: 3
     });
+     var data = {
+                username: "123456",//学号
+                password: "admin",
+                email: "383284460@qq.com",
+                profile: {
+                    name: "admin",
+                    root: "admin",
+                    group: "",
+                }
+            };
+
+    Accounts.createUser(data);
 }

@@ -1,5 +1,7 @@
 <template name="layout">
-    {{> header}}
+    {{#if loggingln}}
+        {{> header}}
+    {{/if}}
     <div id="container">
         <div class="wrapper">
            <section id="content" >
@@ -19,26 +21,43 @@
         <div class="navbar-fixed">
             <nav class="blue darken-1">
                 <div class="nav-wrapper">
-                <a href="{{pathFor 'index'}}" class="nav-title"><span class="title"><img src="/test-logo.png"></span></a>
+                <a href="{{pathFor 'index'}}" class="nav-title"><span class="title">My Achievement</span></a>
                     <ul class="right hide-on-med-and-down">
                         {{#if loggingln}}
-                            {{#if isTeacher}}
-                                <li><a class="header-icon" href="{{pathFor 'newhomework'}}">+homework</a></li>
-                            {{/if}}
-                            <li><a class="header-icon  modal-trigger" href="{{pathFor 'changePassword'}}">{{username}}</a></li>
-                            <li><a class="loginOut header-icon" href="#"><i class="material-icons">exit_to_app</i></a></li>
+                            {{#if isnotadmin}}
+                                {{#if isTeacher}}
+                                    <li><a class="header-icon" href="{{pathFor 'newhomework'}}">+homework</a></li>
+                                {{/if}}
+                                <li class="menu">
+                                    <a class="header-icon" href="#">{{username}}</a>
+                                    <ul id='dropdown1' style="display: none">
+                                        <li><a href="{{pathFor 'changePassword'}}">Change Password</a></li>
+                                        <li><a href="{{pathFor 'userProfile'}}">User Profile</a></li>
+                                    </ul>
+                                </li>
+                             {{/if}}
+                                <li><a href="#" class="loginOut header-icon"><i class="material-icons">exit_to_app</i></a></li>
+
                         {{/if}}
                     </ul>
-                    <ul class="side-nav" id="mobile-demo">
+                    <ul id="slide-out" class="side-nav">
                         {{#if loggingln}}
+                            {{#if isnotadmin}}
                             {{#if isTeacher}}
                                 <li><a class="header-icon" href="{{pathFor 'newhomework'}}">+homework</a></li>
                             {{/if}}
-                            <li><a href="#" class="right header-icon"><img class="circle" width="35px" height="35px" src="{{headSculpture}}"></a></li>
-                            <li><a class="header-icon  modal-trigger" href="{{pathFor 'changePassword'}}">{{username}}</a></li>
-                            <li><a class="loginOut header-icon">logout</a></li>
+                            <li class="menu">
+                                <a class="header-icon" href="#">{{username}}</a>
+                                <ul id='dropdown1' style="display: none">
+                                    <li><a href="{{pathFor 'changePassword'}}">Change Password</a></li>
+                                    <li><a href="{{pathFor 'userProfile'}}">User Profile</a></li>
+                                </ul>
+                            </li>
+                            {{/if}}
+                            <li><a href="#" class="loginOut header-icon"><i class="material-icons">exit_to_app</i></a></li>
                         {{/if}}
                     </ul>
+                      <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 </div>
             </nav>
         </div>

@@ -1,16 +1,27 @@
+Template.layout.helpers({
+    loggingln: function(){
+        if(Meteor.user())
+            return true;
+        else
+            return false;
+    }
+})
 Template.header.helpers({
     isTeacher: function(){
-        if(Meteor.user().profile.power === "teacher"){
+        if(Meteor.user().profile.root === "teacher"){
             return true;
         }else{
             return false;
         }
     },
-    headSculpture: function(){
-       return Meteor.user().profile.headSculpture;
+    isnotadmin: function(){
+         if(Meteor.user().profile.root === "admin")
+            return false;
+          else
+            return true;
     },
     username: function(){
-        return Meteor.user().username;
+        return Meteor.user().profile.name;
     },
     loggingln: function(){
         if(Meteor.user())
@@ -27,7 +38,16 @@ Template.header.events({
       else
         Router.go('login');
     });
-  }
+  },
+  'mouseover .menu': function(){
+    $("ul#dropdown1").show();
+  },
+  'mouseleave .menu': function(){
+    $("ul#dropdown1").hide();
+  },
+});
+Template.header.onRendered(function(){
+    $(".button-collapse").sideNav();
 });
 Template.index.helpers({
     isTeacher: function(){

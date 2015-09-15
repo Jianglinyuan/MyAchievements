@@ -1,0 +1,130 @@
+<template name="allUser">
+
+    <div class="all-user">
+        <div class="user-admin row ">
+            <label for="admin">Admin :</label>
+            <table class="col s12 bordered centered">
+                <thead>
+                    <tr>
+
+                        <th class="col s3">Name</th>
+                        <th class="col s3">UserName</th>
+                        <th class="col s3">Email</th>
+                        <th class="col s3">CreatedAt</th>
+
+                    </tr>
+                </thead>
+                {{#each admins}}
+                    {{> showAdmin}}
+                {{/each}}
+            </table>
+        </div>
+        <div class="user-teacher row">
+            <label for="teacher">Teacher :</label>
+            <table class="col s12 bordered centered">
+                <thead>
+                    <tr>
+
+                        <th class="col s3">Name</th>
+                        <th class="col s3">UserName</th>
+                        <th class="col s3">Email</th>
+                        <th class="col s3">CreatedAt</th>
+
+                    </tr>
+                </thead>
+                {{#each teachers}}
+                    {{> showTeacher}}
+                {{/each}}
+            </table>
+        </div>
+        <div class="user-assistan row">
+            <label for="assistan">Teach Assistan :</label>
+            <table class="col s12 bordered centered">
+                <thead>
+                    <tr>
+
+                        <th class="col s3">Name</th>
+                        <th class="col s3">UserName</th>
+                        <th class="col s3">Email</th>
+                        <th class="col s3">CreatedAt</th>
+
+                    </tr>
+                </thead>
+                {{#each TAs}}
+                    {{> showTeachAssistan}}
+                {{/each}}
+            </table>
+                    </div>
+        <div class="user-student row">
+            <label for="student">Student :</label>
+            <table class="col s12 bordered centered">
+                <thead>
+                    <tr>
+
+                        <th class="col s3">Name</th>
+                        <th class="col s3">UserName</th>
+                        <th class="col s3">Email</th>
+                        <th class="col s3">CreatedAt</th>
+
+                    </tr>
+                </thead>
+                {{#each students}}
+                    {{> showTeachAssistan}}
+                {{/each}}
+            </table>
+        </div>
+    </div>
+
+</template>
+
+<template name="showAdmin">
+    <tbody>
+        <tr>
+
+            <td class="col s3">{{profile.name}}</td>
+            <td class="col s3">{{username}}</td>
+            <td class="col s3">{{profile.email}}</td>
+            <td class="col s3">{{profile.date}}</td>
+
+        </tr>
+    </tbody>
+</template>
+
+<template name="showTeacher">
+    <tbody>
+       <tr>
+
+            <td class="col s3">{{profile.name}}</td>
+            <td class="col s3">{{username}}</td>
+            <td class="col s3">{{profile.email}}</td>
+            <td class="col s3">{{profile.date}}</td>
+
+       </tr>
+    </tbody>
+</template>
+
+<template name="showTeachAssistan">
+    <tbody>
+        <tr>
+
+            <td class="col s3">{{profile.name}}</td>
+            <td class="col s3">{{username}}</td>
+            <td class="col s3">{{profile.email}}</td>
+            <td class="col s3">{{profile.date}}</td>
+
+        </tr>
+    </tbody>
+</template>
+
+<template name="showStudent">
+    <tbody>
+        <tr>
+            
+            <td class="col s3">{{profile.name}}</td>
+            <td class="col s3">{{username}}</td>
+            <td class="col s3">{{profile.email}}</td>
+            <td class="col s3">{{profile.date}}</td>
+
+        </tr>
+    </tbody>
+</template>

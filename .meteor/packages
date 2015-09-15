@@ -6,14 +6,9 @@
 
 meteor-platform
 iron:router
-jquery
 #insecure
 accounts-ui
 accounts-password
-cfs:standard-packages
-cfs:gridfs
 materialize:materialize
-cfs:filesystem
-mdg:camera
-cfs:s3
 
+fourseven:scss

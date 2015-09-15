@@ -1,0 +1,25 @@
+nav{
+    background-color:#0d47a1;
+}
+#main{
+    padding:0 2%;
+}
+.nav-title{
+    margin-left:2%;
+    font-size:1.5em;
+    display:inline-block;
+    width:auto;
+    float:left;
+}
+.nav-info{
+    margin-right:2%;
+    display:inline-block;
+    width:auto;
+    float:right;
+    ul{
+        li{
+            margin-left:20px;
+        }
+    }
+}
+

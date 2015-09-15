@@ -1,0 +1,36 @@
+<template name="allhomework">
+
+    <div class="hwlist-container">
+        <div class="row">
+            {{#if ifhashomeworks}}
+            {{#each homeworks}}
+            <div class="col l6 m12 s12">
+                <div class="card  hoverable">
+                    <div class="card-content blue darken-4 white-text">
+                        <span class="card-title title">作业 {{count}} : {{title}}</span>
+                        <br>
+                        <p><span class="right">截止时间：{{showDeadLine}}</span></p>
+                        <br>
+                        <p class="right-align">提交状态:50/100</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{url}}">HW spec</a>
+                        <!-- <a>{{>autostate}}</a> -->
+                        {{#if ownHomeWork}}
+                        <a href="#" class="right" id="check">评审</a>
+                        <a href="{{pathFor 'homeworkedit'}}" class="right edit" id="edit">编辑</a>
+                        <!--<a href="#" class="right" id="delete">删除</a>-->
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+            {{else}}
+            <br>
+            <p>当前没有作业</p>
+            {{/if}}
+        </div>
+    </div>
+
+</template>

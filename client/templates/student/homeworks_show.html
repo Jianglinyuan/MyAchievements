@@ -1,0 +1,50 @@
+<template name="showHomeworks">
+    <div class="hws-container">
+        <label>Homeworks</label>
+        <div class="row">
+            {{#each homeworks}}
+            {{> submit}}
+            {{/each}}
+        </div>
+    </div>
+</template>
+
+<template name="submit">
+    <div class="col s12 m6 l3">
+        <div class="card hw-container">
+            <div class="hw-title">
+                <p class="orange-text title-top">Present Work</p>
+                <p class="orange-text">submit</p>
+            </div>
+            <div class="card">
+                <div class="hw-content">
+                    <h5 class="center-align">HW{{count}}: {{title}}</h5>
+                    <p class="center-align">截至时间：2015年9月4号15:00</p>
+                    <a href="{{url}}" class="btn orange spec-btn">HWSPEC</a>
+                    <a href="#" class="btn orange submit-btn">submit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="review">
+    <div class="col s12 m6 l3">
+        <div class="card hw-container">
+            <div class="hw-title">
+                <p class="green-text title-top">Present Work</p>
+                <p class="green-text">review  <span class="right">HW{{count}}: {{title}}</span> </p>
+            </div>
+            <div class="card">
+                <div class="hw-image card-image waves-effect">
+                    <img src="sample-1.png" class="activator">
+                </div>
+                <div class="card-reveal action">
+                    <p class="card-title">{{title}}<i class="material-icons right">close</i></p>
+                    <a href="{{url}}" class="btn blue spec-btn">HWSPEC</a>
+                    <a href="#" class="btn blue review-btn">Review</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

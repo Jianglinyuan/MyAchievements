@@ -4,3 +4,24 @@
         margin-top:5px;
     }
 }
+.tabs{
+    .tab{
+        a{
+            color:#0d47a1;
+        }
+        a:hover{
+            color:#bbdefb;
+        }
+    }
+    .indicator{
+        background-color:#0d47a1;  
+    }
+}
+.tbody-content{
+    tr{
+        td{
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+    }
+}

@@ -1,3 +1,18 @@
 .hwlist-container{
     padding:10px;
+    .title-p{
+        overflow:hidden;
+    }
+}
+.title1{
+    float:left;
+    width:20%;
+    display:inline-block;
+}
+.title2{
+    width:80%;
+    float:left;
+    display:inline-block;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }

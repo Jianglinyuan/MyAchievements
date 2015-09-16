@@ -8,34 +8,36 @@
         padding:0px;
     }
     .hw-content{
-        margin-top:-12px;
         height:290px;
         background-color:#9e9e9e;
         color:#fff;
-        h4{
-            padding-top:20px;
+        .hw-content-title{
+            padding-top:10px;
+            width:100%;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            font-size:24px;
+        }
+        .hw-content-deadline{
+            padding: 30px 10px;
         }
         .submit-btn{
             position:relative;
-            display:block;
             top:10px;
-            opacity:1;
+            display:block;
             width:80%;
             margin:auto;
-            p{
-                color:#fff;
-            }
         }
         .spec-btn{
             position:relative;
             display:block;
             width:80%;
             margin:auto;
-            margin-top:80px;
+            margin-top:20px;
         }
     }
     .hw-title{
-        padding:0 10px;
+        padding:5px 10px;
         height:60px;
         .title-top{
             font-size:20px;
@@ -47,28 +49,37 @@
             height:290px;
         }
     }
+    .card-reveal{
+        padding:10px;
+
+    }
     .action{
         background-color:black;
         opacity:0.7;
-        span{
-            color:#fff;
+        .card-title-left{
+            float:left;
+            width:80%;
+            overflow:hidden;
+            text-overflow:ellipsis;
         }
-        p{
-            color:#fff;
+        .action-content{
+            margin-top:50px;
+            height:136px;
+            position:relative;
         }
         .review-btn{
             position:relative;
             display:block;
-            top:10px;
-            opacity:1;
-            p{
-                color:#fff;
-            }
+            top:111px;
+            width:80%;
+            margin:auto;
         }
         .spec-btn{
             position:relative;
+            top:101px;
             display:block;
-            margin-top:80px;
+            width:80%;
+            margin:auto;
         }
     }
 }

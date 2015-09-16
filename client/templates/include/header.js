@@ -8,7 +8,11 @@ Template.header.helpers({
 });
 Template.header.onRendered(function(){
     $( document ).ready(function(){
-        $(".dropdown-button").dropdown();
+        $(".dropdown-button").dropdown({
+            constrain_width:false,
+            belowOrigin:true,
+            alignment: 'left'
+        });
     });
 });
 Template.header.events({

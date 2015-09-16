@@ -4,6 +4,17 @@ nav{
 #main{
     padding:0 1%;
 }
+nav{
+    ul{
+        a{
+            padding: 0px;
+        }
+    }
+}
+.dropdown-content li > a{
+    font-size:1em;
+    color:#0d47a1;
+}
 .nav-title{
     margin-left:1%;
     font-size:1.5em;
@@ -12,14 +23,20 @@ nav{
     float:left;
 }
 .nav-info{
-    margin-right:2%;
+    margin-right:0.5%;
     display:inline-block;
     width:auto;
     float:right;
+}
+.nav-name{
+    width:150px;
     ul{
-        li{
-            margin-left:20px;
-        }
+        position:relative;
     }
 }
-
+.progress{
+    background-color:#bbdefb;
+    .determinate{
+        background-color:#0d47a1;
+    }
+}

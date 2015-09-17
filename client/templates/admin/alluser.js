@@ -12,3 +12,23 @@ Template.allUser.helpers({
         return Meteor.users.find({'profile.root':'student'});
     }
 });
+Template.showAdmin.helpers({
+    email: function(){
+        return this.emails[0].address;
+    }
+});
+Template.showStudent.helpers({
+    email: function(){
+        return this.emails[0].address;
+    }
+});
+Template.showTeacher.helpers({
+    email: function(){
+        return this.emails[0].address;
+    }
+});
+Template.showTeachAssistan.helpers({
+    email: function(){
+        return this.emails[0].address;
+    }
+});

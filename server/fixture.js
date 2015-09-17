@@ -3,33 +3,30 @@ if(Meteor.users.find().count() === 0){
     var data1 = {
         username: "admin",
         password: "admin123456",
+        email: "sysulz19920512@163.com",
         profile:{
             name: "admin",
             root: "admin",
-            email: "sysulz19920512@163.com",
-            date: date,
             group: ""
         }
     };
     var data2 = {
         username: "teacher",
         password: "teacher",
+        email: "nima19920512@163.com",
         profile: {
             name: "林桢",
             root: "assistan",
-            email: "nima19920512@163.com",
-            date: date,
             group: ""
         }
     };
     var data3 = {
         username: "student",
         password: "student",
+        email: '234346353@qq.com',
         profile: {
             name: "林桢同学",
             root: "student",
-            email: '234346353@qq.com',
-            date: date,
             group: 1
         }
     };

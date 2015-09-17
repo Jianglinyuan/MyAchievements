@@ -17,6 +17,10 @@ Template.review.helpers({
     count: function(){
         var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
         return homeworklist.count;
+    },
+    showDeadline: function(){
+        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
+        return homeworklist.showDeadLine;
     }
 
 });

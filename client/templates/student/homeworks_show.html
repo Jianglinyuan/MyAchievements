@@ -4,6 +4,7 @@
         <div class="row">
             {{#each homeworks}}
             {{> submit}}
+            {{> review}}
             {{/each}}
         </div>
     </div>
@@ -13,17 +14,14 @@
     <div class="col s12 m6 l3">
         <div class="card hw-container">
             <div class="hw-title">
-                <p class="orange-text title-top">Present Work</p>
+                <div class="orange-text title-top">HW{{count}}:{{title}}</div>
                 <p class="orange-text">submit</p>
             </div>
                 <div class="hw-content">
                     <div class="hw-content-title center-align">
-                        HW{{count}}: {{title}}
+                        Deadline:{{showDeadline}}
                     </div>
-                    <div class="hw-content-deadline">
-                        <p class="center-align red-text">Deadline:{{showDeadline}}</p>
-                    </div>
-                    <a href="{{url}}" class="btn orange spec-btn" target="view_window">HWSPEC</a>
+                    <a href="{{url}}" class=" btn orange spec-btn center-align" target="view_window">SPEC</a>
                     <a href="#" class="btn orange submit-btn">submit</a>
                 </div>
         </div>
@@ -34,8 +32,8 @@
     <div class="col s12 m6 l3">
         <div class="card hw-container">
             <div class="hw-title">
-                <p class="green-text title-top">Present Work</p>
-                <p class="green-text">review  <span class="right">HW{{count}}: {{title}}</span> </p>
+                <p class="green-text title-top">HW{{count}}:{{title}}</p>
+                <p class="green-text">review </p>
             </div>
             <div class="card">
                 <div class="hw-image card-image waves-effect">
@@ -43,12 +41,12 @@
                 </div>
                 <div class="card-reveal action">
                     <div class="card-title">
-                        <div class="card-title-left">
-                            <p>{{title}}</p>
-                        </div>
                         <i class=" small material-icons right">close</i>
                     </div>
-                    <a href="{{url}}" class="btn blue spec-btn waves-effect"  target="view_window">HWSPEC</a>
+                    <div class="hw-content-title center-align">
+                        Deadline:{{showDeadline}}
+                    </div>
+                    <a href="{{url}}" class="btn blue spec-btn waves-effect"  target="view_window">SPEC</a>
                     <a href="#" class="btn blue review-btn">Review</a>
                 </div>
             </div>

@@ -7,3 +7,6 @@ Meteor.publish("homeworklist",function(){
 Meteor.publish("homeworks",function(){
     return Homeworks.find();
 });
+Meteor.publish("homeworkfiles",function(){
+    return Homeworkfiles.find();
+});

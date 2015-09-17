@@ -12,3 +12,6 @@ accounts-password
 materialize:materialize
 
 fourseven:scss
+cfs:standard-packages
+cfs:filesystem
+cfs:gridfs

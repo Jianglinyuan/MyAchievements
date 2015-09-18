@@ -4,9 +4,9 @@ Template.pre_submit.events({
         event.preventDefault();
         var studentId = Meteor.userId();
         var homeworkId = $(event.currentTarget).attr("name");
-        var file = $("input[class=workfile]")[0].files[0];
-        var image = $("input[class=imagefile]")[0].files[0];
-        var chosedTeam = $('input[name="group1"]:checked').val();
+        var file = $("input[name="+homeworkId+"]")[0].files[0];
+        var image = $("input[name=image"+homeworkId+"]")[0].files[0];
+        var chosedTeam = Meteor.user().profile.group;
         var count = Homeworkfiles.find({
             "metadata.homework": homeworkId,
             "metadata.userId": studentId
@@ -63,9 +63,10 @@ Template.pre_submit.events({
                                 alertinfo.html("The file type is not suitable");
                                 alertwindow.removeClass('hide');
                             } else {
-                                $('#modal1').closeModal(); //
+                                $('#'+homeworkId).closeModal(); //
                                 Homeworkfiles.insert(imagefile);
-                                Materialize.toast('提交成功！', 1000, '', function() {})
+                                Materialize.toast('提交成功！', 1000, '', function() {});
+                                
                             };
                         });
                     }
@@ -85,15 +86,15 @@ Template.pre_submit.events({
     }
 });
 Template.submit.events({
-    'change .workfile': function(e) {
-        var file = $("input[class=workfile]")[0].files[0];
+    'change .workfile': function(e,template) {
+        var file = $("input[name="+template.data._id+"]")[0].files[0];
         var filename = file.name;
-        $("input[name=uploadname]").val(filename);
+        $("input[name=upload"+template.data._id+"]").val(filename);
     },
-    "change .imagefile": function() {
-        var file = $("input[class=imagefile]")[0].files[0];
+    "change .imagefile": function(e,template) {
+        var file = $("input[name=image"+template.data._id+"]")[0].files[0];
         var filename = file.name;
-        $("input[name=imagename]").val(filename);
+        $("input[name=imageupload"+template.data._id+"]").val(filename);
     },
     "click .alertstudent": function() {
         var alertwindow = $(".alertstudent");

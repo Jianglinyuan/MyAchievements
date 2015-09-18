@@ -1,0 +1,63 @@
+<template name="addUser">
+   <div class="register">
+       <br>
+        <div class="row">
+            <div class="register-cont">
+                 <div class="col s12 m6">	
+                    <h4 class="center">添加单个用户</h4>
+                    <div class="register-icon col s12">
+                        <div id="error-message" class="red-text center"></div>
+                        <button class="btn waves-effect waves-light col s4 offset-s4 submit" >Register Now!
+                        </button>
+                    </div>
+                    <br/><br/>
+                </div>
+
+                <div class= "col s12 m6">
+                    <h4 class="center">从excel 导入学生用户</h4>
+                    <input type="file" class="upfile" />
+                    <br/>
+                    <p class="red-text">PS：The first col of your excel must be student，the second col of your excel must be teacher，and the third col of your excel must be assistant</p>
+                </div>
+            </div>
+        </div>
+        <br/><br/><br/>
+    </div>
+</template>
+
+<template name="findPassword">
+    <div class="light-blue">
+        <br/>
+        <br/>
+        <br/>
+        <div class="row">
+            <form>
+                <div class="col s10 offset-s1 m6 offset-m3 white z-depth-5">
+                    <div class="center">
+                        <h1>Find Your Password</h1>				
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">email</i>
+                        <input id="email" name="email" type="email">
+                        <label for="email">Your Email</label>
+                        <div id="error-message" class="red-text center"></div>
+                    </div>
+                    <div class="findPassword-icon col s12">
+                        <br/>
+                        <button class="btn waves-effect waves-light col s12 pink accent-2" type="submit">Submit
+                            <i class="material-icons">send</i>
+                        </button>
+                        <br/>
+                    </div>
+                    <div class="findPassword-icon col s12">
+                        <a href="{{pathFor 'login'}}" class="right">Go back to login</a>
+                    </div>	
+                </div>
+            </form>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+    </div>
+</template>
+

@@ -28,10 +28,10 @@
                     <div class="file-field input-field">
                         <div class="btn upload">
                             <span>File</span>
-                            <input type="file" class="workfile">
+                            <input type="file" class="workfile" name="{{_id}}">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" name="uploadname" type="text" value="">
+                            <input class="file-path validate" name="upload{{_id}}" type="text" value="">
                         </div>
                     </div>
                 </form>
@@ -41,35 +41,12 @@
                     <div class="file-field input-field">
                         <div class="btn image">
                             <span>Image</span>
-                            <input type="file" class="imagefile" id="image">
+                            <input type="file" class="imagefile" id="image" name="image{{_id}}">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" name="imagename" type="text" value="">
+                            <input class="file-path validate" name="imageupload{{_id}}" type="text" value="">
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="input-field col s12 m12 l12">
-                <div class="col l3 offset-s2 offset-l2" style="
-    margin-top: 12px;
-"><span class="textspan">Chose the team:</span></div>
-                <form class="col l6" action="#">
-                    <p style="
-    margin-left: -10%;
-">
-                        <input name="group1" type="radio" id="test1" value="1" />
-                        <label for="test1">1</label>
-                        <input name="group1" type="radio" id="test2" value="2" />
-                        <label for="test2">2</label>
-                        <input name="group1" type="radio" id="test3" value="3" />
-                        <label for="test3">3</label>
-                        <input name="group1" type="radio" id="test4" value="4" />
-                        <label for="test4">4</label>
-                        <input name="group1" type="radio" id="test5" value="5" />
-                        <label for="test5">5</label>
-                        <input name="group1" type="radio" id="test6" value="6" />
-                        <label for="test6">6</label>
-                    </p>
                 </form>
             </div>
         </div>

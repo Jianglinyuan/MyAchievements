@@ -4,6 +4,7 @@ Template.showHomeworks.helpers({
         return Homeworks.find({userId: user._id});
     }
 });
+
 Template.pre_review.helpers({
 
     title: function(){
@@ -52,9 +53,8 @@ Template.pre_submit.helpers({
     }
 
 });
+
 Template.pre_submit.onRendered(function(){
-    this.$('#modal1').openModal();
-    this.$('#modal1').closeModal();
     this.$('.modal-trigger').leanModal({
         dismissible: true,
         opacity: 0.5,

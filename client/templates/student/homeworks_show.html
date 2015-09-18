@@ -15,20 +15,20 @@
         <div class="card hw-container">
             <div class="hw-title">
                 <div class="orange-text title-top">HW{{count}}:{{title}}</div>
-                <p class="orange-text">submit</p>
+                <p class="orange-text">submit{{_id}}</p>
             </div>
                 <div class="hw-content">
                     <div class="hw-content-title center-align">
                         Deadline:{{showDeadline}}
                     </div>
                     <a href="{{url}}" class=" btn orange spec-btn center-align" target="view_window">SPEC</a>
-                    <a href="#modal1" class="btn modal-trigger orange submit-btn">submit</a>
+                    <a href="#{{_id}}" class="btn modal-trigger orange submit-btn">submit</a>
                 </div>
         </div>
     </div>
-    <div id="modal1" class="modal modal-fixed-footer">
+    <div id="{{_id}}" class="modal modal-fixed-footer">
         <div class="modal-content">
-            {{>submit}}
+            {{> submit}}
         </div>
         <div class="modal-footer">
             <a href=" " class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a >
@@ -56,7 +56,7 @@
                         Deadline:{{showDeadline}}
                     </div>
                     <a href="{{url}}" class="btn blue spec-btn waves-effect"  target="view_window">SPEC</a>
-                    <a href="#" class="btn blue review-btn">Review</a>
+                    <a href="{{pathFor 'studentReview'}}" class="btn blue review-btn">Review</a>
                 </div>
             </div>
         </div>

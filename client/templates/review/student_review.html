@@ -1,0 +1,50 @@
+<template name="studentReview">
+    <div class="container">
+        <div class="row">
+            <div class="stureview-header col s12 m12 l12 valign-wrapper center-align">
+                <div class="col s3 m3 l3 valign">
+                    group:{{group}}
+                </div>
+                <div class="col s6 m6 l6 valign">
+                    <h4>HW{{count}}:{{title}}</h4>
+                </div>
+                <div class="col s3 m3 l3 valign">
+                    已提交:5/10
+                </div>
+            </div>
+            <div class="stureview-content col s12 m12 l12">
+                {{> showOthers}}
+                {{#each others}}
+                    {{> showOthers}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="showOthers">
+    <div class="row">
+        <div class="col s12 m12 l12 other-container">
+            <div class="col s12 m12 l12 other-header valign-wrapper">
+                <div class="col s4 m4 l4 center-align valign">
+                    <span>{{name}}</span>
+                </div>
+                <div class="col s5 m5 l5 center-align valign">
+                    <span>评论</span>
+                </div>
+                <div class="col s3 m3 l3 center-align valign">
+                    <span>评分</span>
+                </div>
+            </div>
+            <div class="col s4 m4 l4 other-img card">
+                <div class="card-image other-img-sub">
+                    <img src="/sample-1.jpg">
+                </div>
+            </div>
+            <div class="col s5 m5 l5 other-comment">
+                <textarea id="" name="" cols="30" rows="10"></textarea>
+            </div>
+            <div class="col s3 m3 l3 other-score"></div>
+        </div>
+    </div>
+</template>

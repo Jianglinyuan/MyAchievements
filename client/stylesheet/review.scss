@@ -1,0 +1,34 @@
+.stureview-header{
+    height:60px;
+    background-color:orange;
+}
+.other-container{
+    height:260px;
+    background-color:blue;
+    .card{
+        margin:0px;
+        padding:0px;
+    }
+    .other-header{
+        height:30px;
+        background-color:red;
+    }
+    .other-img{
+        height:230px;
+        background-color:orange;
+        .other-img-sub{
+            img{
+                height:230px;
+                width:100%;
+            }
+        }
+    }
+    .other-comment{
+        height:230px;
+        background-color:green;
+    }
+    .other-score{
+        height:230px;
+        background-color:gray;
+    }
+}

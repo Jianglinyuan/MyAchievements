@@ -7,7 +7,6 @@ if(Meteor.users.find().count() === 0){
         profile:{
             name: "admin",
             root: "admin",
-            email: "sysulz19920512@163.com",
             group: ""
         }
     };
@@ -18,7 +17,6 @@ if(Meteor.users.find().count() === 0){
         profile: {
             name: "林桢",
             root: "assistan",
-            email: "nima19920512@163.com",
             group: ""
         }
     };
@@ -29,7 +27,6 @@ if(Meteor.users.find().count() === 0){
         profile: {
             name: "林桢同学",
             root: "student",
-            email: '234346353@qq.com',
             group: 1
         }
     };
@@ -40,7 +37,6 @@ if(Meteor.users.find().count() === 0){
         profile: {
             name: "蒋林源",
             root: "student",
-            email: "test@test.com",
             group: 1
         }
     };

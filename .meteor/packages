@@ -17,3 +17,4 @@ cfs:filesystem
 cfs:gridfs
 huaming:js-xlsx
 email
+reactive-var

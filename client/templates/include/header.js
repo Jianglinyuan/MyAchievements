@@ -1,6 +1,8 @@
 Template.header.helpers({
     username: function(){
-        return Meteor.user().profile.name;
+        var user = Meteor.user();
+        var username = user && user.profile && user.profile.name;
+        return username;
     }
 });
 Template.header.onRendered(function(){
@@ -16,5 +18,6 @@ Template.header.events({
     'click .logout': function(e){
         e.preventDefault();
         Meteor.logout();
+        Router.go('index');
     }
 });

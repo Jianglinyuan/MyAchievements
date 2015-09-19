@@ -10,3 +10,21 @@ Meteor.publish("homeworks",function(){
 Meteor.publish("homeworkfiles",function(){
     return Homeworkfiles.find();
 });
+Meteor.publish("myhomeworks",function(userId){
+    return Homeworks.find({userId: this.userId});
+});
+Meteor.publish("myhomeworkfiles",function(){
+    return Homeworkfiles.find({'metadata.userId': this.userId});
+});
+Meteor.publish("myGroupUserData",function(){
+    var user = Meteor.users.findOne(this.userId);
+    return Meteor.users.find({'profile.group': user.profile.group});
+});
+Meteor.publish("myGroupHomeworkfiles",function(group){
+    return Homeworkfiles.find({'metadata.team': group});
+});
+Meteor.publish("Homeworkfiles",function(group,homeworkId){
+    var homeworklistId = Homeworks.findOne(homeworkId).homeworklistId;
+    return Homeworkfiles.find({'metadata.team': group, 'metadata.homeworklistId': homeworklistId});
+
+})

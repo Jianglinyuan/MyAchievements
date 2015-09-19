@@ -18,6 +18,7 @@ Template.studentReview.helpers({
         return Homeworkfiles.find({
             'metadata.homeworklistId': homeworklistId,
             'metadata.team': group,
+            'metadata.fileImage': {$ne: 1},
             'metadata.userId':{$ne:Meteor.userId()} 
         });
     }

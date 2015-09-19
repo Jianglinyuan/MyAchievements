@@ -1,4 +1,3 @@
-Meteor.subscribe('homeworkfiles');
 Template.pre_submit.events({
     'click .submit': function(event, template) {
         event.preventDefault();
@@ -38,6 +37,7 @@ Template.pre_submit.events({
         imagefile.metadata = {
             userId: studentId,
             homeworklistId: homeworklistId,
+            team: chosedTeam,
             fileImage:1
         };
         if (file == undefined) {} else {

@@ -3,6 +3,18 @@ Template.header.helpers({
         var user = Meteor.user();
         var username = user && user.profile && user.profile.name;
         return username;
+    },
+    isStudent: function(){
+        var user = Meteor.user();
+        var userroot = user && user.profile && user.profile.root;
+        if (userroot === 'student'){
+            return true;
+        }else{
+            return false;
+        }
+    },
+    userNumber: function(){
+        return Meteor.user().username;
     }
 });
 Template.header.onRendered(function(){

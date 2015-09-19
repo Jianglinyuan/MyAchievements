@@ -2,10 +2,15 @@
 
     <nav class="navbar right">
         <div class="nav-title">
-            <span>MyAchievements</span>
+            <span><a href="{{pathFor 'index'}}">MyAchievements</a></span>
         </div>
         <div class="nav-info">
             <ul>
+                {{#if isStudent}}
+                <li class="nav-li">
+                    <a href="#">{{userNumber}}</a>
+                </li>
+                {{/if}}
                 <li class="nav-li">
                     <a href="#">
                         <div class="nav-name center-align">

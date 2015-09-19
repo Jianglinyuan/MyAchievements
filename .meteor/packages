@@ -16,3 +16,4 @@ cfs:standard-packages
 cfs:filesystem
 cfs:gridfs
 huaming:js-xlsx
+email

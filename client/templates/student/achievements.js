@@ -63,11 +63,13 @@ Template.myrank.onRendered(function(){
             series: [{
                 yAxis:0,
                 name: 'class rank',
-                data: [1, 5, 14]
+                data: [1, 5, 14],
+                color: '#ef6c00'
             }, {
                 yAxis:1,
                 name: 'group rank',
-                data: [1, 2, 4]
+                data: [1, 2, 4],
+                color: '#0d47a1'
             }]
         });
     })

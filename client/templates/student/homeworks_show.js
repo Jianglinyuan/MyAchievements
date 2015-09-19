@@ -24,11 +24,11 @@ Template.pre_review.helpers({
         return homeworklist.showDeadLine;
     },
     img: function(){
-        var homeworkId = this._id;
+        var homeworklistId = Homeworks.findOne(this._id).homeworklistId;
         var userId = Meteor.userId();
         return Homeworkfiles.findOne({
             'metadata.userId': userId,
-            'metadata.homework': homeworkId,
+            'metadata.homeworklistId': homeworklistId,
             'metadata.fileImage': 1
         });
     }

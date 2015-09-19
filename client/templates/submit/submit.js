@@ -3,12 +3,15 @@ Template.pre_submit.events({
     'click .submit': function(event, template) {
         event.preventDefault();
         var studentId = Meteor.userId();
+        var studentname = Meteor.user().profile.name;
+        var studentNumber = Meteor.user().username;
         var homeworkId = $(event.currentTarget).attr("name");
+        var homeworklistId = Homeworks.findOne(homeworkId).homeworklistId;
         var file = $("input[name="+homeworkId+"]")[0].files[0];
         var image = $("input[name=image"+homeworkId+"]")[0].files[0];
         var chosedTeam = Meteor.user().profile.group;
         var count = Homeworkfiles.find({
-            "metadata.homework": homeworkId,
+            "metadata.homeworklistId": homeworklistId,
             "metadata.userId": studentId
         });
         var countnumber = count.count();
@@ -22,9 +25,11 @@ Template.pre_submit.events({
         var comments = $("textarea[id=textarea1]").val();
         homeworkfile.metadata = {
             userId: studentId,
+            userName: studentname,
+            studentNumber: studentNumber,
             team: chosedTeam,
-            homework: homeworkId,
-            fileName: filename,
+            homeworklistId: homeworklistId,
+            fileName: file.name,
             uploadTime: uploadtime,
             fileSize: filesize,
             githubUrl: githubUrl,
@@ -32,7 +37,7 @@ Template.pre_submit.events({
         };
         imagefile.metadata = {
             userId: studentId,
-            homework: homeworkId,
+            homeworklistId: homeworklistId,
             fileImage:1
         };
         if (file == undefined) {} else {

@@ -1,19 +1,15 @@
 <template name="studentReview">
     <div class="container">
         <div class="row">
-            <div class="stureview-header col s12 m12 l12 valign-wrapper center-align">
-                <div class="col s3 m3 l3 valign">
-                    group:{{group}}
+            <div class="stureview-header col s12 m12 l12 valign-wrapper">
+                <div class="col s3 m3 l3 valign left-align">
+                    Group:{{group}}
                 </div>
-                <div class="col s6 m6 l6 valign">
-                    <h4>HW{{count}}:{{title}}</h4>
-                </div>
-                <div class="col s3 m3 l3 valign">
-                    已提交:5/10
+                <div class="col s6 m6 l6 valign center-align">
+                    <h5>HW{{count}}:{{title}}</h5>
                 </div>
             </div>
             <div class="stureview-content col s12 m12 l12">
-                {{> showOthers}}
                 {{#each others}}
                     {{> showOthers}}
                 {{/each}}
@@ -25,26 +21,41 @@
 <template name="showOthers">
     <div class="row">
         <div class="col s12 m12 l12 other-container">
-            <div class="col s12 m12 l12 other-header valign-wrapper">
-                <div class="col s4 m4 l4 center-align valign">
-                    <span>{{name}}</span>
+            <div class="other-sub-container z-depth-1">
+                <div class="col s12 m12 l12 other-header valign-wrapper">
+                    <div class="col s3 m2 l2 left-align valign">
+                        <div class="autohidden">{{metadata.studentNumber}}</div>
+                    </div>
+                    <div class="col s3 m2 l2 left-align valign">
+                        <div class="autohidden">{{metadata.userName}}</div>
+                    </div>
+                    <div class="col s3 m4 l4 left-align valign">
+                        <div class="autohidden">FileSource:<a href="{{this.url}}">{{metadata.fileName}}</a></div>
+                    </div>
+                    <div class="col s3 m4 l4 left-align valign">
+                        <div class="autohidden">GithubURL:<a href="{{metadata.githubUrl}}">{{metadata.githubUrl}}</a></div>
+                    </div>
                 </div>
-                <div class="col s5 m5 l5 center-align valign">
-                    <span>评论</span>
+
+                <div class="col s12 m12 l12 other-content">
+
+                <div class="col s3 m3 l3 other-img">
+                    <div class="other-img-sub">
+                        <a href="#"><img src="{{img.url}}" class="materialbox"></a>
+                    </div>
                 </div>
-                <div class="col s3 m3 l3 center-align valign">
-                    <span>评分</span>
+                <div class="input-field col s7 m7 l7 other-comment">
+                    <textarea style="height:80%;"></textarea>
                 </div>
+                <div class="col s2 m2 l2 other-score">
+                    <label for="score">Score:</label> 
+                    <input id="score" type="text" class="validate center-align">
+                </div>
+
+                </div>
+
+
             </div>
-            <div class="col s4 m4 l4 other-img card">
-                <div class="card-image other-img-sub">
-                    <img src="/sample-1.jpg">
-                </div>
-            </div>
-            <div class="col s5 m5 l5 other-comment">
-                <textarea id="" name="" cols="30" rows="10"></textarea>
-            </div>
-            <div class="col s3 m3 l3 other-score"></div>
         </div>
     </div>
 </template>

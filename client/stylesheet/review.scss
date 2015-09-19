@@ -1,34 +1,49 @@
 .stureview-header{
     height:60px;
-    background-color:orange;
 }
 .other-container{
-    height:260px;
-    background-color:blue;
-    .card{
-        margin:0px;
-        padding:0px;
-    }
-    .other-header{
-        height:30px;
-        background-color:red;
-    }
-    .other-img{
-        height:230px;
-        background-color:orange;
-        .other-img-sub{
-            img{
-                height:230px;
-                width:100%;
+    height:207px;
+    .other-sub-container{
+        height:207px;    
+        .card{
+            margin:0px;
+            padding:0px;
+        }
+        .other-header{
+            background-color:#fff;
+            left:1%;
+            height:24px;
+            border-bottom:solid 1px #b0bec5;
+            .autohidden{
+                overflow:hidden;
+                text-overflow:ellipsis;
+            }
+
+        }
+        .other-content{
+            height:185px;
+            background-color:#fff;
+            padding:2px 0;
+        }
+        .other-img{
+            height:180px;
+            .other-img-sub{
+                img{
+                    border-radius:0px;
+                    height:180px;
+                    width:100%;
+                }
             }
         }
-    }
-    .other-comment{
-        height:230px;
-        background-color:green;
-    }
-    .other-score{
-        height:230px;
-        background-color:gray;
+        .other-comment{
+            margin-top:15px;
+            height:160px;
+        }
+        .other-score{
+            height:180px;
+            input{
+                margin-top:20px;
+            }
+        }
     }
 }

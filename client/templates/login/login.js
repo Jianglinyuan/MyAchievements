@@ -1,3 +1,9 @@
+Template.loginForm.onRendered(function(){
+ $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+});
 Template.loginForm.helpers({
     username: function(){
             return localStorage.username;
@@ -38,27 +44,19 @@ Template.loginForm.events({
                     localStorage.password=password;
                     };
         }
-    }
-});
-
-Template.findPassword.events({
-    'submit form': function(e){
-        e.preventDefault();
-
-        var email = $(e.target).find('[name=email]').val();
+    },
+    'click .submit-email': function(){
+        var email = $("input#email").val();
         if(!email){
-            $('div#error-message').html("Your Email ?");
-            Meteor.setTimeout(function () { 
-            $('div#error-message').html("");        
-              }, 4000);
+            Materialize.toast("Your email ?",3000);
         }else{
             Accounts.forgotPassword({email: email},function(error){
                 if(error)
-                    $('div#error-message').html(error.reason);
+                    Materialize.toast(error.reason,3000);
                 else
-                    Router.go('login');
+                    Materialize.toast("We have send a email to you,please check.",3000);
             });
         };
-        
     }
 });
+

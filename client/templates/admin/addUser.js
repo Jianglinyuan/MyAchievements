@@ -1,4 +1,11 @@
 Template.addUser.events({
+        'click .with-gap': function(){
+            var checked = $(":checked").val();
+            if(checked === "student")
+                $("div#register-group").show();
+            else
+                $("div#register-group").hide();
+        },
 	    'change .upfile': function(e){
         var files = e.target.files;
         var i,f,k,s;
@@ -56,6 +63,10 @@ Template.addUser.events({
         var username = $("input#username").val();
         var name = $("input#name").val();
         var email = $("input#email").val();
+        if(root === "student")
+            var group = $("input#group").val();
+        else
+            var group = "";
         var data = {
                 username: username,//学号
                 password: username,//初始密码是学号
@@ -63,7 +74,7 @@ Template.addUser.events({
                 profile: {
                     name: name,
                     root: root,
-                    group: "",
+                    group: group,
                 },
             };
             Accounts.createUser(data,function(error){

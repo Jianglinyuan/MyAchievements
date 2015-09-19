@@ -18,6 +18,7 @@ Template.newhomework.events({
         var count = HomeworkList.find().count()+1;
         var title = $(e.target).find('[id=title]').val();                       
         var url = $(e.target).find('[id=url]').val();
+        var now = new Date();
 
         // 开始时间的相关数据
         var startDate = $(e.target).find('[id=startdate]').val();
@@ -32,6 +33,12 @@ Template.newhomework.events({
 
         var showDeadLine = convertDeadline(deadDate,deadTime);
         var convertToHour = convertDeadtime(deadDate,deadTime);
+        var state;
+        if (convertStartTime <= Date.parse(now)/3600000){
+            state = "present";
+        }else{
+            state = "future";
+        }
 
 
         //取到所有学生用户
@@ -50,7 +57,7 @@ Template.newhomework.events({
             deadTime : deadTime,
             showDeadLine : showDeadLine,
             convertToHour : convertToHour,
-            state : 'future',
+            state : state
         }
 
         Meteor.call('HomeworkListInsert',homework,users,function(error,result){

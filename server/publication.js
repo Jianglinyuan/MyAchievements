@@ -23,11 +23,7 @@ Meteor.publish("myGroupUserData",function(){
     var user = Meteor.users.findOne(this.userId);
     return Meteor.users.find({'profile.group': user.profile.group});
 });
-Meteor.publish("myGroupHomeworkfiles",function(group){
-    return Homeworkfiles.find({'metadata.team': group});
-});
 Meteor.publish("Homeworkfiles",function(group,homeworkId){
     var homeworklistId = Homeworks.findOne(homeworkId).homeworklistId;
     return Homeworkfiles.find({'metadata.team': group, 'metadata.homeworklistId': homeworklistId});
-
-})
+});

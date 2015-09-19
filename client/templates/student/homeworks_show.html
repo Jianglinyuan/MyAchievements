@@ -15,7 +15,7 @@
         <div class="card hw-container">
             <div class="hw-title">
                 <div class="orange-text text-darken-3 title-top">HW{{count}}:{{title}}</div>
-                <p class="orange-text">submit</p>
+                <p class="orange-text">submit {{state}}</p>
             </div>
                 <div class="hw-content">
                     <div class="hw-content-title red-text lighten-1 center-align">
@@ -45,9 +45,16 @@
                 <p class="green-text">review </p>
             </div>
             <div class="card">
+                {{#if haveSubmited}}
                 <div class="hw-image card-image waves-effect">
                     <img src="{{img.url}}" class="activator">
                 </div>
+                {{else}}
+
+                <div class="hw-image card-image waves-effect">
+                    <img src="" class="activator" alt="目前还没有上传作业">
+                </div>
+                {{/if}}
                 <div class="card-reveal action">
                     <div class="card-title">
                         <i class=" small material-icons right">close</i>
@@ -55,10 +62,40 @@
                     <div class="hw-content-title red-text center-align">
                         Deadline:{{showDeadline}}
                     </div>
-                    <a href="{{url}}" class="btn blue spec-btn waves-effect"  target="view_window">HWSPEC</a>
-                    <a href="{{pathFor 'studentReview'}}" class="btn blue review-btn">Review</a>
+                    <a href="{{url}}" class="btn green spec-btn waves-effect"  target="view_window">HWSPEC</a>
+                    <a href="{{pathFor 'studentReview'}}" class="btn green review-btn">Review</a>
                 </div>
             </div>
         </div>
     </div>
+</template>
+
+<template name="previous">
+     
+    <div class="col s12 m6 l3">
+        <div class="card hw-container">
+            <div class="hw-title">
+                <p class="blue-text title-top">HW{{count}}:{{title}}</p>
+                <p class="blue-text">previous</p>
+            </div>
+            <div class="card">
+                <div class="hw-image card-image waves-effect">
+                    <img src="{{img.url}}" class="activator">
+                </div>
+                <div class="card-reveal previous-action" style="transform: translateY(-100%);">
+                    <div class="card-title">
+                        <i class=" small material-icons right">close</i>
+                    </div>
+                    <div class="hw-content-title white-text center-align">
+                        <p>Score:90</p>
+                        <p>Class Rank:2</p>
+                        <p>Group Rank:1</p>
+                    </div>
+                    <a href="{{url}}" class="btn blue pre-spec-btn waves-effect"  target="view_window">HWSPEC</a>
+                    <a href="{{file.url}}" class="btn blue source-btn">SourceFile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </template>

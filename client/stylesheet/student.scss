@@ -52,6 +52,7 @@
         }
     }
     .hw-image{
+        width:100%;
         img{
             width:100%;
             height:290px;
@@ -72,12 +73,6 @@
             font-size:14px;
             color:red;
         }
-        .card-title-left{
-            float:left;
-            width:80%;
-            overflow:hidden;
-            text-overflow:ellipsis;
-        }
         .action-content{
             margin-top:50px;
             height:136px;
@@ -95,6 +90,34 @@
             top:80px;
             display:block;
             width:80%;
+            margin:auto;
+        }
+    }
+    .previous-action{
+        display:block;
+        transform: translateY(-100%);
+        background-color:black;
+        opacity:0.7;
+        .hw-content-title{
+            padding-top:18px;
+            width:100%;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            font-size:14px;
+            color:red;
+        }
+        .pre-spec-btn{
+            position:relative;
+            top:35px;
+            margin:auto;
+            width:50%;
+            display:block;
+        }
+        .source-btn{
+            position:relative;
+            top:60px;
+            width:50%;
+            display:block;
             margin:auto;
         }
     }

@@ -1,4 +1,5 @@
 Template.studentReview.helpers({
+
     group: function(){
         return Meteor.user().profile.group;
     },
@@ -12,6 +13,9 @@ Template.studentReview.helpers({
         var homeworklist = HomeworkList.findOne(homework.homeworklistId);
         return homeworklist.title;
     },
+   
+});
+Template.reviewOthers.helpers({
     others: function(){
         var homeworklistId = Homeworks.findOne(this._id).homeworklistId;
         var group = Meteor.user().profile.group;
@@ -21,7 +25,7 @@ Template.studentReview.helpers({
             'metadata.fileImage': {$ne: 1},
             'metadata.userId':{$ne:Meteor.userId()} 
         });
-    }
+    } 
 });
 Template.showOthers.helpers({
     img: function(){
@@ -36,5 +40,13 @@ Template.showOthers.helpers({
 Template.showOthers.onRendered(function(){
     $(document).ready(function(){
         $('.materialbox').materialbox();
+    });
+});
+Template.studentReview.onRendered(function(){
+    this.$(document).ready(function(){
+        $('ul.tabs').tabs();
+    });
+    this.$(document).ready(function() {
+        $('select').material_select();
     });
 });

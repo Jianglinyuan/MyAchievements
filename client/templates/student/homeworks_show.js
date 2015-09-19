@@ -23,6 +23,14 @@ Template.pre_review.helpers({
         var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
         return homeworklist.showDeadLine;
     },
+    haveSubmited:function(){
+        var homeworklistId = Homeworks.findOne(this._id).homeworklistId;
+        var userId = Meteor.userId();
+        return Homeworkfiles.findOne({
+            'metadata.userId': userId,
+            'metadata.homeworklistId': homeworklistId
+        });
+    },
     img: function(){
         var homeworklistId = Homeworks.findOne(this._id).homeworklistId;
         var userId = Meteor.userId();
@@ -47,11 +55,44 @@ Template.pre_submit.helpers({
         var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
         return homeworklist.count;
     },
+    state: function(){
+        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
+        return homeworklist.state;
+    },
     showDeadline: function(){
         var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
         return homeworklist.showDeadLine;
     }
 
+});
+Template.previous.helpers({
+
+    title: function(){
+        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
+        return homeworklist.title;
+    },
+    count: function(){
+        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
+        return homeworklist.count;
+    },
+    img: function(){
+        var homeworklistId = Homeworks.findOne(this._id).homeworklistId;
+        var userId = Meteor.userId();
+        return Homeworkfiles.findOne({
+            'metadata.userId': userId,
+            'metadata.homeworklistId': homeworklistId,
+            'metadata.fileImage': 1
+        });
+    },
+    file: function(){
+        var homeworklistId = Homeworks.findOne(this._id).homeworklistId;
+        var userId = Meteor.userId();
+        return Homeworkfiles.findOne({
+            'metadata.userId': userId,
+            'metadata.homeworklistId': homeworklistId,
+            'metadata.fileImage': {$ne: 1}
+        });
+    }
 });
 
 Template.pre_submit.onRendered(function(){
@@ -60,4 +101,4 @@ Template.pre_submit.onRendered(function(){
         opacity: 0.5,
         out_duration:300
     });
-});
+}); 

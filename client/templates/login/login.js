@@ -35,27 +35,34 @@ Template.loginForm.events({
                         Router.go('teachersHomeworkList');
                     }else if(user.profile.root === "student"){
                         Router.go('student');
+                    };
+
+                    if(remember.is(":checked")){//记住密码
+                        localStorage.username=username;
+                        localStorage.password=password;
+                    }else{
+                        localStorage.username="";
+                        localStorage.password="";
                     }
                 }
             });
-            if(remember.is(":checked")){//记住密码
-                    localStorage.username=username;
-                    localStorage.password=password;
-                    };
         }
     },
-    'click .submit-email': function(){
-        var email = $("input#email").val();
-        if(!email){
-            Materialize.toast("Your email ?",3000);
-        }else{
-            Accounts.forgotPassword({email: email},function(error){
-                if(error)
-                    Materialize.toast(error.reason,3000);
-                else
-                    Materialize.toast("We have send a email to you,please check.",3000);
-            });
-        };
-    }
+    // 'click .submit-email': function(){
+    //     var email = $("input#email").val();
+    //     if(!email){
+    //         Materialize.toast("Your email ?",3000);
+    //     }else{
+    //         var options = {
+    //             email: email,
+    //         };
+    //         Accounts.forgotPassword(options,function(error){
+    //             if(error)
+    //                 Materialize.toast(error.reason,3000);
+    //             else{
+    //                 Materialize.toast("We have send a email to you,please check.",3000);}
+    //         });
+    //     };
+    // }
 });
 

@@ -13,6 +13,9 @@ Meteor.publish("homeworks",function(){
 Meteor.publish("homeworkfiles",function(){
     return Homeworkfiles.find();
 });
+Meteor.publish('thisHomeworkfiles',function(homeworklistId){
+    return Homeworkfiles.find({'metadata.homeworklistId': homeworklistId});
+});
 Meteor.publish("myhomeworks",function(userId){
     return Homeworks.find({userId: this.userId});
 });

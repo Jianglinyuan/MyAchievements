@@ -48,7 +48,7 @@
                         <div class="autohidden">{{metadata.userName}}</div>
                     </div>
                     <div class="col s3 m4 l4 left-align valign">
-                        <div class="autohidden">FileSource:<a href="{{this.url}}">{{metadata.fileName}}</a></div>
+                        <div class="autohidden">FileSource:<a href="{{this.url}}" class="downloadfile">{{metadata.fileName}}</a></div>
                     </div>
                     <div class="col s3 m4 l4 left-align valign">
                         <div class="autohidden">GithubURL:<a href="{{metadata.githubUrl}}">{{metadata.githubUrl}}</a></div>
@@ -62,13 +62,16 @@
                         <a href="#"><img src="{{img.url}}" class="materialbox"></a>
                     </div>
                 </div>
-                <div class="input-field col s7 m7 l7 other-comment">
-                    <textarea style="height:80%;"></textarea>
-                </div>
-                <div class="col s2 m2 l2 other-score">
-                    <label for="score">Score:</label> 
-                    <input id="score" type="text" class="validate center-align">
-                </div>
+                <form>
+                    <div class="input-field col s7 m7 l7 other-comment">
+                        <textarea style="height:80%;"></textarea>
+                    </div>
+                    <div class="col s2 m2 l2 other-score">
+                        <label for="score">Score:</label> 
+                        <input id="score" type="text" class="validate center-align">
+                        <input type="submit" class="btn" value="submit">
+                    </div>
+                </form>
 
                 </div>
 

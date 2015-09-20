@@ -37,6 +37,13 @@ Template.showOthers.helpers({
         });
     }
 });
+Template.showOthers.events({
+    'click .downloadfile': function(event, template) {
+        event.preventDefault();
+        var url=$(event.currentTarget).attr("href");
+        window.open(url);
+    }
+});
 Template.showOthers.onRendered(function(){
     $(document).ready(function(){
         $('.materialbox').materialbox();

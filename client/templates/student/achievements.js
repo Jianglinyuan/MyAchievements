@@ -19,6 +19,9 @@ Template.myscore.onRendered(function(){
                     text: 'score'
                 }
             },
+            credits:{
+                enabled: false
+            },
             series: [{
                 name: 'score',
                 data: [100, 90, 84]
@@ -60,6 +63,9 @@ Template.myrank.onRendered(function(){
                     text:'Group rank'
                 },
             }],
+            credits: {
+                enabled: false
+            },
             series: [{
                 yAxis:0,
                 name: 'class rank',

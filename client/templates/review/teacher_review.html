@@ -1,0 +1,49 @@
+<template name="teacherReview">
+    <div class="container">
+        <div class="row">
+            <div class="teareview-header col s12">
+                <!--
+                    //当前的homeworklist
+                    data:{ 
+                        _id,
+                        count,
+                        title,
+                        ...
+                    }
+                -->
+                <h4 class="center-align">HW{{count}}:{{title}}</h4>
+                {{#each groups}}
+                    {{> groupMember}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<!--<template name="groupMember">-->
+    <!--<div class="group-table col s12">-->
+        <!--<table class="col s12 ">-->
+            <!--<thead>-->
+                <!--<tr>-->
+                    <!--<td class="col s2 center-align">id</td>-->
+                    <!--<td class="col s2 center-align">name</td>-->
+                    <!--<td class="col s3 center-align">email</td>-->
+                    <!--<td class="col s2 center-align">score</td>-->
+                    <!--<td class="col s3 center-align"></td>-->
+                <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+                <!--<tr>-->
+
+                    <!--<td class="col s2 center-align">15214181</td>-->
+                    <!--<td class="col s2 center-align">林桢</td>-->
+                    <!--<td class="col s3 center-align"></td>-->
+                    <!--<td class="col s2 center-align">90</td>-->
+                    <!--<td class="col s3 center-align"><a href="#">review</a></td>-->
+
+                <!--</tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
+
+    <!--</div>-->
+<!--</template>-->

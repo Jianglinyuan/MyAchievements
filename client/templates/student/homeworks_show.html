@@ -3,46 +3,44 @@
         <label>Homeworks List</label>
         <div class="row">
             {{#each homeworks}}
-            {{> pre_submit}}
-            {{> pre_review}}
+                {{#if isPrevious}}
+                    {{> previous}}
+                {{/if}}
+                {{#if isPresent}}
+                    {{> present}}
+                {{/if}}
+                {{#if isFuture}}
+                    {{> future}}
+                {{/if}}
             {{/each}}
         </div>
     </div>
 </template>
 
-<template name="pre_submit">
+<template name="future">
     <div class="col s12 m6 l3">
         <div class="card hw-container">
             <div class="hw-title">
-                <div class="orange-text text-darken-3 title-top">HW{{count}}:{{title}}</div>
-                <p class="orange-text">submit {{state}}</p>
+                <p class="title-top green-text">HW{{count}}:{{title}}</p>
+                <p class="green-text">future</p>
             </div>
-                <div class="hw-content">
-                    <div class="hw-content-title red-text lighten-1 center-align">
-                        Deadline:{{showDeadline}}
-                    </div>
-                    <a href="{{url}}" class="btn orange spec-btn center-align" target="view_window">HWSpec</a>
-                    <a href="#{{_id}}" class="btn modal-trigger orange submit-btn">submit</a>
+            <div class="blue-grey darken-1 hw-tf-content white-text">
+                <div class=" startime white-text center-align">
+                        Start At:{{showStartTime}}
                 </div>
-        </div>
-    </div>
-    <div id="{{_id}}" class="modal">
-        <div class="modal-content">
-            {{> submit}}
-        </div>
-        <div class="modal-footer">
-            <a href=" " class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a >
-            <a href="#!" class="waves-effect green btn-flat submit " name="{{_id}}" >Submit</a >
+                <a href="{{url}}" class="btn ft-spec" target="view_window">HWSPEC</a>
+            </div>
         </div>
     </div>
 </template>
 
-<template name="pre_review">
+
+<template name="present">
     <div class="col s12 m6 l3">
         <div class="card hw-container">
             <div class="hw-title">
-                <p class="green-text title-top">HW{{count}}:{{title}}</p>
-                <p class="green-text">review </p>
+                <p class="orange-text title-top">HW{{count}}:{{title}}</p>
+                <p class="orange-text">present</p>
             </div>
             <div class="card">
                 {{#if haveSubmited}}
@@ -59,15 +57,26 @@
                     <div class="card-title">
                         <i class=" small material-icons right">close</i>
                     </div>
-                    <div class="hw-content-title red-text center-align">
+                    <div class="hw-content-title white-text center-align">
                         Deadline:{{showDeadline}}
                     </div>
-                    <a href="{{url}}" class="btn green spec-btn waves-effect"  target="view_window">HWSPEC</a>
-                    <a href="{{pathFor 'studentReview'}}" class="btn green review-btn">Review</a>
+                    <a href="{{url}}" class="btn orange spec-btn waves-effect"  target="view_window">HWSPEC</a>
+                    <a href="{{pathFor 'studentReview'}}" class="btn orange review-btn">Review</a>
+                    <a href="#{{_id}}" class="btn modal-trigger orange submit-btn">SUBMIT</a>
                 </div>
             </div>
         </div>
     </div>
+    <div id="{{_id}}" class="modal">
+        <div class="modal-content">
+            {{> submit}}
+        </div>
+        <div class="modal-footer">
+            <a href=" " class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a >
+            <a href="#!" class="waves-effect green btn-flat submit " name="{{_id}}" >Submit</a >
+        </div>
+    </div>
+
 </template>
 
 <template name="previous">

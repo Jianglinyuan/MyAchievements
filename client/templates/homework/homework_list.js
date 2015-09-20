@@ -6,3 +6,12 @@ Template.teachersHomeworkList.onRendered(function(){
         $('select').material_select();
     });
 });
+Template.teachersHomeworkList.helpers({
+    isTeacher: function(){
+        if(Meteor.user().profile.root === "teacher"){
+            return true;
+        }else{
+            return false;
+        }
+    }
+});

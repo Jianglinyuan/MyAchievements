@@ -2,10 +2,52 @@ Template.showHomeworks.helpers({
     homeworks: function(){
         var user = Meteor.user();
         return Homeworks.find({userId: user._id});
+    },
+    isPrevious: function(){
+        var homeworklist = HomeworkList.findOne(this.homeworklistId);
+        if (homeworklist.state === "previous"){
+            return true;
+        }else{
+            return false;
+        }
+    },
+    isPresent: function(){
+        var homeworklist = HomeworkList.findOne(this.homeworklistId);
+        if (homeworklist.state === "present"){
+            return true;
+        }else{
+            return false;
+        }
+    },
+    isFuture: function(){
+        var homeworklist = HomeworkList.findOne(this.homeworklistId);
+        if (homeworklist.state === "future"){
+            return true;
+        }else{
+            return false;
+        }
     }
 });
+Template.future.helpers({
+    title: function(){
+        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
+        return homeworklist.title;
+    },
+    url: function(){
+        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
+        return homeworklist.url;
+    },
+    count: function(){
+        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
+        return homeworklist.count;
+    },
+    showStartTime: function(){
+        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
+        return homeworklist.showStartTime;
+    },
+});
 
-Template.pre_review.helpers({
+Template.present.helpers({
 
     title: function(){
         var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
@@ -41,30 +83,7 @@ Template.pre_review.helpers({
         });
     }
 });
-Template.pre_submit.helpers({
 
-    title: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.title;
-    },
-    url: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.url;
-    },
-    count: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.count;
-    },
-    state: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.state;
-    },
-    showDeadline: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.showDeadLine;
-    }
-
-});
 Template.previous.helpers({
 
     title: function(){
@@ -95,7 +114,7 @@ Template.previous.helpers({
     }
 });
 
-Template.pre_submit.onRendered(function(){
+Template.present.onRendered(function(){
     this.$('.modal-trigger').leanModal({
         dismissible: true,
         opacity: 0.5,

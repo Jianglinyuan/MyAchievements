@@ -41,8 +41,12 @@
         }
         .other-score{
             height:180px;
+            .btn{
+                padding:0px;
+                width:100%;
+            }
             input{
-                margin-top:20px;
+                margin-top:28px;
             }
         }
     }

@@ -7,6 +7,21 @@
         margin:0px;
         padding:0px;
     }
+    .hw-tf-content{
+        height:290px;
+        .startime{
+            position:relative;
+            top:80px;
+            height:24px;
+        }
+    }
+    .ft-spec{
+        display:block;
+        position:relative;
+        width:50%;
+        margin:auto;
+        top:150px;
+    }
     .hw-content{
         opacity:0.7;
         height:290px;
@@ -31,13 +46,7 @@
             margin-top:80px;
             color:#fff;
         }
-        .submit-btn{
-            position:relative;
-            top:25px;
-            display:block;
-            width:50%;
-            margin:auto;
-        }
+
         
     }
     .hw-title{
@@ -78,18 +87,25 @@
             height:136px;
             position:relative;
         }
+        .spec-btn{
+            position:relative;
+            top:40px;
+            display:block;
+            width:50%;
+            margin:auto;
+        }
         .review-btn{
             position:relative;
             display:block;
-            top:105px;
-            width:80%;
+            top:65px;
+            width:50%;
             margin:auto;
         }
-        .spec-btn{
+        .submit-btn{
             position:relative;
-            top:80px;
+            top:90px;
             display:block;
-            width:80%;
+            width:50%;
             margin:auto;
         }
     }

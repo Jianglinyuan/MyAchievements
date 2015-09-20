@@ -64,18 +64,17 @@
                 </div>
                 <form>
                     <div class="input-field col s7 m7 l7 other-comment">
-                        <textarea style="height:80%;"></textarea>
+                        <i class="material-icons prefix active">mode_edit</i>
+                        <label for="comment" class="active">Comment</label>
+                        <textarea  class="comment materialize-textarea" id="comment" value="{{review.comment}}"></textarea>
                     </div>
                     <div class="col s2 m2 l2 other-score">
                         <label for="score">Score:</label> 
-                        <input id="score" type="text" class="validate center-align">
-                        <input type="submit" class="btn" value="submit">
+                        <input id="score" type="text" class="validate center-align " value="{{review.score}}">
+                        <input type="submit" class="btn" value="submit" style="width:100">
                     </div>
                 </form>
-
                 </div>
-
-
             </div>
         </div>
     </div>

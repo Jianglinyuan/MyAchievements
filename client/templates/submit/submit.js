@@ -1,4 +1,4 @@
-Template.pre_submit.events({
+Template.present.events({
     'click .submit': function(event, template) {
         event.preventDefault();
         var studentId = Meteor.userId();

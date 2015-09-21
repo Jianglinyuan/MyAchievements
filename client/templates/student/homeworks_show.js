@@ -1,7 +1,6 @@
 Template.showHomeworks.helpers({
     homeworks: function(){
-        var user = Meteor.user();
-        return Homeworks.find({userId: user._id});
+        return Homeworks.find({userId: Meteor.userId()});
     },
     isPrevious: function(){
         var homeworklist = HomeworkList.findOne(this.homeworklistId);
@@ -111,6 +110,13 @@ Template.previous.helpers({
             'metadata.homeworklistId': homeworklistId,
             'metadata.fileImage': {$ne: 1}
         });
+    }
+});
+Template.previous.events({
+    'click  .downloadfile': function(e,template){
+        e.preventDefault();
+        var url = $(e.currentTarget).attr("href");
+        window.open(url);
     }
 });
 

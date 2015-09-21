@@ -12,8 +12,7 @@ Template.studentReview.helpers({
         var homework = Homeworks.findOne({_id: this._id});
         var homeworklist = HomeworkList.findOne(homework.homeworklistId);
         return homeworklist.title;
-    },
-   
+    }
 });
 Template.reviewOthers.helpers({
     others: function(){
@@ -35,6 +34,17 @@ Template.showOthers.helpers({
             'metadata.userId': homeworkfiles.metadata.userId,
             'metadata.fileImage': 1
         });
+    },
+    review: function() {
+        var homeworkId = this.metadata.homeworklistId;
+        var reviewer = Meteor.userId();
+        var beReviewed = this.metadata.userId
+        var review =  Review.findOne({
+            homeworkId: homeworkId,
+            reviewer: reviewer,
+            beReviewed: beReviewed
+        });
+        return review;
     }
 });
 Template.showOthers.events({
@@ -42,6 +52,38 @@ Template.showOthers.events({
         event.preventDefault();
         var url=$(event.currentTarget).attr("href");
         window.open(url);
+    },
+    'click .review_btn': function(e) {
+        e.preventDefault();
+        var that = this;
+        var new_review = {
+            reviewer: Meteor.userId(),
+            beReviewed: that.metadata.userId,
+            homeworkId: that.metadata.homeworklistId,
+            time: new Date(),
+            content: $(e.target).parent().prev().find(".review_content").val(),
+            score: $(e.target).prev().val()
+        };
+
+        var review = Review.findOne({
+            reviewer: new_review.reviewer,
+            beReviewed: new_review.beReviewed,
+            homeworkId: new_review.homeworkId
+        });
+
+        if (review) {
+            Review.update(review._id, {
+                $set: {
+                    content: new_review.content,
+                    score: new_review.score,
+                    time: new_review.time
+                }
+            });
+            Materialize.toast("更新成功！");
+        } else {
+            Review.insert(new_review);
+            Materialize.toast("提交成功！");
+        }
     }
 });
 Template.showOthers.onRendered(function(){

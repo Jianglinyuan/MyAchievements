@@ -42,7 +42,7 @@
             <div class="other-sub-container z-depth-1">
                 <div class="col s12 m12 l12 other-header valign-wrapper">
                     <div class="col s3 m2 l2 left-align valign">
-                        <div class="autohidden">{{metadata.studentNumber}}</div>
+                        <div class="autohidden student_number">{{metadata.studentNumber}}</div>
                     </div>
                     <div class="col s3 m2 l2 left-align valign">
                         <div class="autohidden">{{metadata.userName}}</div>
@@ -66,12 +66,12 @@
                     <div class="input-field col s7 m7 l7 other-comment">
                         <i class="material-icons prefix active">mode_edit</i>
                         <label for="comment" class="active">Comment</label>
-                        <textarea  class="comment materialize-textarea" id="comment" value="{{review.comment}}"></textarea>
+                        <textarea  class="comment materialize-textarea review_content" id="comment" value="{{review.content}}"></textarea>
                     </div>
                     <div class="col s2 m2 l2 other-score">
                         <label for="score">Score:</label> 
-                        <input id="score" type="text" class="validate center-align " value="{{review.score}}">
-                        <input type="submit" class="btn" value="submit" style="width:100">
+                        <input id="score" type="text" class="validate center-align review_score" value="{{review.score}}">
+                        <input type="submit" class="btn review_btn" value="submit" style="width:100">
                     </div>
                 </form>
                 </div>

@@ -63,10 +63,11 @@ Template.addUser.events({
         var username = $("input#username").val();
         var name = $("input#name").val();
         var email = $("input#email").val();
+        var group;
         if(root === "student")
-            var group = $("input#group").val();
+            group = parseInt($("input#group").val());
         else
-            var group = "";
+            group = "";
         var data = {
                 username: username,//学号
                 password: username,//初始密码是学号

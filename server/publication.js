@@ -30,3 +30,6 @@ Meteor.publish("Homeworkfiles",function(group,homeworkId){
     var homeworklistId = Homeworks.findOne(homeworkId).homeworklistId;
     return Homeworkfiles.find({'metadata.team': group, 'metadata.homeworklistId': homeworklistId});
 });
+Meteor.publish("reviews", function() {
+    return Review.find();
+});

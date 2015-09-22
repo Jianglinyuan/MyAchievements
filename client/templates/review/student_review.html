@@ -5,10 +5,10 @@
                 <div class="col s3 m3 l3 left-align">
                     Group:{{group}}
                 </div>
-                <div class="col s6 m6 l6 valign center-align">
-                    <h5>HW{{count}}:{{title}}</h5>
+                <div class="col s6 m6 l6  center-align">
+                    <h5>{{title}}</h5>
                 </div>
-                <div class="col s3 m3 l3 valign right-align">
+                <div class="col s3 m3 l3 right-align">
                     <a href="{{pathFor 'student'}}">返回</a>
                 </div>
             </div>
@@ -39,14 +39,19 @@
                     <div class="col s3 m2 l2 left-align valign autohidden">
                         <div class="autohidden student_number">{{metadata.studentNumber}}</div>
                     </div>
-                    <div class="col s3 m2 l2 left-align valign autohidden">
+                    <div class="col s3 m3 l3 left-align valign autohidden">
                         {{metadata.userName}}
                     </div>
-                    <div class="col s3 m4 l4 left-align valign ">
-                        <p class="autohidden">作业包:<a href="{{this.url}}" class="downloadfile" download>{{metadata.fileName}}</a></p>
+                    <div class="col s4 m5 l5 left-align valign ">
+                        <a href="{{this.url}}" class="downloadfile" download>{{metadata.fileName}}</a>
                     </div>
-                    <div class="col s3 m4 l4 left-align valign autohiddent">
-                        GithubURL:<a href="{{metadata.githubUrl}}">{{metadata.githubUrl}}</a>
+                    <div class="col s2 m2 l2 github right-align">
+                    {{#if github}}
+                        <a href="{{metadata.githubUrl}}" target="view_window" class="btn blue">Github</a>
+                    {{else}}
+                        <a href="#" target="view_window" class="btn disabled">Github</a>
+                    {{/if}}
+
                     </div>
                 </div>
 

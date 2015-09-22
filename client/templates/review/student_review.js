@@ -36,6 +36,10 @@ Template.showOthers.helpers({
             'metadata.fileImage': 1
         });
     },
+    github: function(){
+        if (this.metadata.githubUrl) return true;
+        else return false;
+    },
     review: function() {
         var homeworkId = this.metadata.homeworklistId;
         var reviewer = Meteor.userId();

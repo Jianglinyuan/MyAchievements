@@ -4,7 +4,7 @@
 .other-container{
     height:207px;
     .other-sub-container{
-        height:207px;    
+        height:215px;    
         .card{
             margin:0px;
             padding:0px;
@@ -12,10 +12,20 @@
         .other-header{
             background-color:#fff;
             left:1%;
-            height:24px;
+            height:32px;
+            padding:0px;
             border-bottom:solid 1px #b0bec5;
             .autohidden{
-                overflow:auto;
+                overflow:hidden;
+                text-overflow:ellipsis;
+            }
+            .github{
+                .btn{
+                    height:24px;
+                    line-height:24px;
+                    width:100%;
+                    padding:0;
+                }
             }
 
         }
@@ -42,6 +52,9 @@
                 margin-top:15px;
                 height:160px;
                 padding:0 2px;
+                .comment{
+                    margin:0 0 0 30px;
+                }
             }
         }
         .other-score{

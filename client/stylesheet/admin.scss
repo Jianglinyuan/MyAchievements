@@ -7,6 +7,11 @@
 }
 .tabs{
     .tab{
+        .disabled{
+            a{
+                color:#bbdefb;
+            }
+        }
         a{
             color:#0d47a1;
         }

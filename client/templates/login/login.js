@@ -48,21 +48,22 @@ Template.loginForm.events({
             });
         }
     },
-    // 'click .submit-email': function(){
-    //     var email = $("input#email").val();
-    //     if(!email){
-    //         Materialize.toast("Your email ?",3000);
-    //     }else{
-    //         var options = {
-    //             email: email,
-    //         };
-    //         Accounts.forgotPassword(options,function(error){
-    //             if(error)
-    //                 Materialize.toast(error.reason,3000);
-    //             else{
-    //                 Materialize.toast("We have send a email to you,please check.",3000);}
-    //         });
-    //     };
-    // }
+
+     'click .submit-email': function(){
+         var email = $("input#email").val();
+         if(!email){
+             Materialize.toast("Your email ?",3000);
+         }else{
+             var options = {
+                 email: email,
+             };
+             Accounts.forgotPassword(options,function(error){
+                 if(error)
+                     Materialize.toast(error.reason,3000);
+                 else{
+                     Materialize.toast("We have send a email to you,please check.",3000);}
+             });
+         };
+     }
 });
 

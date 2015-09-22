@@ -106,18 +106,14 @@
                             <a href="#"><img src="{{img.url}}" class="materialbox"></a>
                         </div>
                     </div>
-                    <form>
-                        <div class="input-field col s7 m7 l7 other-comment">
-                            <i class="material-icons prefix active">mode_edit</i>
-                            <label for="comment" class="active">Comment</label>
-                            <textarea  class="comment materialize-textarea review_content" id="comment" value="{{review.content}}"></textarea>
-                        </div>
-                        <div class="col s2 m2 l2 other-score">
-                            <label for="score">Score:</label> 
-                            <input id="score" type="text" class="validate center-align review_score" value="{{review.score}}">
-                            <input type="submit" class="btn review_btn" value="submit" style="width:100">
-                        </div>
-                    </form>
+                    <div class="col s7 m7 l7">
+                        <label>Comment:</label>
+                        <p  class="comment materialize-textarea review_content" id="comment" value="{{review.content}}">{{review.content}}</p>
+                    </div>
+                    <div class="col s2 m2 l2 other-score">
+                        <label for="score">Score:</label> 
+                        <p id="score" type="text" class="validate center-align review_score" >{{review.score}}</p>
+                    </div>
                 </div>
             </div>
         </div>

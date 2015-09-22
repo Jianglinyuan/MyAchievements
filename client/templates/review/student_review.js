@@ -16,25 +16,27 @@ Template.studentReview.helpers({
 });
 Template.reviewOthers.helpers({
     others: function(){
+        var userId = Meteor.userId();
         var homeworklistId = Homeworks.findOne(this._id).homeworklistId;
         var group = Meteor.user().profile.group;
         return Homeworkfiles.find({
             'metadata.homeworklistId': homeworklistId,
             'metadata.team': group,
             'metadata.fileImage': {$ne: 1},
-            'metadata.userId':{$ne:Meteor.userId()} 
+            'metadata.userId':{$ne: userId} 
         });
     } 
 });
 Template.othersReview.helpers({
     others: function(){
+        var userId = Meteor.userId();
         var homeworklistId = Homeworks.findOne(this._id).homeworklistId;
         var group = Meteor.user().profile.group;
         return Homeworkfiles.find({
             'metadata.homeworklistId': homeworklistId,
             'metadata.team': group,
             'metadata.fileImage': {$ne: 1},
-            'metadata.userId':{$ne:Meteor.userId()} 
+            'metadata.userId':{$ne:userId} //尽量不要把读写放在同一个语句里
         });
     }
 });
@@ -69,7 +71,7 @@ Template.showOthers.events({
         e.preventDefault();
         var that = this;
         var new_review = {
-            reviewer: Meteor.userId(),
+            reviewer: Meteor.userId(), //bad 
             beReviewed: that.metadata.userId,
             homeworkId: that.metadata.homeworklistId,
             time: new Date(),

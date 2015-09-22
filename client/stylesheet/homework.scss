@@ -4,17 +4,22 @@
         overflow:hidden;
     }
 }
+.hwitem-content{
+    padding:20px 10px;
+}
 .title1{
     float:left;
-    width:20%;
+    width:auto;
     display:inline-block;
+    font-size:20px;
 }
 .title2{
-    width:80%;
+    width:70%;
     float:left;
     display:inline-block;
     overflow:hidden;
     text-overflow:ellipsis;
+    font-size:20px;
 }
 #myscore{
     margin:10px 0 -10px 0;

@@ -24,8 +24,18 @@ Template.allhomework.helpers({
     }
 });
 Template.homeworkItem.helpers({
-     ownHomeWork : function(){
+    ownHomeWork : function(){
         return this.userId === Meteor.userId();
     },
-})
+    hwstate: function(){
+        if (this.state === 'present'){
+            return "blue darken-4";
+        }else if (this.state === "future"){
+            return "teal darken-2";
+        }else if (this.state === "previous"){
+            return "blue-grey";
+        }
+    }
+     
+});
 

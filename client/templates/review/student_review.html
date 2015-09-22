@@ -1,30 +1,38 @@
 <template name="studentReview">
     <div class="container">
         <div class="row">
-            <div class="stureview-header col s12 m12 l12 valign-wrapper">
-                <div class="col s3 m3 l3 left-align">
-                    Group:{{group}}
-                </div>
-                <div class="col s6 m6 l6  center-align">
-                    <h5>{{title}}</h5>
-                </div>
-                <div class="col s3 m3 l3 right-align">
-                    <a href="{{pathFor 'student'}}">返回</a>
-                </div>
-            </div>
+
             <div class="stureview-content col s12 m12 l12">
                 <div class="row">
                     <div class="col s12">
-                        {{> reviewOthers}}
+                        <ul class="tabs">
+                            <li class="tab col s6"><a href="#reviewothers">review others</a></li>
+                            <li class="tab col s6"><a href="#othersreview">others' review</a></li>
+                        </ul>
                     </div>
+                    <div id="reviewothers" class="col s12">{{> reviewOthers}}</div>
+                    <div id="othersreview" class="col s12">这里查看别人的review</div>
                 </div>
             </div>
+
         </div>
     </div>
 </template>
 
 <template name="reviewOthers">
-    <br>
+
+    <div class="stureview-header col s12 m12 l12 valign-wrapper">
+        <div class="col s3 m3 l3 left-align">
+            Group:{{group}}
+        </div>
+        <div class="col s6 m6 l6  center-align">
+            <h5>{{title}}</h5>
+        </div>
+        <div class="col s3 m3 l3 right-align">
+            <a href="{{pathFor 'student'}}">返回</a>
+        </div>
+    </div>
+
     {{#each others}}
         {{> showOthers}}
     {{/each}}
@@ -66,13 +74,13 @@
                     <div class="other-comment-parent col s7 m7 l7">
                         <div class="input-field col s12 m12 l12 other-comment">
                             <i class="material-icons prefix">mode_edit</i>
-                            <label for="comment">Comment</label>
+                            <label for="comment" class="active">Comment</label>
                             <textarea  class="comment materialize-textarea review_content" id="comment" value="{{review.content}}"></textarea>
                         </div>
                     </div>
                     <div class="col s2 m2 l2 other-score">
                         <label for="score">Score:</label> 
-                        <input id="score" type="text" class="validate center-align review_score" value="{{review.score}}">
+                        <input id="score" type="text" class="center-align review_score" value="{{review.score}}">
                         <input type="submit" class="btn review_btn" value="submit" style="width:100">
                     </div>
                 </form>

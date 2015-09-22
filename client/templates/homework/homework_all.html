@@ -4,30 +4,8 @@
         <div class="row">
             {{#if ifhashomeworks}}
             {{#each homeworks}}
-            <div class="col l6 m12 s12">
-                <div class="card  hoverable">
-                    <div class="card-content blue darken-4 white-text">
-                        <p class="card-title title-p">
-                        <div class="title1">HW{{count}}:</div>
-                        <div class="title2">{{title}}</div>
-                        </p>
-                        <br>
-                        <p><span class="right">Deadline: {{showDeadLine}}</span></p>
-                        <br>
-                    </div>
-                    <div class="card-action">
-                        <a href="{{url}}" class="waves-effect" target="view_window">HW spec</a>
-                        <a>{{status}}</a>
-                        <a href="{{pathFor 'teacherReview'}}" class="right waves-effect" id="check">Review</a>
-                        {{#if ownHomeWork}}
-                        <a href="{{pathFor 'homeworkedit'}}" class="waves-effect right edit" id="edit">Edit</a>
-                        <!--<a href="#" class="right" id="delete">删除</a>-->
-                        {{/if}}
-                    </div>
-                </div>
-            </div>
+                {{> homeworkItem}}
             {{/each}}
-
             {{else}}
             <br>
             <p>当前没有作业</p>
@@ -35,4 +13,28 @@
         </div>
     </div>
 
+</template>
+
+<template name="homeworkItem">
+
+    <div class="col l6 m12 s12">
+        <div class="card  hoverable">
+            <div class="card-content blue darken-4 white-text">
+                <p class="card-title title-p">
+                <div class="title1">作业{{count}}:</div>
+                <div class="title2">{{title}}</div>
+                </p>
+                <br>
+                <p><span class="right">Deadline: {{showDeadLine}}</span></p>
+                <br>
+            </div>
+            <div class="card-action">
+                <a href="{{url}}" class="waves-effect" target="view_window">作业描述</a>
+                <a href="{{pathFor 'teacherReview'}}" class="right waves-effect" id="check">评审</a>
+                {{#if ownHomeWork}}
+                <a href="{{pathFor 'homeworkedit'}}" class="waves-effect right edit" id="edit">编辑</a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
 </template>

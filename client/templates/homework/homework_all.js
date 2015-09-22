@@ -13,9 +13,6 @@ Template.allhomework.helpers({
     homeworks : function(){
         return HomeworkList.find({},{sort : {count : -1}});
     },
-    ownHomeWork : function(){
-        return this.userId === Meteor.userId();
-    },
     status : function(){
         if(this.convertStartTime > Date.parse(time.get())/3600000)
             HomeworkList.update(this._id,{$set : {state : 'future'}});
@@ -26,4 +23,9 @@ Template.allhomework.helpers({
         return this.state;
     }
 });
+Template.homeworkItem.helpers({
+     ownHomeWork : function(){
+        return this.userId === Meteor.userId();
+    },
+})
 

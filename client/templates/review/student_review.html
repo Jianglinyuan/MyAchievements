@@ -2,28 +2,27 @@
     <div class="container">
         <div class="row">
             <div class="stureview-header col s12 m12 l12 valign-wrapper">
-                <div class="col s3 m3 l3 valign left-align">
+                <div class="col s3 m3 l3 left-align">
                     Group:{{group}}
                 </div>
                 <div class="col s6 m6 l6 valign center-align">
                     <h5>HW{{count}}:{{title}}</h5>
                 </div>
+                <div class="col s3 m3 l3 valign right-align">
+                    <a href="{{pathFor 'student'}}">返回</a>
+                </div>
             </div>
             <div class="stureview-content col s12 m12 l12">
                 <div class="row">
                     <div class="col s12">
-                        <ul class="tabs">
-                            <li class="tab col s3"><a href="#review-others" class="active">Review Others</a></li>
-                            <li class="tab col s3"><a href="#others-review">Others' Review</a></li>
-                        </ul>
+                        {{> reviewOthers}}
                     </div>
-                    <div id="review-others" class="col s12">{{> reviewOthers}}</div>
-                    <div id="others-review" class="col s12">{{> othersReview}}</div>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
 <template name="reviewOthers">
     <br>
     {{#each others}}
@@ -31,29 +30,23 @@
     {{/each}}
 </template>
 
-<template name="othersReview">
-    <br>
-    {{#each others}}
-        {{> othersShow}}
-    {{/each}}
-</template>
 
 <template name="showOthers">
     <div class="row">
         <div class="col s12 m12 l12 other-container">
             <div class="other-sub-container z-depth-1">
                 <div class="col s12 m12 l12 other-header valign-wrapper">
-                    <div class="col s3 m2 l2 left-align valign">
+                    <div class="col s3 m2 l2 left-align valign autohidden">
                         <div class="autohidden student_number">{{metadata.studentNumber}}</div>
                     </div>
-                    <div class="col s3 m2 l2 left-align valign">
-                        <div class="autohidden">{{metadata.userName}}</div>
+                    <div class="col s3 m2 l2 left-align valign autohidden">
+                        {{metadata.userName}}
                     </div>
-                    <div class="col s3 m4 l4 left-align valign">
-                        <div class="autohidden">FileSource:<a href="{{this.url}}" class="downloadfile">{{metadata.fileName}}</a></div>
+                    <div class="col s3 m4 l4 left-align valign ">
+                        <p class="autohidden">作业包:<a href="{{this.url}}" class="downloadfile" download>{{metadata.fileName}}</a></p>
                     </div>
-                    <div class="col s3 m4 l4 left-align valign">
-                        <div class="autohidden">GithubURL:<a href="{{metadata.githubUrl}}">{{metadata.githubUrl}}</a></div>
+                    <div class="col s3 m4 l4 left-align valign autohiddent">
+                        GithubURL:<a href="{{metadata.githubUrl}}">{{metadata.githubUrl}}</a>
                     </div>
                 </div>
 
@@ -65,10 +58,12 @@
                     </div>
                 </div>
                 <form>
-                    <div class="input-field col s7 m7 l7 other-comment">
-                        <i class="material-icons prefix active">mode_edit</i>
-                        <label for="comment" class="active">Comment</label>
-                        <textarea  class="comment materialize-textarea review_content" id="comment" value="{{review.content}}"></textarea>
+                    <div class="other-comment-parent col s7 m7 l7">
+                        <div class="input-field col s12 m12 l12 other-comment">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <label for="comment">Comment</label>
+                            <textarea  class="comment materialize-textarea review_content" id="comment" value="{{review.content}}"></textarea>
+                        </div>
                     </div>
                     <div class="col s2 m2 l2 other-score">
                         <label for="score">Score:</label> 
@@ -82,41 +77,3 @@
     </div>
 </template>
 
-<template name="othersShow">
-    <div class="row">
-        <div class="col s12 m12 l12 other-container">
-            <div class="other-sub-container z-depth-1">
-                <div class="col s12 m12 l12 other-header valign-wrapper">
-                    <div class="col s3 m2 l2 left-align valign">
-                        <div class="autohidden student_number">{{metadata.studentNumber}}</div>
-                    </div>
-                    <div class="col s3 m2 l2 left-align valign">
-                        <div class="autohidden">{{metadata.userName}}</div>
-                    </div>
-                    <div class="col s3 m4 l4 left-align valign">
-                    </div>
-                    <div class="col s3 m4 l4 left-align valign">
-                    </div>
-                </div>
-
-                <div class="col s12 m12 l12 other-content">
-
-                    <div class="col s3 m3 l3 other-img">
-                        <div class="other-img-sub">
-                            <a href="#"><img src="{{img.url}}" class="materialbox"></a>
-                        </div>
-                    </div>
-                    <div class="col s7 m7 l7">
-                        <label>Comment:</label>
-                        <p  class="comment materialize-textarea review_content" id="comment" value="{{review.content}}">{{review.content}}</p>
-                    </div>
-                    <div class="col s2 m2 l2 other-score">
-                        <label for="score">Score:</label> 
-                        <p id="score" type="text" class="validate center-align review_score" >{{review.score}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</template>

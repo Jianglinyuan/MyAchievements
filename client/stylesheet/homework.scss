@@ -16,20 +16,14 @@
     overflow:hidden;
     text-overflow:ellipsis;
 }
-.acm-container{
+#myscore{
+    margin:10px 0 -10px 0;
     height:320px;
-    #myscore{
-        margin-top:10px;
-        height:320px;
-        width:101%;
-        height:350px;
-        margin:0 0 5px 0px;
-    }
-    #myrank{
-        height:320px;
-        width:101%;
-        height:350px;
-        margin:0 0 5px 0px;
+    width:101%;
+}
+#myrank{
+    margin:10px 0 -15px 0;
+    height:320px;
+    width:101%;
 
-    }
 }

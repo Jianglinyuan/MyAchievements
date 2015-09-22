@@ -14,7 +14,6 @@ Template.myscore.onRendered(function(){
             yAxis: {
                 max:100,
                 min:0,
-                //gridLineColor:'#0d47a1',
                 title: {
                     text: 'score'
                 }
@@ -46,8 +45,6 @@ Template.myrank.onRendered(function(){
                 max:80,
                 min:1,
                 reversed: true,
-                dataMin: 1,
-                tickInterval: 10,
                 allowDecimals: false,
                 title: {
                     text: 'Class rank'

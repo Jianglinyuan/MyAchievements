@@ -15,8 +15,7 @@
             height:24px;
             border-bottom:solid 1px #b0bec5;
             .autohidden{
-                overflow:hidden;
-                text-overflow:ellipsis;
+                overflow:auto;
             }
 
         }
@@ -27,6 +26,7 @@
         }
         .other-img{
             height:180px;
+            padding:0 2px;
             .other-img-sub{
                 img{
                     border-radius:0px;
@@ -35,9 +35,14 @@
                 }
             }
         }
-        .other-comment{
-            margin-top:15px;
-            height:160px;
+        .other-comment-parent{
+            padding:0px;
+            overflow:auto;
+            .other-comment{
+                margin-top:15px;
+                height:160px;
+                padding:0 2px;
+            }
         }
         .other-score{
             height:180px;

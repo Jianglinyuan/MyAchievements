@@ -1,5 +1,5 @@
 body{
-    background-color:#e3f2fd;
+    background-color:#fff;
 }
 nav{
     background-color:#0d47a1;
@@ -30,9 +30,14 @@ nav{
     display:inline-block;
     width:auto;
     float:right;
+    ul{
+        li{
+            margin-right:5px;
+        }
+    }
 }
 .nav-name{
-    width:150px;
+    min-width:100px;
     ul{
         position:relative;
     }

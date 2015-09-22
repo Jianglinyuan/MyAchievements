@@ -1,5 +1,7 @@
 .student-container{
     padding-top:5px;
+    height:100%;
+    background-color:#fafafa;
 }
 .hw-container{
     height:350px;
@@ -72,8 +74,7 @@
 
     }
     .action{
-        background-color:black;
-        opacity:0.7;
+        background-color: rgba(85,85,85,0.8);
         .hw-content-title{
             padding-top:18px;
             width:100%;
@@ -110,10 +111,7 @@
         }
     }
     .previous-action{
-        display:block;
-        transform: translateY(-100%);
-        background-color:black;
-        opacity:0.7;
+        background-color: rgba(85,85,85,0.8);
         .hw-content-title{
             padding-top:18px;
             width:100%;

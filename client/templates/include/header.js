@@ -22,7 +22,8 @@ Template.header.onRendered(function(){
         $(".dropdown-button").dropdown({
             constrain_width:false,
             belowOrigin:true,
-            alignment: 'left'
+            alignment: 'left',
+            hover: true
         });
     });
 });

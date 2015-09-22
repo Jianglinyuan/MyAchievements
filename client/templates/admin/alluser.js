@@ -6,10 +6,10 @@ Template.allUser.helpers({
         return Meteor.users.find({'profile.root':'teacher'});
     },
     TAs: function(){
-        return Meteor.users.find({'profile.root':'assistan'});
+        return Meteor.users.find({'profile.root':'assistant'});
     },
     students: function(){
-        return Meteor.users.find({'profile.root':'student'});
+        return Meteor.users.find({'profile.root':'student'},{sort: {'profile.group': 1}});
     }
 });
 Template.showAdmin.helpers({

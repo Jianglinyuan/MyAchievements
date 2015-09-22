@@ -27,19 +27,6 @@ Template.reviewOthers.helpers({
         });
     } 
 });
-Template.othersReview.helpers({
-    others: function(){
-        var userId = Meteor.userId();
-        var homeworklistId = Homeworks.findOne(this._id).homeworklistId;
-        var group = Meteor.user().profile.group;
-        return Homeworkfiles.find({
-            'metadata.homeworklistId': homeworklistId,
-            'metadata.team': group,
-            'metadata.fileImage': {$ne: 1},
-            'metadata.userId':{$ne:userId} //尽量不要把读写放在同一个语句里
-        });
-    }
-});
 Template.showOthers.helpers({
     img: function(){
         var homeworkfiles = Homeworkfiles.findOne(this._id);
@@ -99,28 +86,6 @@ Template.showOthers.events({
             Materialize.toast("提交成功！",3000);
         }
     }
-});
-Template.othersShow.helpers({
-     review: function() {
-        var homeworkId = this.metadata.homeworklistId;
-        var reviewer = Meteor.userId();
-        var beReviewed = this.metadata.userId
-        var review =  Review.findOne({
-            homeworkId: homeworkId,
-            reviewer: beReviewed,
-            beReviewed: reviewer
-        });
-        return review;
-    },
-    img: function(){
-        var homeworkfiles = Homeworkfiles.findOne(this._id);
-        return Homeworkfiles.findOne({
-            'metadata.homeworklistId' : homeworkfiles.metadata.homeworklistId,
-            'metadata.userId': Meteor.userId(),
-            'metadata.fileImage': 1
-        });
-    },
- 
 });
 Template.showOthers.onRendered(function(){
     $(document).ready(function(){

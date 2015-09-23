@@ -4,6 +4,9 @@ Meteor.publish("userData",function(){
 Meteor.publish("homeworks",function(){
     return Homeworks.find();
 });
+Meteor.publish("singleHomeworks",function(id){
+    return Homeworks.find(id);
+});
 Meteor.publish("homeworkfiles",function(){
     return Homeworkfiles.find();
 });

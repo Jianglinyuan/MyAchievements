@@ -1,0 +1,51 @@
+<template name="reviewList">
+    <div class="container">
+            <div class="row center-align" >
+                <div class="col s6 offset-s3 " style="font-size:20px">HW{{count}}:{{title}}</div>
+                <div class="col s3" style="margin-top:10px"><a href="{{pathFor 'index'}}">返回</a></div>
+            </div>
+    </div>
+    <div class="container">
+        {{#each groups}}
+        {{> groupList}}
+        {{/each}}
+    </div>
+   
+</template>
+
+<template name="groupList">
+    <div class="row">
+    <label >Group{{number}}:</label>
+    <div class="col s12">
+        <table class="col s12">
+            <thead>
+                <tr>
+                    <td class="col s2 center-align">学号</td>
+                    <td class="col s2 center-align">姓名</td>
+                    <td class="col s4 center-align">作业代码</td>
+                    <td class="col s2 center-align">评分</td>
+                    <td class="col s2 center-align">...</td>
+                </tr>
+            </thead>
+            {{#each members}}
+                {{> membersTbody}} 
+            {{/each}}
+        </table>
+    </div>
+    </div>
+</template>
+<template name="membersTbody">
+    <tbody>
+        <tr>
+            <td class="col s2 center-align">{{username}}</td>
+            <td class="col s2 center-align">{{profile.name}}</td>
+            {{#if zip}}
+            <td class="col s4 center-align"><a href="{{zip.url}}">{{zip.metadata.fileName}}</a></td>
+            {{else}}
+            <td class="col s4 center-align">该学生还没上传作业</td>
+            {{/if}}
+            <td class="col s2 center-align">90</td>
+            <td class="col s2 center-align"><a href="#">Review</a></td>
+        </tr>
+    </tbody>
+</template>

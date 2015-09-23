@@ -97,15 +97,11 @@
 </template>
 
 <template name="showOthersReview">
-    <div class="row">
-        <div class="col s10 offset-s1">
-            <label class="teal-text">Review:</label>
-        </div>
-        <div class="col s10 offset-s1 otherreview-container z-depth-1 ">
-            <div class="content1" style="padding-top:10px;">{{content}}</div>
-            <div class="content2 center-align">
-                <span>{{score}}</span>
-            </div>
+    <div class="otherreview-container z-depth-1">
+        <div class="sign"></div>
+        <div class="content1">{{content}}</div>
+        <div class="content2">
+            <div class="sub">{{score}}</div>
         </div>
     </div>
 </template>

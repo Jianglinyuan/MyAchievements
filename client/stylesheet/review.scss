@@ -4,6 +4,7 @@
 .other-container{
     height:207px;
     .other-sub-container{
+        margin-top:10px;
         height:215px;    
         .card{
             margin:0px;
@@ -71,4 +72,19 @@
 }
 .teareview-header{
     height:60px;
+}
+.otherreview-container{
+    min-height:150px;
+    padding:0.75em 0.75em;
+    .content1{
+        width:80%;
+        float:left;
+    }
+    .content2{
+        margin-top:7%;
+        font-size:25px;
+        width:20%;
+        float:left;
+        height:100%;
+    }
 }

@@ -9,6 +9,7 @@ Template.reviewOthers.helpers({
         if (bereviewedGroup !== 0){
             value = bereviewedGroup;
         }else{
+            //以下内容可以封装成函数
             var relationgroup = Relationship.find({marked: false}).fetch();
             var groupArr = [];
             for (var i = 0 ; i < relationgroup.length; i++){
@@ -24,10 +25,10 @@ Template.reviewOthers.helpers({
                 bereviewedValue = groups[0];
             }else{
                 groups.splice(delIndex,1); //剔除掉自己组
-                //还需要剔除掉已经被review的组
                 var index = Math.floor(Math.random()*groups.length);
                 bereviewedValue = groups[index];
             }
+
             Relationship.update(relationshipId,{$set: {bereviewedGroup: bereviewedValue}});
             var beMarkedRelId = Relationship.findOne({reviewerGroup: bereviewedValue})._id;
             Relationship.update(beMarkedRelId,{$set: {marked: true}});
@@ -40,6 +41,13 @@ Template.reviewOthers.helpers({
             'metadata.userId':{$ne: userId} 
         });
     },
+});
+Template.othersReview.helpers({
+    othersreview: function(){
+        var userId = Meteor.userId();
+        var homeworkId = this._id;
+        return Review.find({homeworkId: homeworkId,beReviewed: userId});
+    }  
 });
 Template.showOthers.helpers({
     img: function(){
@@ -76,7 +84,7 @@ Template.showOthers.events({
         e.preventDefault();
         var that = this;
         var new_review = {
-            reviewer: Meteor.userId(), //bad 
+            reviewer: Meteor.userId(), 
             beReviewed: that.metadata.userId,
             homeworkId: that.metadata.homeworkId,
             time: new Date(),

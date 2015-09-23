@@ -21,6 +21,11 @@
     text-overflow:ellipsis;
     font-size:20px;
 }
+.card{
+    .card-action{
+        padding: 10px 10px;
+    }
+}
 #myscore{
     margin:10px 0 -10px 0;
     height:320px;

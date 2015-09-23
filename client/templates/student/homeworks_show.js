@@ -1,113 +1,66 @@
 Template.showHomeworks.helpers({
     homeworks: function(){
-        return Homeworks.find({userId: Meteor.userId()});
+        return Homeworks.find();
     },
     isPrevious: function(){
-        var homeworklist = HomeworkList.findOne(this.homeworklistId);
-        if (homeworklist.state === "previous"){
+        if (this.state === "previous"){
             return true;
         }else{
             return false;
         }
     },
     isPresent: function(){
-        var homeworklist = HomeworkList.findOne(this.homeworklistId);
-        if (homeworklist.state === "present"){
+        if (this.state === "present"){
             return true;
         }else{
             return false;
         }
     },
     isFuture: function(){
-        var homeworklist = HomeworkList.findOne(this.homeworklistId);
-        if (homeworklist.state === "future"){
+        if (this.state === "future"){
             return true;
         }else{
             return false;
         }
     }
 });
-Template.future.helpers({
-    title: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.title;
-    },
-    url: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.url;
-    },
-    count: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.count;
-    },
-    showStartTime: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.showStartTime;
-    },
-});
-
 Template.present.helpers({
 
-    title: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.title;
-    },
-    url: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.url;
-    },
-    count: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.count;
-    },
-    showDeadline: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.showDeadLine;
-    },
     haveSubmited:function(){
-        var homeworklistId = Homeworks.findOne(this._id).homeworklistId;
+        var homeworkId = this._id;
         var userId = Meteor.userId();
         return Homeworkfiles.findOne({
             'metadata.userId': userId,
-            'metadata.homeworklistId': homeworklistId
+            'metadata.homeworkId': homeworkId
         });
     },
     img: function(){
-        var homeworklistId = Homeworks.findOne(this._id).homeworklistId;
+        var homeworkId = this._id;
         var userId = Meteor.userId();
         return Homeworkfiles.findOne({
             'metadata.userId': userId,
-            'metadata.homeworklistId': homeworklistId,
+            'metadata.homeworkId': homeworkId,
             'metadata.fileImage': 1
         });
     }
 });
 
 Template.previous.helpers({
-
-    title: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.title;
-    },
-    count: function(){
-        var homeworklist = HomeworkList.findOne({_id: this.homeworklistId});
-        return homeworklist.count;
-    },
     img: function(){
-        var homeworklistId = Homeworks.findOne(this._id).homeworklistId;
+        var homeworkId = this._id; 
         var userId = Meteor.userId();
         return Homeworkfiles.findOne({
             'metadata.userId': userId,
-            'metadata.homeworklistId': homeworklistId,
+            'metadata.homeworkId': homeworkId,
             'metadata.fileImage': 1
         });
     },
     file: function(){
-        var homeworklistId = Homeworks.findOne(this._id).homeworklistId;
+        var homeworkId = this._id;
         var userId = Meteor.userId();
         return Homeworkfiles.findOne({
             'metadata.userId': userId,
-            'metadata.homeworklistId': homeworklistId,
+            'metadata.homeworkId': homeworkId,
             'metadata.fileImage': {$ne: 1}
         });
     }

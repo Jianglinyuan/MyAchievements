@@ -1,35 +1,21 @@
 Meteor.publish("userData",function(){
     return Meteor.users.find();
 });
-Meteor.publish("homeworklist",function(){
-    return HomeworkList.find();
-});
-Meteor.publish("singleHomeworklist",function(id){
-    return HomeworkList.find(id)
-});
 Meteor.publish("homeworks",function(){
     return Homeworks.find();
 });
 Meteor.publish("homeworkfiles",function(){
     return Homeworkfiles.find();
 });
-Meteor.publish('thisHomeworkfiles',function(homeworklistId){
-    return Homeworkfiles.find({'metadata.homeworklistId': homeworklistId});
-});
-Meteor.publish("myhomeworks",function(userId){
-    return Homeworks.find({userId: this.userId});
+Meteor.publish('thisHomeworkfiles',function(homeworkId){
+    return Homeworkfiles.find({'metadata.homeworkId': homeworkId});
 });
 Meteor.publish("myhomeworkfiles",function(){
     return Homeworkfiles.find({'metadata.userId': this.userId});
 });
-Meteor.publish("myGroupUserData",function(){
-    var user = Meteor.users.findOne(this.userId);
-    return Meteor.users.find({'profile.group': user.profile.group});
-});
-Meteor.publish("Homeworkfiles",function(group,homeworkId){
-    var homeworklistId = Homeworks.findOne(homeworkId).homeworklistId;
-    return Homeworkfiles.find({'metadata.team': group, 'metadata.homeworklistId': homeworklistId});
-});
 Meteor.publish("reviews", function() {
     return Review.find();
+});
+Meteor.publish("relationship",function(id){
+    return Relationship.find({homeworkId:id});
 });

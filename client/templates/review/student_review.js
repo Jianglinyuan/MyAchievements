@@ -1,44 +1,61 @@
 Template.reviewOthers.helpers({
     others: function(){
         var userId = Meteor.userId();
-        var homeworklistId = Homeworks.findOne(this._id).homeworklistId;
-        var group = 1;
+        var homeworkId = this._id;
+        var group = Meteor.user().profile.group;
+        var value;
+        var bereviewedGroup = Relationship.findOne({reviewerGroup: group}).bereviewedGroup;
+        var relationshipId = Relationship.findOne({reviewerGroup: group})._id;
+        if (bereviewedGroup !== 0){
+            value = bereviewedGroup;
+        }else{
+            var relationgroup = Relationship.find({marked: false}).fetch();
+            var groupArr = [];
+            for (var i = 0 ; i < relationgroup.length; i++){
+                groupArr[i] = relationgroup[i].reviewerGroup;
+            }
+            function onlyUnique(value,index,self){
+                return self.indexOf(value) === index;
+            };
+            var groups = groupArr.filter(onlyUnique); //去掉重复值
+            var delIndex = groups.indexOf(group);
+            var bereviewedValue;
+            if (groups.length === 1){
+                bereviewedValue = groups[0];
+            }else{
+                groups.splice(delIndex,1); //剔除掉自己组
+                //还需要剔除掉已经被review的组
+                var index = Math.floor(Math.random()*groups.length);
+                bereviewedValue = groups[index];
+            }
+            Relationship.update(relationshipId,{$set: {bereviewedGroup: bereviewedValue}});
+            var beMarkedRelId = Relationship.findOne({reviewerGroup: bereviewedValue})._id;
+            Relationship.update(beMarkedRelId,{$set: {marked: true}});
+            value = bereviewedValue;
+        }
         return Homeworkfiles.find({
-            'metadata.homeworklistId': homeworklistId,
-            'metadata.team': group,
+            'metadata.homeworkId': homeworkId,
+            'metadata.team': value,
             'metadata.fileImage': {$ne: 1},
             'metadata.userId':{$ne: userId} 
         });
     },
-    group: function(){
-        return Meteor.user().profile.group;
-    },
-    count: function(){
-        var homework = Homeworks.findOne({_id: this._id});
-        var homeworklist = HomeworkList.findOne(homework.homeworklistId);
-        return homeworklist.count;
-    },
-    title: function(){
-        var homework = Homeworks.findOne({_id: this._id});
-        var homeworklist = HomeworkList.findOne(homework.homeworklistId);
-        return homeworklist.title;
-    }
 });
 Template.showOthers.helpers({
     img: function(){
         var homeworkfiles = Homeworkfiles.findOne(this._id);
         return Homeworkfiles.findOne({
-            'metadata.homeworklistId' : homeworkfiles.metadata.homeworklistId,
+            'metadata.homeworkId' : homeworkfiles.metadata.homeworkId,
             'metadata.userId': homeworkfiles.metadata.userId,
             'metadata.fileImage': 1
         });
     },
     github: function(){
-        if (this.metadata.githubUrl) return true;
+        if (this.metadata.githubUrl !== "") return true;
         else return false;
     },
     review: function() {
-        var homeworkId = this.metadata.homeworklistId;
+        var homeworkId = this.metadata.homeworkId;
         var reviewer = Meteor.userId();
         var beReviewed = this.metadata.userId
         var review =  Review.findOne({
@@ -61,7 +78,7 @@ Template.showOthers.events({
         var new_review = {
             reviewer: Meteor.userId(), //bad 
             beReviewed: that.metadata.userId,
-            homeworkId: that.metadata.homeworklistId,
+            homeworkId: that.metadata.homeworkId,
             time: new Date(),
             content: $(e.target).parent().prev().find(".review_content").val(),
             score: $(e.target).prev().val()

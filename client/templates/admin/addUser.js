@@ -62,6 +62,7 @@ Template.addUser.events({
         var root = $(":checked").val();
         var username = $("input#username").val();
         var name = $("input#name").val();
+        var password = $('input#password').val();
         var email = $("input#email").val();
         var group;
         if(root === "student")
@@ -70,7 +71,7 @@ Template.addUser.events({
             group = "";
         var data = {
                 username: username,//学号
-                password: username,//初始密码是学号
+                password: password,
                 email: email,
                 profile: {
                     name: name,

@@ -5,12 +5,11 @@ Template.present.events({
         var studentname = Meteor.user().profile.name;
         var studentNumber = Meteor.user().username;
         var homeworkId = $(event.currentTarget).attr("name");
-        var homeworklistId = Homeworks.findOne(homeworkId).homeworklistId;
         var file = $("input[name="+homeworkId+"]")[0].files[0];
         var image = $("input[name=image"+homeworkId+"]")[0].files[0];
         var chosedTeam = Meteor.user().profile.group;
         var count = Homeworkfiles.find({
-            "metadata.homeworklistId": homeworklistId,
+            "metadata.homeworkId": homeworkId,
             "metadata.userId": studentId
         });
         var countnumber = count.count();
@@ -27,7 +26,7 @@ Template.present.events({
             userName: studentname,
             studentNumber: studentNumber,
             team: chosedTeam,
-            homeworklistId: homeworklistId,
+            homeworkId: homeworkId,
             fileName: file.name,
             uploadTime: uploadtime,
             fileSize: filesize,
@@ -36,7 +35,7 @@ Template.present.events({
         };
         imagefile.metadata = {
             userId: studentId,
-            homeworklistId: homeworklistId,
+            homeworkId: homeworkId,
             team: chosedTeam,
             fileImage:1
         };

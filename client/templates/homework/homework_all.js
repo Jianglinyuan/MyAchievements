@@ -7,16 +7,16 @@ Template.homeworkItem.helpers({
     ownHomeWork : function(){
         return this.userId === Meteor.userId();
     },
-    status : function(){
-        // if(this.convertStartTime > Date.parse(time.get())/3600000&&this.state != 'future'){
-        //     Homeworks.update(this._id,{$set: {state: 'future'}});
-        // }else if(this.convertStartTime <= Date.parse(time.get())/3600000&&Date.parse(time.get())/3600000 < this.convertToHour&&this.state != 'present'){
-        //     Homeworks.update(this._id,{$set: {state: 'present'}});
-        // }else if(Date.parse(time.get())/3600000 >= this.convertToHour&&this.state != 'previous'){
-        //     Homeworks.update(this._id,{$set: {state: 'previous'}});
-        // }
-        // return this.state;
-    },
+    // status : function(){
+    //     // if(this.convertStartTime > Date.parse(time.get())/3600000&&this.state != 'future'){
+    //     //     Homeworks.update(this._id,{$set: {state: 'future'}});
+    //     // }else if(this.convertStartTime <= Date.parse(time.get())/3600000&&Date.parse(time.get())/3600000 < this.convertToHour&&this.state != 'present'){
+    //     //     Homeworks.update(this._id,{$set: {state: 'present'}});
+    //     // }else if(Date.parse(time.get())/3600000 >= this.convertToHour&&this.state != 'previous'){
+    //     //     Homeworks.update(this._id,{$set: {state: 'previous'}});
+    //     // }
+    //     // return this.state;
+    // },
     hwstate: function(){
         if (this.state === 'present'){
             return "blue darken-4";

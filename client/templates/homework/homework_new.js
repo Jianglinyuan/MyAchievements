@@ -27,14 +27,23 @@ Template.newhomework.events({
         var startTime = $(e.target).find('[id=starttime]').val();
 
         var showStartTime = convertDeadline(startDate,startTime);
+        //真实数据
         var convertStartTime = convertDeadtime(startDate,startTime);
-
+        // 测试数据
+        // var convertStartTime = (Date.parse(now)+15000)/3600000;
+        
+        
         // 截止时间的相关数据
         var deadDate = $(e.target).find('[id=enddate]').val();
         var deadTime = $(e.target).find('[id=endtime]').val();
 
         var showDeadLine = convertDeadline(deadDate,deadTime);
+        //真实数据
         var convertToHour = convertDeadtime(deadDate,deadTime);
+        //测试数据
+        // var convertToHour = (Date.parse(now)+30000)/3600000;
+        
+        //作业状态
         var state;
         if (convertStartTime <= Date.parse(now)/3600000){
             state = "present";
@@ -66,6 +75,8 @@ Template.newhomework.events({
                     Materialize.toast('输入未完成！',3000,'rounded');
                 }else if(result.dateError){
                     Materialize.toast('截止日期小于当前时间！',3000,'rounded');
+                }else if(result.spaceError){
+                    Materialize.toast('开始时间大于等于截止时间！',3000,'rounded');
                 }else{
                 Materialize.toast('作业新建成功',3000,'rounded');
 

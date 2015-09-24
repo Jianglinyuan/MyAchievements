@@ -20,10 +20,17 @@ Template.homeworkedit.events({
         var startTime = $(e.target).find('[id=starttime]').val();
 
         var showStartTime = convertDeadline(startDate,startTime);
+        //真实数据
         var convertStartTime = convertDeadtime(startDate,startTime);
+        // 测试数据
+        // var convertStartTime = (Date.parse(now)+15000)/3600000;
 
         var showDeadLine = convertDeadline(deadDate,deadTime);
+        //真实数据
         var convertToHour = convertDeadtime(deadDate,deadTime);
+        //测试数据
+        // var convertToHour = (Date.parse(now)+30000)/3600000;
+        
         var state;
         if (convertStartTime <= Date.parse(now)/3600000){
             state = "present";

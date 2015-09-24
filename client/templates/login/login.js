@@ -10,7 +10,10 @@ Template.loginForm.helpers({
     password: function(){
             return localStorage.password;
     },
-})
+    isChecked: function(){
+        return localStorage.ischecked;
+    }
+});
 Template.loginForm.events({
     'submit form': function(e){
         e.preventDefault();
@@ -40,9 +43,11 @@ Template.loginForm.events({
                     if(remember.is(":checked")){//记住密码
                         localStorage.username=username;
                         localStorage.password=password;
+                        localStorage.ischecked=true;
                     }else{
                         localStorage.username="";
                         localStorage.password="";
+                        localStorage.ischecked=""
                     }
                 }
             });
@@ -59,9 +64,9 @@ Template.loginForm.events({
              };
              Accounts.forgotPassword(options,function(error){
                  if(error)
-                     Materialize.toast(error.reason,3000);
+                     Materialize.toast(error.reason,3000,'teal');
                  else{
-                     Materialize.toast("We have send a email to you,please check.",3000);}
+                     Materialize.toast("We have send a email to you,please check.",3000,'teal');}
              });
          };
      }

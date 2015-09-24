@@ -1,19 +1,18 @@
 Template.addUser.events({
-        'click .with-gap': function(){
-            var checked = $(":checked").val();
-            if(checked === "student")
-                $("div#register-group").show();
-            else
-                $("div#register-group").hide();
-        },
-	    'change .upfile': function(e){
-        var files = e.target.files;
-        var i,f,k,s;
+    'click .with-gap': function(){
+        var checked = $(":checked").val();
+        if(checked === "student")
+            $("div#register-group").show();
+        else
+            $("div#register-group").hide();
+    },
+    'click .excel-submit': function(){
+        var file = $("input[name=upfile]")[0].files[0];
+        var k,s;
         /* package of huaming:js-xlsx , a wrap package for js-xlsx, which can parse excel like files in the browser.*/
-        for (i = 0, f = files[i]; i != files.length; ++i) {
             var reader = new FileReader();
-            var name = f.name;
-            reader.readAsBinaryString(f);
+            var name = file.name;
+            reader.readAsBinaryString(file);
             reader.onload = function(e) {
                 var data = e.target.result;
                 var workbook = XLSX.read(data, {type: 'binary'});
@@ -56,7 +55,6 @@ Template.addUser.events({
                 };
 
             };
-        }
     },
     'click .submit': function(){
         var root = $(":checked").val();
@@ -70,21 +68,21 @@ Template.addUser.events({
         else
             group = "";
         var data = {
-                username: username,//学号
-                password: password,
-                email: email,
-                profile: {
-                    name: name,
-                    root: root,
-                    group: group,
-                },
-            };
-            Accounts.createUser(data,function(error){
-                if(error)
-                    Materialize.toast(error.reason, 3000);
-                else
-                    Materialize.toast("Data insert successfully", 3000);
-            });
-            Meteor.loginWithPassword("admin","admin123456");       	
+            username: username,//学号
+            password: password,
+            email: email,
+            profile: {
+                name: name,
+                root: root,
+                group: group,
+            },
+        };
+        Accounts.createUser(data,function(error){
+            if(error)
+                Materialize.toast(error.reason, 3000);
+            else
+                Materialize.toast("Data insert successfully", 3000);
+        });
+        Meteor.loginWithPassword("admin","admin123456");       	
     }
 });

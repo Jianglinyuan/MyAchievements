@@ -88,9 +88,11 @@ Template.showOthers.events({
             beReviewed: that.metadata.userId,
             homeworkId: that.metadata.homeworkId,
             time: new Date(),
-            content: $(e.target).parent().prev().find(".review_content").val(),
-            score: $(e.target).prev().val()
+            content: $(e.target).parent().parent().prev().find(".review_content").val(),
+            score: $(e.target).parent().prev().find('[name=score]').val()
         };
+        console.log(new_review.content);
+        console.log(new_review.score);
 
         var review = Review.findOne({
             reviewer: new_review.reviewer,
@@ -112,11 +114,6 @@ Template.showOthers.events({
             Materialize.toast("提交成功！",3000);
         }
     }
-});
-Template.showOthers.onRendered(function(){
-    $(document).ready(function(){
-        $('.materialbox').materialbox();
-    });
 });
 Template.studentReview.onRendered(function(){
     this.$(document).ready(function(){

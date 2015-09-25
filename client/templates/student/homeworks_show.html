@@ -49,7 +49,7 @@
                 {{else}}
 
                 <div class="hw-image card-image waves-effect">
-                    <img src="" class="activator" alt="您目前还没有上传作业,请点击上传">
+                    <img src="/unsubmit.jpg" class="activator" alt="您目前还没有上传作业,请点击上传">
                 </div>
                 {{/if}}
                 <div class="card-reveal action">
@@ -57,7 +57,7 @@
                         <i class=" small material-icons right">close</i>
                     </div>
                     <div class="hw-content-title white-text center-align">
-                        Deadline:{{showDeadline}}
+                        Deadline:{{showDeadLine}}
                     </div>
                     <a href="{{url}}" class="btn orange spec-btn waves-effect"  target="view_window">HWSPEC</a>
                     <a href="{{pathFor 'studentReview'}}" class="btn orange review-btn">Review</a>

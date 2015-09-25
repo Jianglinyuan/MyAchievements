@@ -3,7 +3,9 @@
         <div class="row">
             <div class="stureview-header col s12 m12 l12 valign-wrapper">
                 <div class="col s3 m3 l3 center-align">
-                    <span>Group:{{group}}</span>
+                    <div name="titleGroup">
+                        <span>Group</span>
+                    </div>
                 </div>
                 <div class="col s6 m6 l6  center-align">
                     <h5>{{title}}</h5>
@@ -21,11 +23,10 @@
                             <li class="tab col s2 m2 l2"><a href="#othersreview">others' review</a></li>
                         </ul>
                     </div>
-                    <div id="reviewothers" class="col s12" style="margin-top:20px">{{> reviewOthers}}</div>
-                    <div id="othersreview" class="col s12" style="margin-top:20px">{{> othersReview}}</div>
+                    <div id="reviewothers" class="col s12" style="margin-top:10px">{{> reviewOthers}}</div>
+                    <div id="othersreview" class="col s12" style="margin-top:10px">{{> othersReview}}</div>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
@@ -48,7 +49,7 @@
 <template name="showOthers">
     
     <div class="review-other-container z-depth-1">
-        <div class="review-sign orange darken-3"></div>
+        <div class="review-sign {{detial.signcolor}}"></div>
         <div class="review-other-content">
             <div class="content-img">
                 <div class="card">
@@ -79,7 +80,7 @@
                         <input type="text" placeholder="请评分(0~100)" value="{{review.score}}" name="score">
                     </div>
                     <div class="score-btn center-align">
-                        <input type="submit" class="btn review_btn orange darken-3" value="submit">
+                        <input type="submit" class="btn review_btn {{detial.btncolor}}" value={{detial.type}}>
                     </div>
                 </div>
             </form>
@@ -90,11 +91,13 @@
 
 
 <template name="showOthersReview">
-    <div class="otherreview-container z-depth-1">
+    <div class="others-review-container z-depth-1">
         <div class="sign"></div>
-        <div class="content1">{{content}}</div>
-        <div class="content2">
-            <div class="sub">{{score}}</div>
+        <div class="content-comment">
+            <p>{{content}}</p>
+        </div>
+        <div class="content-score valign-wrapper">
+            <div class="valign score center-align">{{score}}</div>
         </div>
     </div>
 </template>

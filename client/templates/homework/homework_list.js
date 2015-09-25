@@ -8,7 +8,9 @@ Template.teachersHomeworkList.onRendered(function(){
 });
 Template.teachersHomeworkList.helpers({
     isTeacher: function(){
-        if(Meteor.user().profile.root === "teacher"){
+        var user = Meteor.user();
+        var userRoot = user && user.profile && user.profile.root;
+        if(userRoot === "teacher"){
             return true;
         }else{
             return false;

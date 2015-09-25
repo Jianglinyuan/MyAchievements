@@ -33,6 +33,7 @@ Template.reviewOthers.helpers({
             var beMarkedRelId = Relationship.findOne({reviewerGroup: bereviewedValue})._id;
             Relationship.update(beMarkedRelId,{$set: {marked: true}});
             value = bereviewedValue;
+            Session.set('group',value);
         }
         return Homeworkfiles.find({
             'metadata.homeworkId': homeworkId,
@@ -65,13 +66,34 @@ Template.showOthers.helpers({
     review: function() {
         var homeworkId = this.metadata.homeworkId;
         var reviewer = Meteor.userId();
-        var beReviewed = this.metadata.userId
+        var beReviewed = this.metadata.userId;
         var review =  Review.findOne({
             homeworkId: homeworkId,
             reviewer: reviewer,
             beReviewed: beReviewed
         });
         return review;
+    },
+    detial: function(){
+        var homeworkId = this.metadata.homeworkId;
+        var reviewer = Meteor.userId();
+        var beReviewed = this.metadata.userId;
+        var review =  Review.findOne({
+            homeworkId: homeworkId,
+            reviewer: reviewer,
+            beReviewed: beReviewed
+        });
+        var detial = {};
+        if (review && review.content && review.score){
+            detial.signcolor = "teal";
+            detial.type = "update";
+            detial.btncolor = "teal";
+        }else{
+            detial.signcolor = "orange darken-3";
+            detial.type = "submit";
+            detial.btncolor = "orange darken-3"
+        }
+        return detial;
     }
 });
 Template.showOthers.events({
@@ -91,8 +113,6 @@ Template.showOthers.events({
             content: $(e.target).parent().parent().prev().find(".review_content").val(),
             score: $(e.target).parent().prev().find('[name=score]').val()
         };
-        console.log(new_review.content);
-        console.log(new_review.score);
 
         var review = Review.findOne({
             reviewer: new_review.reviewer,
@@ -114,6 +134,11 @@ Template.showOthers.events({
             Materialize.toast("提交成功！",3000);
         }
     }
+});
+Template.showOthers.onRendered(function(){
+    var group = $('[name=titleGroup]');
+    var value = this.data.metadata.team;
+    group.append(value);
 });
 Template.studentReview.onRendered(function(){
     this.$(document).ready(function(){

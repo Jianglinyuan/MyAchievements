@@ -1,7 +1,7 @@
 <template name="reviewList">
     <div class="container">
             <div class="row center-align" >
-                <div class="col s6 offset-s3 " style="font-size:20px">HW{{count}}:{{title}}</div>
+                <div class="col s6 offset-s3 " style="font-size:20px">作业{{count}}:{{title}}</div>
                 <div class="col s3" style="margin-top:10px"><a href="{{pathFor 'index'}}">返回</a></div>
             </div>
     </div>
@@ -44,7 +44,11 @@
             {{else}}
             <td class="col s4 center-align">该学生还没上传作业</td>
             {{/if}}
-            <td class="col s2 center-align">90</td>
+            {{#if final}}
+            <td class="col s2 center-align">{{finalscore}}</td>
+            {{else}}
+            <td class="col s2 center-align grey-text">n/a</td>
+            {{/if}}
             <td class="col s2 center-align"><a href="#" class="goDetail">Review</a></td>
         </tr>
     </tbody>

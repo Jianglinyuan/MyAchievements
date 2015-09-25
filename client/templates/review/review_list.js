@@ -45,6 +45,16 @@ Template.membersTbody.helpers({
             'metadata.homeworkId': homeworkId,
             'metadata.fileImage': {$ne: 1},
         });
+    },
+    finalscore: function(){
+        var userId = this._id;
+            var homeworks = Homeworks.find().fetch();
+        var homeworkId = homeworks[0]._id;
+        return Review.findOne({
+            beReviewed: userId,
+            homeworkId: homeworkId,
+            isFinal: true
+        }).score;
     }
 });
 Template.membersTbody.events({

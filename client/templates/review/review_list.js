@@ -1,10 +1,10 @@
 Template.reviewList.helpers({
     count: function(){
-        var homeworkId = this._id;
+        var homeworkId = this.id;
         return Homeworks.findOne(homeworkId).count;
     },
     title: function(){
-        var homeworkId = this._id;
+        var homeworkId = this.id;
         return Homeworks.findOne(homeworkId).title;
     },
     groups: function(){
@@ -38,7 +38,6 @@ Template.groupList.helpers({
 Template.membersTbody.helpers({
    zip: function(){
         var userId = this._id;
-        console.log(userId);
         var homeworks = Homeworks.find().fetch();
         var homeworkId = homeworks[0]._id;
         return  Homeworkfiles.findOne({
@@ -46,5 +45,13 @@ Template.membersTbody.helpers({
             'metadata.homeworkId': homeworkId,
             'metadata.fileImage': {$ne: 1},
         });
+    }
+});
+Template.membersTbody.events({
+    'click .goDetail': function(e){
+        e.preventDefault();
+        var homeworks = Homeworks.find().fetch();
+        var homeworkId = homeworks[0]._id;
+        Router.go('reviewDetail', {'userId': this._id,'homeworkId': homeworkId});
     }
 });

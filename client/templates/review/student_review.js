@@ -35,6 +35,7 @@ Template.reviewOthers.helpers({
             value = bereviewedValue;
             Session.set('group',value);
         }
+        //根据已经提交了的作业进行review
         return Homeworkfiles.find({
             'metadata.homeworkId': homeworkId,
             'metadata.team': value,
@@ -43,11 +44,17 @@ Template.reviewOthers.helpers({
         });
     },
 });
+
+//找到所有的有关自己的review
 Template.othersReview.helpers({
     othersreview: function(){
         var userId = Meteor.userId();
         var homeworkId = this._id;
-        return Review.find({homeworkId: homeworkId,beReviewed: userId});
+        return Review.find({
+            homeworkId: homeworkId,
+            beReviewed: userId,
+            isFinal:false
+        });
     }  
 });
 Template.showOthers.helpers({
@@ -109,6 +116,7 @@ Template.showOthers.events({
             reviewer: Meteor.userId(), 
             beReviewed: that.metadata.userId,
             homeworkId: that.metadata.homeworkId,
+            isFinal: false,
             time: new Date(),
             content: $(e.target).parent().parent().prev().find(".review_content").val(),
             score: $(e.target).parent().prev().find('[name=score]').val()

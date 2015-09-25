@@ -19,6 +19,9 @@ Meteor.publish("myhomeworkfiles",function(){
 Meteor.publish("reviews", function() {
     return Review.find();
 });
+Meteor.publish('thisReview',function(id){
+    return Review.find({homeworkId: id});
+});
 Meteor.publish("relationship",function(id){
     return Relationship.find({homeworkId:id});
 });

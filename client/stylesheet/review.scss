@@ -27,7 +27,7 @@
             border-right:solid 1px #e0e0e0;
             float:left;
             img{
-                height:210px;
+                height:215px;
                 border-radius:0px;
             }
             .card{
@@ -125,5 +125,49 @@
             font-size:30px;
         }
 
+    }
+}
+.review-detail-container{
+    min-height:215px;
+    display:flex;
+    width:96%;
+    margin:20px auto;
+    background-color:#fff;
+    overflow:auto;
+    .sign{
+        width:1%;
+        background-color:#009688; //teal
+        flex:initial;
+    }
+    .content-info{
+        width:15%;
+        flex:initial;
+        border-right:solid 1px #009688;
+        .info{
+            width:100%;
+            h5{
+                width:100%;
+            }
+            p{
+                width:100%;
+            }
+        }
+    }
+    .content-comment{
+        width:69%;
+        min-height:215px;
+        padding:20px;
+        float:left;
+        font-size:20px;
+    }
+    .content-score{
+        width:15%;
+        background-color:#009688;
+        color:#fff;
+        flex:initial;
+        .score{
+            width:100%;
+            font-size:30px;
+        }
     }
 }

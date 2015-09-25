@@ -1,0 +1,37 @@
+<template name="reviewDetail">
+    <div class="row">
+        <div class="col s12 center-align">
+            <h5>作业{{count}}:{{title}}</h5>
+        </div>
+    </div>
+    {{#each reviews}}
+    {{> reviewItem}}
+    {{/each}}
+    <div class="row">
+        <div class="col s4 offset-s4 center-align" style="padding:20px 0;">
+            <input type="text" class="center-align" name="finalscore" value="{{review.score}}">
+            <input type="submit" value=submit class="btn final_score">
+        </div>
+    </div>
+    <br>
+</template>
+
+<template name="reviewItem">
+
+    <div class="review-detail-container z-depth-1">
+        <div class="sign"></div>
+        <div class="content-info valign-wrapper">
+            <div class="valign info center-align">
+                <h5>{{name}}</h5>
+                <p>{{ID}}</p>
+            </div>
+        </div>
+        <div class="content-comment">
+            <p>{{content}}</p>
+        </div>
+        <div class="content-score valign-wrapper">
+            <div class="valign score center-align">{{score}}</div>
+        </div>
+    </div>
+
+</template>

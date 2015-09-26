@@ -1,40 +1,24 @@
+Template.studentReview.helpers({
+    group: function(){
+        var user = Meteor.user();
+        var homeworkId = this._id;
+        var group = user && user.profile && user.profile.group;
+        var relationship = Relationship.findOne({homeworkId: homeworkId, reviewerGroup: group});
+        return relationship.bereviewedGroup;
+    }
+});
 Template.reviewOthers.helpers({
     others: function(){
         var userId = Meteor.userId();
         var homeworkId = this._id;
         var group = Meteor.user().profile.group;
         var value;
-        var bereviewedGroup = Relationship.findOne({reviewerGroup: group}).bereviewedGroup;
-        var relationshipId = Relationship.findOne({reviewerGroup: group})._id;
-        if (bereviewedGroup !== 0){
-            value = bereviewedGroup;
-        }else{
-            //以下内容可以封装成函数
-            var relationgroup = Relationship.find({marked: false}).fetch();
-            var groupArr = [];
-            for (var i = 0 ; i < relationgroup.length; i++){
-                groupArr[i] = relationgroup[i].reviewerGroup;
-            }
-            function onlyUnique(value,index,self){
-                return self.indexOf(value) === index;
-            };
-            var groups = groupArr.filter(onlyUnique); //去掉重复值
-            var delIndex = groups.indexOf(group);
-            var bereviewedValue;
-            if (groups.length === 1){
-                bereviewedValue = groups[0];
-            }else{
-                groups.splice(delIndex,1); //剔除掉自己组
-                var index = Math.floor(Math.random()*groups.length);
-                bereviewedValue = groups[index];
-            }
-
-            Relationship.update(relationshipId,{$set: {bereviewedGroup: bereviewedValue}});
-            var beMarkedRelId = Relationship.findOne({reviewerGroup: bereviewedValue})._id;
-            Relationship.update(beMarkedRelId,{$set: {marked: true}});
-            value = bereviewedValue;
-            Session.set('group',value);
-        }
+        var beReviewedGroup = Relationship.findOne({
+            homeworkId: homeworkId,
+            reviewerGroup: group,
+        }).bereviewedGroup;
+        value = beReviewedGroup;
+        console.value;
         //根据已经提交了的作业进行review
         return Homeworkfiles.find({
             'metadata.homeworkId': homeworkId,
@@ -143,11 +127,7 @@ Template.showOthers.events({
         }
     }
 });
-Template.showOthers.onRendered(function(){
-    var group = $('[name=titleGroup]');
-    var value = this.data.metadata.team;
-    group.append(value);
-});
+
 Template.studentReview.onRendered(function(){
     this.$(document).ready(function(){
         $('ul.tabs').tabs();

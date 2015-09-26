@@ -1,5 +1,17 @@
 Template.myscore.onRendered(function(){
     $(document).ready(function(){
+        var userId = Meteor.userId();
+        var myachievements = Review.find({beReviewed: userId, isFinal: true}, {sort: {date: 1}}).fetch();
+        console.log(myachievements);
+        var categories = [];
+        var score1 = [];
+        for (var i = 0 ; i < myachievements.length; i++){
+            var hwId = myachievements[i].homeworkId;
+            var homework = Homeworks.findOne(hwId);
+            var count = homework.count;
+            categories[i] = "HW"+count;
+            score1[i] = parseInt(myachievements[i].score);
+        };
         $('#myscore').highcharts({
             colors: ['#0d47a1'],
             chart: {
@@ -9,7 +21,7 @@ Template.myscore.onRendered(function(){
                 text: 'My Score'
             },
             xAxis: {
-                categories: ['HW1', 'HW2', 'HW3']
+                categories: categories 
             },
             yAxis: {
                 max:100,
@@ -23,11 +35,12 @@ Template.myscore.onRendered(function(){
             },
             series: [{
                 name: 'score',
-                data: [100, 90, 84]
+                data: score1 
             }]
         });
     })
 });
+
 
 Template.myrank.onRendered(function(){
     $(document).ready(function(){

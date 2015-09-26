@@ -34,7 +34,8 @@ Template.reviewDetail.events({
             reviewer: reviewerId,
             beReviewed: beReviewed,
             score: value,
-            isFinal:true 
+            isFinal:true,
+            date: new Date()
         };
         var review = Review.findOne({
             reviewer: reviewerId,

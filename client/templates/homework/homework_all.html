@@ -25,7 +25,11 @@
                     <div class="title2 left-align">{{title}}</div>
                 </p>
                 <br>
-                <p><span class="right">Deadline: {{showDeadLine}}</span></p>
+                {{#if isFuture}}
+                <p><span class="right">StartAt: {{showStartTime}}</span></p>
+                {{else}}
+                <p><span class="right">DeadLine: {{showDeadLine}}</span></p>
+                {{/if}}
                 <span>{{state}}</span>
                 <br>
             </div>

@@ -49,11 +49,11 @@ Template.present.events({
                 alertwindow.removeClass('hide');
             } else {
                 if (file == undefined) {
-                    alertinfo.html("Please chose the homework file");
+                    alertinfo.html("请提交作业原文件");
                     alertwindow.removeClass('hide');
                 } else {
                     if (image == undefined) {
-                        alertinfo.html("Please chose the imagefile");
+                        alertinfo.html("请上传预览图");
                         alertwindow.removeClass('hide');
                     } else {
                         while (countnumber > 0) {
@@ -64,7 +64,7 @@ Template.present.events({
                         }
                         Homeworkfiles.insert(homeworkfile, function(err, fileObj) {
                             if (err) {
-                                alertinfo.html("The file type is not suitable");
+                                alertinfo.html("文件类型错误");
                                 alertwindow.removeClass('hide');
                             } else {
                                 $('#'+homeworkId).closeModal(); //
@@ -79,7 +79,7 @@ Template.present.events({
         } else {
             Homeworkfiles.insert(homeworkfile, function(err, fileObj) {
                 if (err) {
-                    alertinfo.html("The file type is not suitable");
+                    alertinfo.html("文件类型错误");
                     alertwindow.removeClass('hide');
                 } else {
                     $('#modal1').closeModal(); //

@@ -24,6 +24,10 @@ Template.reviewList.helpers({
             };
             groups.push(value);
         };
+        function cmb(a,b){
+            return a - b;
+        }
+        groups.sort(cmb);
         return groups;
     },
     

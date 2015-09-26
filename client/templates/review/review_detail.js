@@ -25,7 +25,11 @@ Template.reviewDetail.helpers({
 Template.reviewDetail.events({
     'click .final_score': function(e,template){
         e.preventDefault();
-        var value = $(e.target).parent().find('[name=finalscore]').val();
+        var value = $(e.target).parent().find('[name=finalscore]').val()||'0';
+        var validate = true;
+        if(value > 100 || value < 0){
+            validate = false;
+        }
         var homeworkId = template.data.homeworkId;
         var reviewerId = Meteor.userId();
         var beReviewed = template.data.userId;
@@ -43,6 +47,7 @@ Template.reviewDetail.events({
             homeworkId: homeworkId
         });
 
+        if(validate){
         if (review){
             Review.update(review._id, {
                 $set: {
@@ -54,6 +59,9 @@ Template.reviewDetail.events({
         }else{
             Review.insert(new_review);
             Materialize.toast("提交成功!",2000);
+        }
+        }else{
+            Materialize.toast("提交的分数必须在0~100之间!",2000);
         }
     }
 });

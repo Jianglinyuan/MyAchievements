@@ -96,6 +96,13 @@ Template.showOthers.events({
     'click .review_btn': function(e) {
         e.preventDefault();
         var that = this;
+        var score = $(e.target).parent().prev().find('[name=score]').val()||'0';
+        var validate = true;
+        if(score > 100 || score < 0){
+            validate = false;
+        }
+
+
         var new_review = {
             reviewer: Meteor.userId(), 
             beReviewed: that.metadata.userId,
@@ -103,7 +110,7 @@ Template.showOthers.events({
             isFinal: false,
             time: new Date(),
             content: $(e.target).parent().parent().prev().find(".review_content").val(),
-            score: $(e.target).parent().prev().find('[name=score]').val()
+            score: score
         };
 
         var review = Review.findOne({
@@ -112,6 +119,7 @@ Template.showOthers.events({
             homeworkId: new_review.homeworkId
         });
 
+        if(validate){
         if (review) {
             Review.update(review._id, {
                 $set: {
@@ -124,6 +132,9 @@ Template.showOthers.events({
         } else {
             Review.insert(new_review);
             Materialize.toast("提交成功！",3000);
+        }
+        }else{
+            Materialize.toast("提交的分数必须在0~100之间!",2000);
         }
     }
 });

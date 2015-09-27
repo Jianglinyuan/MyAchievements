@@ -50,56 +50,23 @@ Template.myrank.onRendered(function(){
         for(var x=0;x<allSameGroup.length;x++){
             allSameGroupStudentID.push(allSameGroup[x]._id);
         };
+
         var userId = Meteor.userId();
         var myachievements = Review.find({beReviewed: userId, isFinal: true}, {sort: {date: 1}}).fetch();
         var categories = []; 
         var classRank =[];
         var groupRank = [];
-        //classRank
+
         // 该用户的每个被review的作业循环
         for (var i = 0 ; i < myachievements.length; i++){
-
+            //classRank的初始参数
             var hwId = myachievements[i].homeworkId;
             var thisScore = parseFloat(myachievements[i].score);
-            //找出所有作业
-            var allReviewedHomeWorkByHWId = Review.find({homeworkId : hwId, isFinal: true}).fetch();
-            var allThisHomeWorkScore = [];
-            var sameGroupHWScore = [];
-            var thisGroupRank = 1;
-            for(var n = 0 ; n < allReviewedHomeWorkByHWId.length ; n++){
-                var id = allReviewedHomeWorkByHWId[n].beReviewed;
-                if(allSameGroupStudentID.indexOf(id)!=-1){
-                    sameGroupHWScore.push(allReviewedHomeWorkByHWId[n].score);
-                }
-            };
-            for(var l = 0 ; l < sameGroupHWScore.length ; l++){
-                if(sameGroupHWScore[l]>thisScore){
-                    thisGroupRank++;
-                }
-            };
-            var thisClassRank = 1;
-
-            //方案一
-            for(var j = 0 ; j < allReviewedHomeWorkByHWId.length ; j++){
-                allThisHomeWorkScore.push(parseFloat(allReviewedHomeWorkByHWId[j].score));
-            };
-            for(var k = 0 ; k < allThisHomeWorkScore.length ; k++){
-                if(allThisHomeWorkScore[k]>thisScore){
-                    thisClassRank++;
-                }
-            };
-            // 方案二(有点bug)
-            // for(var j = 0 ; j < allReviewedHomeWorkByHWId.length ; j++){
-            //     allThisHomeWorkScore[j] = parseFloat(allReviewedHomeWorkByHWId[j].score);
-            // };
-            // thisClassRank = allThisHomeWorkScore.sort().reverse().indexOf(thisScore)+1;
-            groupRank[i] = thisGroupRank;
-            classRank[i] = thisClassRank;
-            var homework = Homeworks.findOne(hwId);
-            var count = homework.count;
+            classRank[i] = getOneClassRank(hwId,thisScore);
+            groupRank[i] = getOneGroupRank(hwId,thisScore,allSameGroupStudentID);
+            var count = Homeworks.findOne(hwId).count;
             categories[i] = "HW"+count; 
         };     
-
 
         $('#myrank').highcharts({
             chart: {

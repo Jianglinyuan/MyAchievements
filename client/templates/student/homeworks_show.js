@@ -63,7 +63,31 @@ Template.previous.helpers({
             'metadata.homeworkId': homeworkId,
             'metadata.fileImage': {$ne: 1}
         });
-    }
+    },
+    score : function(){
+        var homeworkId = this._id;
+        var userId = Meteor.userId();
+        return Review.findOne({homeworkId : homeworkId,beReviewed : userId}).score;
+    },
+    classRank : function(){
+        var homeworkId = this._id;
+        var userId = Meteor.userId();
+        var score = parseFloat(Review.findOne({homeworkId : homeworkId,beReviewed : userId}).score);
+        return getOneClassRank(homeworkId,score);
+    },
+    groupRank : function(){
+        var homeworkId = this._id;
+        var userId = Meteor.userId();
+        var score = parseFloat(Review.findOne({homeworkId : homeworkId,beReviewed : userId}).score);
+        var group = Meteor.user().profile.group;
+        var allSameGroup = Meteor.users.find({'profile.group' : group}).fetch();
+        var allSameGroupStudentID = [];
+        for(var x=0;x<allSameGroup.length;x++){
+            allSameGroupStudentID.push(allSameGroup[x]._id);
+        };
+        console.log(score);
+        return getOneGroupRank(homeworkId,score,allSameGroupStudentID);
+    },
 });
 Template.previous.events({
     'click  .downloadfile': function(e,template){

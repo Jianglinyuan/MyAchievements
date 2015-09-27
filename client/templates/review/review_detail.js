@@ -130,6 +130,7 @@ Template.reviewDetail.events({
             homeworkId: homeworkId,
             reviewer: reviewerId,
             beReviewed: beReviewed,
+            content: content,
             score: value,
             isFinal: false,
             isTa: true,

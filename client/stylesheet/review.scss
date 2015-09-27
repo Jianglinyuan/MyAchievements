@@ -212,6 +212,10 @@
             border:none;
             padding:0.5em;
         }
+        p{
+            font-size:20px;
+            padding:0.5em;
+        }
     }
     .ta-content-score{
         width:15%;
@@ -222,6 +226,9 @@
             margin-top:15px;
             .tascore{
                 font-size:20px;
+            }
+            .tascore-show{
+                width:100%;
             }
         }
         .ta-content-btn{

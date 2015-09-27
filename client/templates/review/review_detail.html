@@ -48,24 +48,19 @@
 
 <template name="TAitem">
 
-    <div class="ta-review-container z-depth-1">
-        <div class="ta-sign blue darken-4"></div>
-        <div class="ta-content-info valign-wrapper">
+    <div class="review-detail-container z-depth-1">
+        <div class="sign blue darken-4"></div>
+        <div class="content-info valign-wrapper">
             <div class="valign info center-align">
                 <h5>{{TaName}}</h5>
                 <p>助教</p>
             </div>
         </div>
-        <div class="ta-content-comment" >
-            <textarea placeholder="请评论..." name="tacomment" value="{{content}}"></textarea>
+        <div class="content-comment">
+            <p>{{content}}</p>
         </div>
-        <div class="ta-content-score">
-            <div class="content-score-top">
-                <input type="number" min="0" max="100" name="tascore" class="tascore center-align" value="{{score}}">
-            </div>
-            <div class="ta-content-btn center-align">
-                <input type="button" class="tabtn btn" value="submit">
-            </div>
+        <div class="content-score valign-wrapper blue darken-4">
+            <div class="valign score center-align">{{score}}</div>
         </div>
     </div>
 

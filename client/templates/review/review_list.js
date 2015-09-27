@@ -35,7 +35,7 @@ Template.reviewList.helpers({
 Template.groupList.helpers({
     members: function(){
         var group = this.number;
-        return Meteor.users.find({'profile.group': group});
+        return Meteor.users.find({'profile.group': group},{sort: {username: 1}});
     },
     
 });

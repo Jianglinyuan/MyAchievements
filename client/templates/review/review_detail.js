@@ -20,12 +20,30 @@ Template.reviewDetail.helpers({
             beReviewed: this.userId,
             isFinal: true
         });
+    },
+    item: function(){
+        var homeworkId = this.homeworkId;
+        var beReviewed = this.userId;
+        var review = Review.findOne({
+            homeworkId: homeworkId,
+            beReviewed: beReviewed,
+            isFinal: true
+        });
+        var item = {};
+        if (review && review.score){
+            item.color = "teal";
+            item.value = "update";
+        }else{
+            item.color = "orange darken-3";
+            item.value = "submit";
+        }
+        return item;
     }
 });
 Template.reviewDetail.events({
     'click .final_score': function(e,template){
         e.preventDefault();
-        var value = $(e.target).parent().find('[name=finalscore]').val()||'0';
+        var value = $(e.target).parent().find('[name=finalscore]').val();
         var validate = true;
         if(value > 100 || value < 0){
             validate = false;

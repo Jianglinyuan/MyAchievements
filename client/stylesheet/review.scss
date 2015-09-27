@@ -171,3 +171,62 @@
         }
     }
 }
+.ta-review-container{
+    width:96%;
+    height:215px;
+    margin:auto;
+    background-color:#fff;
+    display:flex;
+    .ta-sign{
+        width:1%;
+        flex:initial;
+    }
+    .ta-content-info{
+        width:15%;
+        float:left;
+        flex:initial;
+        border-right:solid 1px #0d47a1;
+        .info{
+            width:100%;
+            h5{
+                width:100%;
+            }
+            p{
+                width:100%;
+            }
+        }
+    }
+    .ta-content-comment{
+        width:69%;
+        height:215px;
+        border-right:solid 1px #e0e0e0;
+        float:left;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding:1em;
+        textarea{
+            font-size:20px;
+            width:100%;
+            height:100%;
+            border:none;
+            padding:0.5em;
+        }
+    }
+    .ta-content-score{
+        width:15%;
+        background-color:#0d47a1;
+        color:#fff;
+        flex:initial;
+        .content-score-top{
+            margin-top:15px;
+            .tascore{
+                font-size:20px;
+            }
+        }
+        .ta-content-btn{
+            margin-top:20%;
+        }
+    }
+
+}

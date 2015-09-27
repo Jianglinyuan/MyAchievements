@@ -18,16 +18,16 @@ Template.reviewList.helpers({
             return self.indexOf(value) === index;
         };
         var uniUsers = usersArr.filter(onlyUnique);
+        function cmb(a,b){
+            return a - b;
+        };
+        uniUsers.sort(cmb);
         for (var j = 0 ; j < uniUsers.length; j++){
             var value = {
                 number: uniUsers[j]
             };
             groups.push(value);
         };
-        function cmb(a,b){
-            return a - b;
-        }
-        groups.sort(cmb);
         return groups;
     },
     

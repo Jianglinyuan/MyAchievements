@@ -16,3 +16,4 @@ cfs:gridfs
 huaming:js-xlsx
 email
 reactive-var
+twbs:bootstrap

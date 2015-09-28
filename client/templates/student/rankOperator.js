@@ -23,7 +23,7 @@ getOneGroupRank = function(hwId,thisScore,allSameGroupStudentID){
                 sameGroupHWScore.push(parseFloat(allReviewedHomeWorkByHWId[n].score));
             }
     };
-    console.log(sameGroupHWScore);
+    //console.log(sameGroupHWScore);
     for(var l = 0 ; l < sameGroupHWScore.length ; l++){
         if(sameGroupHWScore[l] > thisScore){
             thisGroupRank++;

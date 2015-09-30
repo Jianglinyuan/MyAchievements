@@ -1,7 +1,7 @@
 Template.myscore.onRendered(function(){
     $(document).ready(function(){
         var userId = Meteor.userId();
-        var myachievements = Review.find({beReviewed: userId, isFinal: true}, {sort: {date: 1}}).fetch();
+        var myachievements = Review.find({beReviewed: userId, isFinal: true}, {sort: {count: 1}}).fetch();
         var categories = [];
         var score1 = [];
         for (var i = 0 ; i < myachievements.length; i++){
@@ -52,11 +52,30 @@ Template.myrank.onRendered(function(){
         };
 
         var userId = Meteor.userId();
-        var myachievements = Review.find({beReviewed: userId, isFinal: true}, {sort: {date: 1}}).fetch();
+        // 该用户的每个被review的作业按作业号排序
+        var myachievements = Review.find({beReviewed: userId, isFinal: true}, {sort: {count: 1}}).fetch();
         var categories = []; 
         var classRank =[];
         var groupRank = [];
+        var cR = new ReactiveVar();
+        var gR = new ReactiveVar();
 
+        
+        
+        // Meteor.setInterval(function(){
+        //     for (var i = 0 ; i < myachievements.length; i++){
+        //     //classRank的初始参数
+        //     var hwId = myachievements[i].homeworkId;
+        //     var thisScore = parseFloat(myachievements[i].score);
+        //     classRank[i] = getOneClassRank(hwId,thisScore);
+        //     groupRank[i] = getOneGroupRank(hwId,thisScore,allSameGroupStudentID);
+        //     var count = Homeworks.findOne(hwId).count;
+        //     categories[i] = "HW"+count; 
+        // };
+        // cR.set(classRank);gR.set(groupRank);
+        // console.log(classRank+" ++ "+groupRank+" + "+cR.get());
+        // },5000);
+        
         // 该用户的每个被review的作业循环
         for (var i = 0 ; i < myachievements.length; i++){
             //classRank的初始参数

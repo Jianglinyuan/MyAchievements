@@ -81,7 +81,9 @@ Template.reviewDetail.events({
         if(value > 100 || value < 0){
             validate = false;
         }
+        
         var homeworkId = template.data.homeworkId;
+        var homeworkCount = Homeworks.findOne(homeworkId).count;
         var reviewerId = Meteor.userId();
         var beReviewed = template.data.userId;
         var new_review = {
@@ -89,6 +91,7 @@ Template.reviewDetail.events({
             reviewer: reviewerId,
             beReviewed: beReviewed,
             score: value,
+            count: homeworkCount,
             isFinal:true,
             date: new Date()
         };

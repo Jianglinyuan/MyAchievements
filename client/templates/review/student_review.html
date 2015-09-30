@@ -1,0 +1,14 @@
+<template name="studentReview">
+    <div>
+        <ul class="nav nav-tabs" role="tablist" id="myTabs">
+            <li role="presentation" class="active"><a href="#reviewOthers" aria-controls="alluser" role="tab" data-toggle="tab">MyReview</a></li>
+            <li role="presentation"><a href="#othersReview" aria-controls="adduser" role="tab" data-toggle="tab">Others'</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="reviewOthers">{{> reviewOthers}}</div>
+            <div role="tabpanel" class="tab-pane" id="othersReview">{{> othersReview}}</div>
+        </div>
+    </div>
+
+</template>

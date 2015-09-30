@@ -7,6 +7,15 @@ Template.submit.helpers({
     },
     errorClass: function(filed){
         return Session.get("homeworkFilesError")[filed] ? "has-error" : "";
+    },
+    file: function(){
+        var studentId = Meteor.userId();
+        var homeworkId = this._id;
+        return HomeworkFiles.findOne({
+            'metadata.studentId': studentId,
+            'metadata.homeworkId': homeworkId,
+            'metadata.fileImage': {$ne: 1}
+        });
     }
 });
 Template.present.events({
@@ -57,6 +66,7 @@ Template.present.events({
             homeworkId: homeworkId,
             classNum: classNum,
             group: group,
+            imageName: image.name,
             fileImage: 1
         };
 
@@ -72,8 +82,15 @@ Template.present.events({
             }else{
                 HomeworkFiles.insert(imagefile);
                 $('#' + homeworkId).modal('hide');
+                Session.set("homeworkFilesError",{});
             }
         });
+    },
+    'click .file-close': function(e){
+        e.preventDefault();
+        var homeworkId = $(e.currentTarget).attr("name");
+        Session.set("homeworkFilesError",{});
+        $('#' + homeworkId).modal('hide');
     }
 });
 

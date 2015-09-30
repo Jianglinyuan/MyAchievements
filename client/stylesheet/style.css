@@ -146,8 +146,20 @@ body{
     width:100%;
     height:280px;
 }
-.panel-body:hover .hidecover{
-    display:block;
+.panel-content{
+    width: 100%;
+    height:280px;
+    padding-top:20%;
+} .panel-content p{
+    text-align: center;
+}
+.panel-success{
+    border-color:#009688;
+}
+.panel-success > .panel-heading{
+    color:#fff;
+    background-color:#009688;
+    border-color:#009688;
 }
 
 /*submit*/
@@ -157,4 +169,62 @@ body{
 } .file-container .sourcefile{
     width: 50%;
     float:left;
+}
+
+/*review  */
+
+.review-header{
+    overflow:hidden;
+    margin:20px 0 ;
+}
+.review-body{
+    margin:0 5%;
+} .review-body .panel{
+    height:200px;
+} .review-body .panel .review-sign1{
+    float:left;
+    width:1%;
+    height:200px;
+    margin-top:-1px;
+    background-color: #5bc0de;
+    border-radius:4px 0 0 4px;
+} .review-body .panel .review-img{
+    float:left;
+    width:19%;
+    height:198px;
+} .review-body .panel .review-img img{
+    width:100%;
+    height:198px;
+} .review-body .panel .review-info{
+    padding-top:40px;
+    font-size:15px;
+    float:left;
+    width:15%;
+    height:198px;
+    background-color: #eeeeee;
+} .review-body .panel .review-comment{
+    float:left;
+    width:50%;
+    height:198px;
+    padding:10px;
+    border-right: solid 1px #e0e0e0;
+} .review-body .panel .review-comment textarea{
+    height:100%;
+    font-size:15px;
+} .review-body .panel .review-score{
+    width:15%;
+    height:198px;
+    float:left;
+} .review-body .panel .review-score .score-top{
+    width:100%;
+    height:46px;
+} .review-body .panel .review-score .score-btn{
+    padding-top: 40px;
+    height:150px;
+} .review-body .panel .review-score .score-btn input{
+    width:80%;
+}
+.review-body .panel .review-score .score-top input{
+    font-size:15px;
+    border-radius: 0 3px 0  0;
 }

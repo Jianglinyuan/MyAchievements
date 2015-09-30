@@ -1,6 +1,11 @@
 <template name="homeworkList">
     {{#each homeworks}}
-        {{> present}}
+        {{#if isPresent}}
+            {{> present}}
+        {{/if}}
+        {{#if isFuture}}
+            {{> future}}
+        {{/if}}
     {{/each}}
 </template>
 
@@ -8,13 +13,20 @@
 
     <div class="col-md-3">
         <div class="panel panel-primary">
-            <div class="panel-heading">作业{{count}}:{{title}}</div>
+            <div class="panel-heading">
+                <span>作业{{count}}:{{title}}</span>
+                <span class="label label-info pull-right">{{preHwItem.status}}</span>
+            </div>
             <div class="panel-body">
+                {{#if haveImage}}
                 <img src="{{image.url}}" alt="">
+                {{else}}
+                <img src="/unsubmit.jpg" alt="">
+                {{/if}}
             </div>
             <div class="panel-footer">
                 <a href="{{url}}" target="view_point">作业链接</a>
-                <a href="#" class="pull-right">评审</a>
+                <a href="{{pathFor 'studentReview'}}" class="pull-right">评审</a>
                 <a href="#" class="pull-right" style="margin-right:20px;" data-toggle="modal" data-target="#{{_id}}">提交作业</a>
             </div>
         </div>
@@ -32,8 +44,30 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="file-submit btn btn-primary" name="{{_id}}">提交</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="file-close btn btn-default" data-dismiss="modal" name="{{_id}}">关闭</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+</template>
+
+<template name="future">
+
+    <div class="col-md-3">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <span>作业{{count}}:{{title}}</span>
+                <span class="label label-success pull-right">{{futHwItem.status}}</span>
+            </div>
+            <div class="panel-body">
+                <div class="panel-content">
+                    <p>作业开始提交时间:</p>
+                    <p>{{futHwItem.startTime}}</p>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a href="{{url}}" target="view_point">作业链接</a>
             </div>
         </div>
     </div>

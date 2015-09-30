@@ -2,11 +2,12 @@
     <form>
         <div class="form-group">
             <label for="githubUrl">github地址</label>
-            <input type="text" id="githubUrl" name="githubUrl" class="form-control">
+            <input type="text" id="githubUrl" name="githubUrl" class="form-control" value="{{file.metadata.githubUrl}}">
         </div>
+
         <div class="form-group">
             <label for="message">附言</label>
-            <textarea class="form-control" rows="3" id="message" name="message"></textarea>
+            <textarea class="form-control" rows="3" id="message" name="message" value="{{file.metadata.message}}"></textarea>
         </div>
 
         <div class="file-container">

@@ -37,6 +37,8 @@ Template.loginForm.events({
                     Router.go("admin");
                 }else if(user.profile.root === "teacher"){
                     Router.go("teacher");
+                }else if(user.profile.root === "student"){
+                    Router.go("student");
                 }
             }
         });

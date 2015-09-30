@@ -8,6 +8,9 @@ html{
 body{
     height:100%;
 }
+#main{
+    margin:0px 10px 0px 10px;
+}
 
 /*login style*/
 
@@ -54,6 +57,7 @@ body{
 
 .navbar{
     border-radius: 0px;
+    margin-bottom: 10px;
 } .navbar .dropdown-menu > li > a{
     text-align: center;
 }
@@ -106,19 +110,51 @@ body{
     width:80px;
 }
 
-/*allhomeworks*/
+/*allHomeworks*/
 
 .hw-container{
-    margin-top:10px;
-} .hw-container .col-md-6{
-    padding-left: 0px;
+    margin:10px 10px;
 } .hw-container .panel-footer a{
     margin-right:20px;
 } .hw-container .starttime{
     margin-right:20px;
+} .hw-container .panel-body{
+    padding-bottom:5px;
 }
 .class1{
     text-align:center;
 }
 
+/*hightcharts*/
 
+#myscore{
+    height:320px;
+}
+#myrank{
+    height:320px;
+}
+.achievements-container .well{
+    padding:5px;
+    margin-bottom:10px;
+} .achievements-container .col-md-3{
+    padding:5px;
+} .achievements-container .col-md-6{
+    padding:5px;
+} .achievements-container .panel-body{
+    padding:4px;
+} .achievements-container .panel-body img{
+    width:100%;
+    height:280px;
+}
+.panel-body:hover .hidecover{
+    display:block;
+}
+
+/*submit*/
+
+.file-container{
+    overflow: hidden;
+} .file-container .sourcefile{
+    width: 50%;
+    float:left;
+}

@@ -1,3 +1,119 @@
 <template name="allUser">
-    all User Here
+    <div class="container-fluid alluser-content">
+        <div class="admin-content">
+            {{> adminItem}}
+        </div>
+        <div class="teacher-content">
+            {{> teacherItem}}
+        </div>
+        <div class="assistant-content">
+            {{> assistantItem}}
+        </div>
+        <div class="student-conten">
+            {{> studentItem}}
+        </div>
+    </div>
+</template>
+
+<template name="adminItem">
+    <label>管理员:</label>
+    <table class="table-bordered col-md-12 col-xs-12 col-lg-12">
+        <thead>
+            <tr>
+                <td class="col-md-4 col-xs-4 col-lg-4">用户名</td>
+                <td class="col-md-4 col-xs-4 col-lg-4">姓名</td>
+                <td class="col-md-4 col-xs-4 col-lg-4">邮箱</td>
+            </tr>
+        </thead>
+        {{#each admins}}
+            <tbody>
+                <tr>
+                    <td class="col-md-4 col-xs-4 col-lg-4">{{username}}</td>
+                    <td class="col-md-4 col-xs-4 col-lg-4">{{profile.name}}</td>
+                    <td class="col-md-4 col-xs-4 col-lg-4">{{email}}</td>
+                </tr>
+            </tbody>
+        {{/each}}
+    </table>
+</template>
+
+
+<template name="teacherItem">
+    <label>教师:</label>
+
+    <table class="table-bordered col-md-12 col-xs-12 col-lg-12">
+        <thead>
+            <tr>
+                <td class="col-md-4 col-xs-4 col-lg-4">用户名</td>
+                <td class="col-md-4 col-xs-4 col-lg-4">姓名</td>
+                <td class="col-md-4 col-xs-4 col-lg-4">邮箱</td>
+            </tr>
+        </thead>
+        {{#each teachers}}
+        <tbody>
+            <tr>
+                <td class="col-md-4 col-xs-4 col-lg-4">{{username}}</td>
+                <td class="col-md-4 col-xs-4 col-lg-4">{{profile.name}}</td>
+                <td class="col-md-4 col-xs-4 col-lg-4">{{email}}</td>
+            </tr>
+        </tbody>
+        {{/each}}
+    </table>
+
+</template>
+
+
+<template name="assistantItem">
+    <label>助教:</label>
+
+    <table class="table-bordered col-md-12 col-xs-12 col-lg-12">
+        <thead>
+            <tr>
+                <td class="col-md-4 col-xs-4 col-lg-4">用户名</td>
+                <td class="col-md-4 col-xs-4 col-lg-4">姓名</td>
+                <td class="col-md-4 col-xs-4 col-lg-4">邮箱</td>
+            </tr>
+        </thead>
+        {{#each assistants}}
+            <tbody>
+                <tr>
+                    <td class="col-md-4 col-xs-4 col-lg-4">{{username}}</td>
+                    <td class="col-md-4 col-xs-4 col-lg-4">{{profile.name}}</td>
+                    <td class="col-md-4 col-xs-4 col-lg-4">{{email}}</td>
+                </tr>
+            </tbody>
+        {{/each}}
+    </table>
+
+</template>
+
+
+<template name="studentItem">
+    <label>学生: </label>
+    <select id="classValue" name="classValue" class="classValue">
+        <option value="1">班级1</option>
+        <option value="2">班级2</option>
+    </select>
+    <table class="table-bordered col-md-12 col-xs-12 col-lg-12">
+        <thead>
+            <tr>
+                <td class="col-md-2 col-xs-2 col-lg-2">学号</td>
+                <td class="col-md-2 col-xs-2 col-lg-2">姓名</td>
+                <td class="col-md-4 col-xs-4 col-lg-4">邮箱</td>
+                <td class="col-md-2 col-xs-2 col-lg-2">分组</td>
+                <td class="col-md-2 col-xs-2 col-lg-2">...</td>
+            </tr>
+        </thead>
+        {{#each students}}
+            <tbody>
+                <tr>
+                    <td class="col-md-2 col-xs-2 col-lg-2">{{username}}</td>
+                    <td class="col-md-2 col-xs-2 col-lg-2">{{profile.name}}</td>
+                    <td class="col-md-4 col-xs-4 col-lg-4">{{email}}</td>
+                    <td class="col-md-2 col-xs-2 col-lg-2">{{profile.group}}</td>
+                    <td class="col-md-2 col-xs-2 col-lg-2"><a href="#" class="deleteUser">删除</a></td>
+                </tr>
+            </tbody>
+        {{/each}}
+    </table>
 </template>

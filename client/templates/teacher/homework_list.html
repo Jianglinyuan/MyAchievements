@@ -1,0 +1,45 @@
+<template name="allHomeworks">
+    <div class="container hw-container">
+        <div class="row">
+            {{#each homeworks}}
+            {{> homeworkItem}}
+            {{/each}}
+        </div>
+    </div>
+
+</template>
+
+<template name="homeworkItem">
+
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">作业{{count}}:{{title}}</div>
+            <div class="panel-body">
+                <p>
+                    <span>班级1:</span>
+                    <span class="label {{class1Status}}">{{classItem1.status}}</span>
+                </p>
+                <p class="class1">
+                    <span class="starttime">开始时间:{{classItem1.startTime}}</span>
+                    <span>结束时间:{{classItem1.deadLine}}</span>
+                </p>
+
+                <p>
+                    <span>班级2:</span>
+                    <span class="label {{class2Status}}">{{classItem2.status}}</span>
+                </p>
+                <p class="class1">
+                    <span class="starttime">开始时间:{{classItem2.startTime}}</span>
+                    <span>结束时间:{{classItem2.deadLine}}</span>
+                </p>
+
+            </div>
+            <div class="panel-footer">
+                <a href="#">作业链接</a>
+                <a href="#">编辑</a>
+                <a href="#">评审</a>
+            </div>
+        </div>
+    </div>
+
+</template>

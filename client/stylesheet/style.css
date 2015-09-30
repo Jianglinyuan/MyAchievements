@@ -57,3 +57,68 @@ body{
 } .navbar .dropdown-menu > li > a{
     text-align: center;
 }
+
+/*admin style*/
+
+/*allUser*/
+
+.alluser-content div{
+    overflow: hidden;
+    margin: 10px 0px;
+}
+.adduser-content .form-group{
+    padding:0;
+} .form-group label{
+    margin-top:5px;
+}
+#student-info{
+    margin-top: 10px;
+    height:30px;
+} #student-info .class{
+    margin-right:20px;
+}
+.submit{
+    margin-top: 10px;
+    width:80px;
+}
+
+/*addUser*/
+
+.addFromExcel-content{
+    padding:0px ;
+} .addFromExcel-content .upfile{
+    margin:10px 0px;
+} .addFromExcel-content .excel-submit{
+    display:block;
+    margin-top:10px;
+    width:80px;
+} 
+
+/*addHomework*/
+
+.new-homework{
+    margin-top:10px;
+} .new-homework .col-md-6{
+    padding:0px;
+} .new-homework .col-md-12{
+    padding:0 15px 0 0;
+} .new-homework .hw-submit{
+    width:80px;
+}
+
+/*allhomeworks*/
+
+.hw-container{
+    margin-top:10px;
+} .hw-container .col-md-6{
+    padding-left: 0px;
+} .hw-container .panel-footer a{
+    margin-right:20px;
+} .hw-container .starttime{
+    margin-right:20px;
+}
+.class1{
+    text-align:center;
+}
+
+

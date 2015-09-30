@@ -1,7 +1,7 @@
 <template name="admin">
 
     <div>
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs" role="tablist" id="myTabs">
             <li role="presentation" class="active"><a href="#alluser" aria-controls="alluser" role="tab" data-toggle="tab">所有用户</a></li>
             <li role="presentation"><a href="#adduser" aria-controls="adduser" role="tab" data-toggle="tab">添加用户</a></li>
         </ul>
@@ -9,7 +9,7 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="alluser">{{> allUser}}</div>
-            <div role="tabpanel" class="tab-pane" id="adduser">add User here</div>
+            <div role="tabpanel" class="tab-pane" id="adduser">{{> addUser}}</div>
         </div>
     </div>
 

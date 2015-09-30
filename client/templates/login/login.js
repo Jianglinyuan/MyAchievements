@@ -35,6 +35,8 @@ Template.loginForm.events({
                 var user = Meteor.user();
                 if (user.profile.root === "admin"){
                     Router.go("admin");
+                }else if(user.profile.root === "teacher"){
+                    Router.go("teacher");
                 }
             }
         });

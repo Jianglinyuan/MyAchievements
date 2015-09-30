@@ -1,0 +1,15 @@
+<template name="teacher">
+
+    <div>
+        <ul class="nav nav-tabs" role="tablist" id="myTabs">
+            <li role="presentation" class="active"><a href="#allHomeworks" aria-controls="alluser" role="tab" data-toggle="tab">所有作业</a></li>
+            <li role="presentation"><a href="#addHomework" aria-controls="adduser" role="tab" data-toggle="tab">添加作业</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="allHomeworks">{{> allHomeworks}}</div>
+            <div role="tabpanel" class="tab-pane" id="addHomework">{{> addHomework}}</div>
+        </div>
+    </div>
+
+</template>

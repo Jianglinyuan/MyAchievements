@@ -36,6 +36,15 @@ Template.studentItem.events({
     },
     'click .deleteUser': function(){
         if ( confirm("确认删除该用户?") ){
+            var allHomeworkFiles = HomeworkFiles.find({'metadata.studentId': this._id}).fetch();
+            console.log(allHomeworkFiles);
+            var deleteArr = [];
+            for( var i = 0 ; i < allHomeworkFiles.length; i++ ){
+                deleteArr[i] = allHomeworkFiles[i]._id;
+            };
+            for ( var j = 0 ; j < deleteArr.length ; j++){
+                HomeworkFiles.remove(deleteArr[j]);
+            };
             Meteor.users.remove(this._id);        
         }
     }

@@ -13,8 +13,8 @@
 
 <template name="reviewItem">
     <div class="review-body">
-        <div class="panel panel-info">
-            <div class="review-sign1"></div>
+        <div class="panel {{detail.panel}}">
+            <div class="{{detail.signcolor}}"></div>
             <div class="review-img">
                 <img src="{{img.url}}" alt="">
             </div>
@@ -28,14 +28,16 @@
             </div>
             <form action="#">
                 <div class="review-comment">
-                    <textarea class="form-control" id="comment" name="comment" placeholder="请填写不少于50字的评论..."></textarea>
+                    <textarea class="form-control" id="comment" name="comment" placeholder="请填写不少于50字的评论..." value="{{review.comment}}"></textarea>
                 </div>
                 <div class="review-score">
                     <div class="score-top form-group">
-                        <input type="num" min="0" max="100" name="score" class="form-control text-center input-lg" placeholder="请打分(0~100)">
+                        <input type="num" min="0" max="100" name="score" class="form-control text-center input-lg" placeholder="请打分(0~100)" value="{{review.score}}">
                     </div>
-                    <div class="score-btn text-center">
-                        <input type="submit" class="btn btn-info" value="提交">
+                    <div class="{{detail.bgcolor}} text-center">
+                        <div style="width:100%">
+                        <input type="submit" class="btn {{detail.btncolor}}" value="{{detail.type}}">
+                        </div>
                     </div>
                 </div>
             </form>

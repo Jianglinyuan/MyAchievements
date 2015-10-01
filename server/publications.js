@@ -10,6 +10,9 @@ Meteor.publish("homeworkfiles", function(){
 Meteor.publish("relationship", function(){
     return Relationship.find();
 });
+Meteor.publish("reviews", function(){
+    return Reviews.find();
+});
 Meteor.publish("myHomeworkFile", function(){
     return HomeworkFiles.find({'metadata.studentId': this.userId});
 });

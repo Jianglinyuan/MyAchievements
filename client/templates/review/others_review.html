@@ -1,3 +1,22 @@
 <template name="othersReview">
-    others review
+    <div class="review-header">
+        <span class="col-md-3 col-xs-3 col-lg-3 text-center">Group {{group2}}</span>
+        <span class="col-md-6 col-xs-6 col-lg-6 text-center">{{title}}</span>
+        <span class="col-md-3 col-xs-3 col-lg-3 text-center"><a href="{{pathFor 'index'}}">返回</a></span>
+    </div>
+    {{> showOthersReview}}
+</template>
+
+<template name="showOthersReview">
+    <div class="other-review-body">
+        <div class="panel panel-success">
+            <div class="review-sign-others"></div>
+            <div class="other-review-comment">
+                <p></p>
+            </div>
+            <div class="other-review-score">
+                <div class="text-center showscore">90</div>
+            </div>
+        </div>
+    </div>
 </template>

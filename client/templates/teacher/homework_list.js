@@ -1,6 +1,6 @@
 Template.allHomeworks.helpers({
     homeworks: function(){
-        return Homeworks.find();
+        return Homeworks.find({},{sort:{count: -1}});
     }
 });
 Template.homeworkItem.helpers({

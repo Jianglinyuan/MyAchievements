@@ -4,7 +4,9 @@
         <span class="col-md-6 col-xs-6 col-lg-6 text-center">{{title}}</span>
         <span class="col-md-3 col-xs-3 col-lg-3 text-center"><a href="{{pathFor 'index'}}">返回</a></span>
     </div>
+    {{#each otherReview}}
     {{> showOthersReview}}
+    {{/each}}
 </template>
 
 <template name="showOthersReview">
@@ -12,10 +14,10 @@
         <div class="panel panel-success">
             <div class="review-sign-others"></div>
             <div class="other-review-comment">
-                <p></p>
+                <p>{{comment}}</p>
             </div>
             <div class="other-review-score">
-                <div class="text-center showscore">90</div>
+                <div class="text-center showscore">{{score}}</div>
             </div>
         </div>
     </div>

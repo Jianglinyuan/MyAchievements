@@ -1,0 +1,88 @@
+<template name="teacherReviewList">
+
+    <div>
+        <ul class="nav nav-tabs" role="tablist" id="myTabs">
+            <li role="presentation" class="active"><a href="#class1" aria-controls="alluser" role="tab" data-toggle="tab">班级1</a></li>
+            <li role="presentation"><a href="#class2" aria-controls="adduser" role="tab" data-toggle="tab">班级2</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="class1">
+                <div class="review-header">
+                    <div class="col-md-3 col-xs-3 col-lg-3"></div>
+                    <div class="col-md-6 col-xs-6 col-lg-6 text-center">{{title}}</div>
+                    <div class="col-md-3 col-xs-3 col-lg-3 text-center"><a href="{{pathFor 'index'}}">返回</a></div>
+                </div>
+                {{#each classGroups '1'}}
+                    {{> showMembers}} 
+                {{/each}}
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="class2">
+
+                <div class="review-header">
+                    <div class="col-md-3 col-xs-3 col-lg-3"></div>
+                    <div class="col-md-6 col-xs-6 col-lg-6 text-center">{{title}}</div>
+                    <div class="col-md-3 col-xs-3 col-lg-3 text-center"><a href="{{pathFor 'index'}}">返回</a></div>
+                </div>
+                {{#each classGroups '2'}}
+                    {{> showMembers}} 
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+</template>
+
+<template name="showMembers">
+    <div class="member-container">
+        <label for="">Group{{number}}</label>
+        <table class="table-striped table-bordered table">
+            <thead>
+                <tr>
+                    <td class="col-md-2 col-xs-2 col-lg-2 text-center">学号</td>
+                    <td class="col-md-2 col-xs-2 col-lg-2 text-center">姓名</td>
+                    <td class="col-md-2 col-xs-2 col-lg-2 text-center">源文件</td>
+                    <td class="col-md-2 col-xs-2 col-lg-2 text-center">github地址</td>
+                    <td class="col-md-2 col-xs-2 col-lg-2 text-center">附言</td>
+                    <td class="col-md-1 col-xs-1 col-lg-1 text-center">评分</td>
+                    <td class="col-md-1 col-xs-1 col-lg-1 text-center">...</td>
+                </tr>
+            </thead>
+            {{#each members}}
+                {{> membersContent}}
+            {{/each}}
+        </table>
+    </div>
+</template>
+
+<template name="membersContent">
+    <tbody>
+        <tr>
+            <td class="col-md-2 col-xs-2 col-lg-2 text-center">{{username}}</td>
+            <td class="col-md-2 col-xs-2 col-lg-2 text-center">{{profile.name}}</td>
+            {{#if zip}}
+            <td class="col-md-2 col-xs-2 col-lg-2 text-center"><a href="{{zip.url}}" class="downloadfile">{{zip.metadata.fileName}}</a></td>
+            {{else}}
+            <td class="col-md-2 col-xs-2 col-lg-2 text-center">该学生没有上传作业</td>
+            {{/if}}
+
+            {{#if haveUrl}}
+            <td class="col-md-2 col-xs-2 col-lg-2 text-center"><a href="{{zip.metadata.githubUrl}}" target="view_point">github地址</a></td>
+            {{else}}
+            <td class="col-md-2 col-xs-2 col-lg-2 text-center">没有链接</td>
+            {{/if}}
+
+            {{#if haveMessage}}
+            <td class="col-md-2 col-xs-2 col-lg-2 text-center">
+                <a href="#" tabindex="0" data-container="body" data-toggle="popover" data-placement="top" role="button" data-trigger="focus" data-content="{{zip.metadata.message}}">查看</a>
+            </td>
+            {{else}}
+            <td class="col-md-2 col-xs-2 col-lg-2 text-center">没有留言</td>
+            {{/if}}
+            
+            <td class="col-md-1 col-xs-1 col-lg-1 text-center">{{finalScore}}</td>
+            <td class="col-md-1 col-xs-1 col-lg-1 text-center"><a href="#" class="gotoReview">评审</a></td>
+        </tr>
+    </tbody>
+</template>

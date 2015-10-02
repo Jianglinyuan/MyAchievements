@@ -1,0 +1,43 @@
+<template name="teacherReviewDetail">
+    <div class="review-header">
+        <div class="col-md-3 col-xs-3 col-lg-3 text-center">Group{{info.profile.group}}: {{info.username}} {{info.profile.name}}</div>
+        <div class="col-md-6 col-xs-6 col-lg-6 text-center">{{hwinfo.title}}</div>
+        <div class="col-md-3 col-xs-3 col-lg-3 text-center"><a href="#" class="gotoReviewList">返回</a></div>
+    </div>
+    {{#each myReviews}}
+        {{> showMyReview}}
+    {{/each}}
+    <div class="review-footer">
+        {{#if isTeacher}}
+            <div class="col-md-3 col-xs-3 col-lg-3"></div>
+            <div class="col-md-6 col-xs-6 col-lg-6 text-center">
+                <div class="form-inline">
+                    <label for="final-score">评分:</label>
+                    <input type="text" class="form-control text-center" placeholder="请评分(0~100)" style="font-size:20px" id="{{haveFinal.classType}}" value="{{haveFinal.score}}">
+                    <button tyle="button" class="btn btn-success {{haveFinal.classType}}">{{haveFinal.type}}</button>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</template>
+
+<template name="showMyReview">
+    <div class="teacher-review-body">
+        <div class="panel panel-success">
+            <div class="review-sign-others"></div>
+            <div class="teacher-review-info">
+                <div class="show-info">
+                    <p class="text-center">Group{{userInfo.profile.group}}</p>
+                    <p class="text-center">{{userInfo.profile.name}}</p>
+                    <p class="text-center">{{userInfo.username}}</p>
+                </div>
+            </div>
+            <div class="teacher-review-comment">
+                <p>{{comment}}</p>
+            </div>
+            <div class="teacher-review-score">
+                <div class="text-center showscore">{{score}}</div>
+            </div>
+        </div>
+    </div>
+</template>

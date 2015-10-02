@@ -67,13 +67,14 @@ Template.addUser.events({
         Meteor.loginWithPassword("admin","admin");
     },
 
-    'click .excel-submit': function(){
+    'click .excel-submit': function(e){
         var file = $("input[name=upfile]")[0].files[0];
         var k,s;
         var reader = new FileReader();
         var name = file.name;
-        var classValue = parseInt($("#classValue").val());
+        var classValue = parseInt($("#classNum2").val());
         console.log(classValue);
+
         reader.readAsBinaryString(file);
         reader.onload = function(e) {
             var data = e.target.result;

@@ -10,5 +10,17 @@ Template.othersReview.helpers({
             reviewerGroup: reviewerGroup
         });
         return relationship.reviewedGroup;
+    },
+    otherReview: function(){
+        var reviewed = Meteor.userId();
+        var user = Meteor.user();
+        var classNum = user && user.profile && user.profile.classNum;
+        var homeworkId = this._id;
+        return Reviews.find({
+            classNum: classNum,
+            homeworkId: homeworkId,
+            reviewed: reviewed,
+            isFinal: false
+        });
     }
 });

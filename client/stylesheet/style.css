@@ -380,3 +380,11 @@ body{
     overflow:hidden;
     margin-top:20px;
 }
+
+/*changepassword*/
+
+.changepasswordForm {
+    width: 350px;
+    margin: auto;
+}
+

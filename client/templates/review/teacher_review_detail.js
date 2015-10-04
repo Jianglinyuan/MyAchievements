@@ -59,14 +59,17 @@ Template.teacherReviewDetail.events({
         var classNum = user && user.profile && user.profile.classNum;
         var homework = this[1];
         var homeworkId = homework._id;
+        var homeworkCount = Homeworks.findOne(homeworkId).count;
         var score = $("input#finalScore").val();
+        //将count添加进去（）
         var data = {
             classNum: classNum,
             homeworkId: homeworkId,
             reviewer: reviewer,
             reviewed: reviewed,
             isFinal: true,
-            score: score
+            score: score,
+            count: homeworkCount,
         };
         Reviews.insert(data);
         alert("提交成功");

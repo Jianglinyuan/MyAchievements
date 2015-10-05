@@ -77,7 +77,9 @@ Template.previous.helpers({
     score : function(){
         var homeworkId = this._id;
         var userId = Meteor.userId();
-        return Reviews.findOne({homeworkId : homeworkId,reviewed : userId}).score;
+        var review = Reviews.findOne({homeworkId : homeworkId,reviewed : userId,isFinal: true});
+        console.log(review);
+        return review.score;
     },
     classRank : function(){
         var homeworkId = this._id;

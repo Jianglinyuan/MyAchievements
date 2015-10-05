@@ -28,10 +28,15 @@ Template.teacherReviewList.helpers({
         return groups;
     },
 });
+
 Template.teacherReviewList.onRendered(function(){
     $(function () {
         $('[data-toggle="popover"]').popover()
     });
+    var classNumShow = Session.get("classNumShow");
+    console.log(classNumShow);
+    if ( classNumShow === 1 ) $('#myTabs a[href=#class1]').tab('show');
+    else if( classNumShow === 2 ) $('#myTabs a[href=#class2]').tab('show');
 });
 
 Template.showMembers.helpers({

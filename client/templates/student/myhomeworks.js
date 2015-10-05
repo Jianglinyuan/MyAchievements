@@ -2,7 +2,8 @@ Template.homeworkList.helpers({
     homeworks: function(){
         return Homeworks.find();
     },
-    isPresent: function(){
+    checkStatus: function(obj){
+        this.obj = obj;
         var user = Meteor.user();
         var classNum = user && user.profile && user.profile.classNum;
         var classItem ;
@@ -10,18 +11,7 @@ Template.homeworkList.helpers({
             classItem = this.classes[0];
         else
             classItem = this.classes[1];
-        if ( classItem.status === "present" ) return true;
-        else return false;
-    },
-    isFuture: function(){
-        var user = Meteor.user();
-        var classNum = user && user.profile && user.profile.classNum;
-        var classItem ;
-        if ( classNum === 1 )
-            classItem = this.classes[0];
-        else
-            classItem = this.classes[1];
-        if ( classItem.status === "future" ) return true;
+        if ( classItem.status === obj ) return true;
         else return false;
     }
 });
@@ -64,4 +54,24 @@ Template.future.helpers({
         else homeworkItem = this.classes[1];
         return homeworkItem;
     }  
+});
+Template.previous.helpers({
+    file: function(){
+        var studentId = Meteor.userId();
+        var homeworkId = this._id;
+        return HomeworkFiles.findOne({
+            'metadata.studentId': studentId,
+            'metadata.homeworkId': homeworkId,
+            'metadata.fileImage': {$ne: 1}
+        });
+    },
+    fileImage: function(){
+        var studentId = Meteor.userId();
+        var homeworkId = this._id;
+        return HomeworkFiles.findOne({
+            'metadata.studentId': studentId,
+            'metadata.homeworkId': homeworkId,
+            'metadata.fileImage': 1
+        });
+    }
 });

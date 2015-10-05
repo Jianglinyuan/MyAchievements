@@ -29,13 +29,13 @@ if(Meteor.isServer){
             var ifChange = false;
             for(var j=0 ; j<homeworks[i].classes.length ; j++){
                 var classesInfo = homeworks[i].classes[j];
-                if(getRealTime(classesInfo.startTime) > Date.parse(time)/3600000&&classesInfo.status != 'future'){
+                if(getRealTime(classesInfo.startTime) > Date.parse(time)/3600000 && classesInfo.status != 'future'){
                     allClass[j].status = 'future';
                     ifChange = true;
-                }else if(getRealTime(classesInfo.startTime) <= Date.parse(time)/3600000&&Date.parse(time)/3600000 <getRealTime(classesInfo.deadLine) &&classesInfo.status != 'present'){
+                }else if(getRealTime(classesInfo.startTime) <= Date.parse(time)/3600000 && Date.parse(time)/3600000 <getRealTime(classesInfo.deadLine) && classesInfo.status != 'present'){
                     allClass[j].status = 'present';
                     ifChange = true;
-                }else if(Date.parse(time)/3600000 >= getRealTime(classesInfo.deadLine)&&classesInfo.status!='previous'){
+                }else if(Date.parse(time)/3600000 >= getRealTime(classesInfo.deadLine) && classesInfo.status!='previous'){
                     allClass[j].status = 'previous';
                     ifChange = true;
                 }

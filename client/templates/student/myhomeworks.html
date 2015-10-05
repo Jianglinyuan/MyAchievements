@@ -1,10 +1,13 @@
 <template name="homeworkList">
     {{#each homeworks}}
-        {{#if isPresent}}
+        {{#if checkStatus 'present'}}
             {{> present}}
         {{/if}}
-        {{#if isFuture}}
+        {{#if checkStatus 'future'}}
             {{> future}}
+        {{/if}}
+        {{#if checkStatus 'previous'}}
+            {{> previous}}
         {{/if}}
     {{/each}}
 </template>
@@ -72,4 +75,23 @@
         </div>
     </div>
 
+</template>
+<template name="previous">
+    <div class="col-md-3">
+        <div class="panel panel-gray">
+            <div class="panel-heading">
+                <span>作业{{count}}:{{title}}</span>
+                <span class="label label-default pull-right">end</span>
+            </div>
+            <div class="panel-body">
+                <img src="{{fileImage.url}}" alt="">
+            </div>
+            <div class="panel-footer">
+                <a href="{{url}}" target="view_point">作业链接</a>
+                <a href="#" class="pull-right">查看评审</a>
+                <a href="{{file.url}}" class="pull-right" style="margin-right:20px;">源文件</a>
+                
+            </div>
+        </div>
+    </div>
 </template>

@@ -401,4 +401,14 @@ body{
     width: 350px;
     margin: auto;
 }
+.mask {
+    position: absolute;
+    background-color: white;
+    top: 51px;
+    height: 70%;
+    width: 100%;
+    border: 1px solid #ddd;
+    opacity: 0.4;
+    vertical-align: center;
+}
 

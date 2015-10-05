@@ -73,5 +73,31 @@ Template.previous.helpers({
             'metadata.homeworkId': homeworkId,
             'metadata.fileImage': 1
         });
-    }
+    },
+    score : function(){
+        var homeworkId = this._id;
+        var userId = Meteor.userId();
+        return Reviews.findOne({homeworkId : homeworkId,reviewed : userId}).score;
+    },
+    classRank : function(){
+        var homeworkId = this._id;
+        var userId = Meteor.userId();
+        var classnum = Meteor.user().profile.classNum;
+        var score = parseFloat(Reviews.findOne({homeworkId : homeworkId,reviewed : userId}).score);
+        return getOneClassRank(homeworkId,score,classnum);
+    },
+    groupRank : function(){
+        var homeworkId = this._id;
+        var userId = Meteor.userId();
+        var classnum = Meteor.user().profile.classNum;
+        var score = parseFloat(Reviews.findOne({homeworkId : homeworkId,reviewed : userId}).score);
+        var group = Meteor.user().profile.group;
+        var allSameGroup = Meteor.users.find({'profile.group' : group}).fetch();
+        var allSameGroupStudentID = [];
+        for(var x=0;x<allSameGroup.length;x++){
+            allSameGroupStudentID.push(allSameGroup[x]._id);
+        };
+        console.log(score);
+        return getOneGroupRank(homeworkId,score,allSameGroupStudentID,classnum);
+    },
 });

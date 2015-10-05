@@ -31,8 +31,10 @@ Template.present.events({
 
         //get homework data
         var homeworkId = $(e.currentTarget).attr("name");
-        var githubUrl = $("input[name=githubUrl]").val();
-        var message = $("textarea[name=message]").val();
+        var githubUrl = $("input#githubUrl").val();
+        console.log(githubUrl);
+        var message = $("textarea#message").val();
+        console.log(message);
         var file = $("input[name=" + homeworkId + "]")[0].files[0];
         var image = $("input[name=image" + homeworkId + "]")[0].files[0];
 

@@ -326,6 +326,65 @@ body{
     color:#fff;
 }
 
+/*tareview*/
+
+.tareview-body{
+    margin: 0 5%;
+} .tareview-body .panel{
+    height: 200px;
+}.tareview-body .tareview-sign{
+    float:left;
+    width:1%;
+    height:200px;
+    margin-top:-1px;
+    background-color: #337ab7;
+    border-radius:4px 0 0 4px;
+} .tareview-body .panel .tareview-content{
+    float:left;
+    width:82%;
+    height:198px;
+    padding:10px;
+    border-right: solid 1px #337ab7;
+} .tareview-body .panel .tareview-content textarea{
+    height: 100%;
+    font-size:15px;
+    width: 100%;
+}.tareview-body .panel .tareview-score{
+    float:left;
+    width: 17%;
+    height: 198px;
+} .tareview-body .panel .tareview-score .score-top{
+    width: 100%;
+    height: 46px;
+    margin-bottom: 0px;
+} .tareview-body .panel .tareview-score .score-top input{
+    font-size: 15px;
+    border-radius:0 3px 0 0;
+} .tareview-body .panel .tareview-score .score-btn{
+    height:152px;
+    background-color: #337ab7;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    flex:initial;
+} .tareview-body .panel .tareview-score .score-btn input{
+    width: 80%;
+    border-color:#fff;
+}
+.teacher-review-body .panel .review-sign-ta{
+    float:left;
+    width:1%;
+    margin-top:-1px;
+    background-color: #337ab7;
+    border-radius:4px 0 0 4px; 
+    flex:initial;
+}
 /*teacher review*/
 
 .member-container {
@@ -381,7 +440,26 @@ body{
     -webkit-align-items: center;
     align-items: center;
     flex:initial;
-} .teacher-review-body .teacher-review-score .showscore{
+} .teacher-review-body .teacher-review-score-ta{
+    float:left;
+    width:17%;
+    background-color:#337ab7;
+    border-radius:0 3px 3px 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    flex:initial;
+}.teacher-review-body .teacher-review-score .showscore{
+    width:100%;
+    font-size:30px;
+    color:#fff;
+} .teacher-review-body .teacher-review-score-ta .showscore{
     width:100%;
     font-size:30px;
     color:#fff;

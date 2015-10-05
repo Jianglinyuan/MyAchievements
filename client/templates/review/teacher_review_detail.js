@@ -21,6 +21,25 @@ Template.teacherReviewDetail.helpers({
             isTa: false
         });
     },
+    taReviews: function(){
+        var user = this[0];
+        var reviewed = user && user._id;
+        var classNum = user && user.profile && user.profile.classNum;
+        var homework = this[1];
+        var homeworkId = homework && homework._id;
+        return Reviews.find({
+            reviewed: reviewed,
+            classNum: classNum,
+            homeworkId: homeworkId,
+            isTa: true
+        });
+    },
+    isTa: function(){
+        var user = Meteor.user();
+        var userRoot = user && user.profile && user.profile.root;
+        if ( userRoot === "assistant" ) return true;
+        else return false;
+    },
     isTeacher: function(){
         var user = Meteor.user();
         var userRoot = user && user.profile && user.profile.root;
@@ -112,5 +131,11 @@ Template.showMyReview.helpers({
     userInfo: function(){
         var userId = this.reviewer;
         return Meteor.users.findOne(userId); 
+    }
+});
+Template.showTaReviews.helpers({
+    taInfo: function(){
+        var userId = this.reviewer;
+        return Meteor.users.findOne(userId);
     }
 });

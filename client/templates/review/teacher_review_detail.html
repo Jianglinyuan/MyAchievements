@@ -9,9 +9,12 @@
     {{/each}}
     <div class="review-footer">
         {{#if isTa}}
-            <div class="tareview"></div>
+            {{> taReview}}
         {{/if}}
         {{#if isTeacher}}
+            {{#each taReviews }}
+                {{> showTaReviews}}
+            {{/each}}
             <div class="col-md-3 col-xs-3 col-lg-3 text-center">
             </div>
             <div class="col-md-6 col-xs-6 col-lg-6 text-center">
@@ -40,6 +43,26 @@
                 <p>{{comment}}</p>
             </div>
             <div class="teacher-review-score">
+                <div class="text-center showscore">{{score}}</div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="showTaReviews">
+    <div class="teacher-review-body">
+        <div class="panel panel-primary">
+            <div class="review-sign-ta"></div>
+            <div class="teacher-review-info">
+                <div class="show-info">
+                    <p class="text-center">助教</p>
+                    <p class="text-center">{{taInfo.profile.name}}</p>
+                </div>
+            </div>
+            <div class="teacher-review-comment">
+                <p>{{comment}}</p>
+            </div>
+            <div class="teacher-review-score-ta">
                 <div class="text-center showscore">{{score}}</div>
             </div>
         </div>

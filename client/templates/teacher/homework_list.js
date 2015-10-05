@@ -32,5 +32,10 @@ Template.homeworkItem.helpers({
             return "label-default";
         }
     },
+    isTeacher: function(){
+        var user = Meteor.user();
+        if ( user.profile.root === "teacher" ) return true;
+        else return false;
+    }
 
 });

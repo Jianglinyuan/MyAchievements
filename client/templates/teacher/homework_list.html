@@ -36,7 +36,9 @@
             </div>
             <div class="panel-footer">
                 <a href="#">作业链接</a>
+                {{#if isTeacher}}
                 <a href="{{pathFor 'editHomework'}}">编辑</a>
+                {{/if}}
                 <a href="{{pathFor 'teacherReviewList'}}">评审</a>
             </div>
         </div>

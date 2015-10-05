@@ -3,7 +3,10 @@
     <div>
         <ul class="nav nav-tabs" role="tablist" id="myTabs">
             <li role="presentation" class="active"><a href="#allHomeworks" aria-controls="alluser" role="tab" data-toggle="tab">所有作业</a></li>
+            {{#if isTeacher}}
             <li role="presentation"><a href="#addHomework" aria-controls="adduser" role="tab" data-toggle="tab">添加作业</a></li>
+            {{else}}
+            {{/if}}
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">

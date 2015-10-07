@@ -2,24 +2,33 @@
     <form>
         <div class="form-group">
             <label for="githubUrl">github地址</label>
-            <input type="text" id="githubUrl" name="githubUrl" class="form-control" value="{{file.metadata.githubUrl}}">
+            <input type="text" id="githubUrl" name="githubUrl" class="form-control" >
         </div>
 
         <div class="form-group">
             <label for="message">附言</label>
-            <textarea class="form-control" rows="3" id="message" name="message" value="{{file.metadata.message}}"></textarea>
+            <textarea class="form-control" rows="3" id="message" name="message" ></textarea>
         </div>
 
         <div class="file-container">
             <div class="sourcefile {{errorClass 'file'}}">
                 <label for="sourcefile">源文件</label>
-                <input type="file" id="sourcefile" name="{{_id}}">
+                <input type="file" id="sourcefile" name="{{_id}}" placeholder="{{file.metadata.fileName}}">
+                {{#if isUploading}}
+                    {{#with FS.GetFile "homeworkfiles" isUploading}}
+                        <p style="padding:2%;">{{> FS.UploadProgressBar bootstrap=true showPercent=true}}</p>
+                    {{/with}}
+                {{/if}}
                 <span class="help-block">{{errorMessage 'file'}}</span>
             </div>
-
             <div class="sourcefile {{errorClass 'image'}}">
                 <label for="image">预览图</label>
                 <input type="file" id="image" name="image{{_id}}">
+                {{#if isImageUploading}}
+                    {{#with FS.GetFile "homeworkfiles" isImageUploading}}
+                        <p style="padding:2%;">{{> FS.UploadProgressBar bootstrap=true showPercent=true}}</p>
+                    {{/with}}
+                {{/if}}
                 <span class="help-block">{{errorMessage 'image'}}</span>
             </div>
         </div>

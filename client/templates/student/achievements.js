@@ -88,7 +88,6 @@ Template.achievements.onRendered(function(){
             },
             yAxis: [{
                 max:classCount,
-                min:0,
                 reversed: true,
                 allowDecimals: false,
                 title: {
@@ -96,9 +95,10 @@ Template.achievements.onRendered(function(){
                 }
             },{
                 max:allSameGroup.length,
-                min:0,//最小值没用
                 reversed: true,
                 opposite:true,
+                min: 1,
+                tickInterval: 1,
                 gridLineDashStyle: 'dot',
                 allowDecimals: false,
                 title: {

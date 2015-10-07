@@ -56,12 +56,16 @@ body{
 /*header style*/
 
 .navbar{
-    background-color:#0d47a1;
-    border-color:#0d47a1;
+    background-color:#1565c0;
+    border-color:#1565c0;
     border-radius: 0px;
     margin-bottom: 10px;
 } .navbar .dropdown-menu > li > a{
     text-align: center;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus{
+    color:#fff;
+    background-color: #0d47a1;
 }
 
 /*admin style*/
@@ -183,10 +187,11 @@ body{
 /*submit*/
 
 .file-container{
-    overflow: hidden;
+    overflow: auto;
 } .file-container .sourcefile{
     width: 50%;
     float:left;
+    overflow:hidden;
 }
 
 /*review  */
@@ -509,3 +514,4 @@ body{
     color:#fff;
 }
 
+/*toast*/

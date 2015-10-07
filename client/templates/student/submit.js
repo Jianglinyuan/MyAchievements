@@ -1,5 +1,7 @@
 Template.submit.onRendered(function(){
     Session.set("homeworkFilesError",{});
+    Session.set("fileId","");
+    Session.set("imageFileId");
 });
 Template.submit.helpers({
     errorMessage: function(filed){
@@ -8,14 +10,11 @@ Template.submit.helpers({
     errorClass: function(filed){
         return Session.get("homeworkFilesError")[filed] ? "has-error" : "";
     },
-    file: function(){
-        var studentId = Meteor.userId();
-        var homeworkId = this._id;
-        return HomeworkFiles.findOne({
-            'metadata.studentId': studentId,
-            'metadata.homeworkId': homeworkId,
-            'metadata.fileImage': {$ne: 1}
-        });
+    isUploading: function(){
+        return Session.get("fileId");
+    },
+    isImageUploading: function(){
+        return Session.get("imageFileId");
     }
 });
 Template.present.events({
@@ -78,13 +77,20 @@ Template.present.events({
             count--;
         }
 
-        HomeworkFiles.insert(homeworkfile, function(error){
+        HomeworkFiles.insert(homeworkfile, function(error,fileObj){
             if ( error ){
                 errors.file = "文件类型错误";
             }else{
-                HomeworkFiles.insert(imagefile);
-                $('#' + homeworkId).modal('hide');
+                HomeworkFiles.insert(imagefile,function(error,fileObj){
+                    if ( error ){
+                        //...
+                    }else{
+                        Session.set("imageFileId",fileObj._id);
+                    }
+                });
+                //$('#' + homeworkId).modal('hide');
                 Session.set("homeworkFilesError",{});
+                Session.set("fileId",fileObj._id);
             }
         });
     },

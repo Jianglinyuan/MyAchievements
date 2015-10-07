@@ -10,6 +10,16 @@ Template.taReview.events({
         var homeworkCount = Homeworks.findOne(homeworkId).count;
         var comment = $("textarea#tacomment").val();
         var score = $("input#tascore").val();
+        var validate = true;
+        var foo = parseFloat(score);
+        console.log(foo);
+        if ( isNaN(foo) ){
+            validate = false;
+        }else{
+            if ( score < 0 || score > 100 ){
+                validate = false;
+            }
+        }
         //将count添加进去（）
         var newReview = {
             classNum: classNum,
@@ -29,17 +39,21 @@ Template.taReview.events({
             homeworkId: homeworkId,
             isTa: true
         });
-        if ( oldReview ){
-            Reviews.update(oldReview._id,{
-                $set: {
-                    comment: comment,
-                    score: score
-                }
-            });
-            alert("更新成功");
+        if ( validate ){
+            if ( oldReview ){
+                Reviews.update(oldReview._id,{
+                    $set: {
+                        comment: comment,
+                        score: score
+                    }
+                });
+                alert("更新成功");
+            }else{
+                Reviews.insert(newReview);
+                alert("提交成功");
+            }
         }else{
-            Reviews.insert(newReview);
-            alert("提交成功");
+            alert("评分输入错误");
         }
     },
 });
@@ -69,5 +83,8 @@ Template.taReview.helpers({
             data.type = "提交";
         };
         return data;
+    },
+    Id: function(){
+        return Meteor.userId();
     }
 });

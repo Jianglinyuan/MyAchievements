@@ -84,24 +84,26 @@
                 <span class="label label-default pull-right">end</span>
             </div>
             <div class="panel-body"> 
-                <img src="{{fileImage.url}}" class="" alt="">
                 <div class="mask">
-                    <p style="color: black;text-align: center;">
-                        分数：{{score}}
-                    </p>
-                    <p style="color: black;text-align: center;">
-                        班级排名：{{classRank}}
-                    </p>
-                    <p style="color: black;text-align: center;">
-                        分组排名：{{groupRank}}
-                    </p>
+                    <div class="mask-inner">
+                        <div class="show">
+                            分数：{{score}}
+                        </div>
+                        <div class="show">
+                            班级排名：{{classRank}}
+                        </div>
+                        <div class="show">
+                            小组排名：{{groupRank}}
+                        </div>
+                    </div>
                 </div>
+                <img src="{{fileImage.url}}" class="" alt="">
             </div>
             
             <div class="panel-footer">
                 <a href="{{url}}" target="view_point">作业链接</a>
-                <a href="#" class="pull-right">查看评审</a>
-                <a href="{{file.url}}" class="pull-right" style="margin-right:20px;">源文件</a>
+                <a href="{{pathFor 'previousReview'}}" class="pull-right">查看评审</a>
+                <a href="{{file.url}}" class="pull-right pre-download" style="margin-right:20px;">源文件</a>
                 
             </div>
         </div>

@@ -1,8 +1,16 @@
 <template name="editHomework">
-    <div class="edit-header">
-        <div>编辑作业</div>
+    <div>
+        <ul class="nav nav-tabs" role="tablist" id="myTabs">
+            <li role="presentation" class="active"><a href="#editHomework" aria-controls="alluser" role="tab" data-toggle="tab">编辑作业</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="editHomework">{{> editHomeworkItem}}</div>
+        </div>
     </div>
+</template>
 
+<template name="editHomeworkItem">
     <div class="row">
         <div class="new-homework col-md-6 col-md-offset-3 ">
             <p class="lead">作业{{homeworkInfo.count}}:</p>

@@ -1,0 +1,38 @@
+<template name="previousReview">
+    <div>
+        <ul class="nav nav-tabs" role="tablist" id="myTabs">
+            <li role="presentation" class="active"><a href="#previousReview" aria-controls="alluser" role="tab" data-toggle="tab">查看评审</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="previousReview">{{> preReviewItem}}</div>
+        </div>
+    </div>
+    
+</template>
+
+<template name="preReviewItem">
+    <div class="review-header">
+        <div class="col-md-3 col-xs-3 col-lg-3 text-center"></div>
+        <div class="col-md-6 col-xs-6 col-lg-6 text-center">{{title}}</div>
+        <div class="col-md-3 col-xs-3 col-lg-3 text-center"><a href="{{pathFor 'index'}}">返回</a></div>
+    </div>
+    {{#each otherReviews}}
+        {{> showOthersReviews}}
+    {{/each}}
+</template>
+
+<template name="showOthersReviews">
+    <div class="other-review-body">
+        <div class="panel panel-success">
+            <div class="review-sign-others"></div>
+            <div class="other-review-comment">
+                <p>{{comment}}</p>
+            </div>
+            <div class="other-review-score">
+                <div class="text-center showscore">{{score}}</div>
+            </div>
+        </div>
+    </div>
+</template>
+

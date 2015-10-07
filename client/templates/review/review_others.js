@@ -99,9 +99,19 @@ Template.reviewItem.events({
     'submit form': function(e,template){
         e.preventDefault();
         //get data...
-        var comment = $("textarea[name=comment]").val();
-        var score = $("input[name=score]").val();
+        var comment = $("textarea[name=comment"+template.data.metadata.studentId+"]").val();
+        var score = $("input[name=score"+template.data.metadata.studentId+"]").val();
 
+        var validate = true;
+        var foo = parseFloat(score);
+        console.log(foo);
+        if ( isNaN(foo) ){
+            validate = false;
+        }
+        else {
+            if ( score > 100 || score < 0 )
+                validate = false;
+        }
         var classNum = this.metadata.classNum;
         var reviewer = Meteor.userId();
         var reviewed = this.metadata.studentId;
@@ -123,17 +133,22 @@ Template.reviewItem.events({
             classNum: classNum,
             homeworkId: homeworkId
         });
-        if ( oldReview ){
-            Reviews.update(oldReview._id,{
-                $set: {
-                    comment: comment,
-                    score: score
-                } 
-            });
-            alert("更新成功");
-        } else {
-            Reviews.insert(newReview);
-            alert("提交成功")
+        if ( validate ){
+            
+            if ( oldReview ){
+                Reviews.update(oldReview._id,{
+                    $set: {
+                        comment: comment,
+                        score: score
+                    } 
+                });
+                alert("更新成功");
+            } else {
+                Reviews.insert(newReview);
+                alert("提交成功")
+            }
+        }else{
+            alert("评分输入错误");
         }
     },
     'click .download-file': function(event) {

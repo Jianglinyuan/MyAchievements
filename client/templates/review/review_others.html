@@ -28,11 +28,11 @@
             </div>
             <form action="#">
                 <div class="review-comment">
-                    <textarea class="form-control" id="comment" name="comment" placeholder="请填写不少于50字的评论..." value="{{review.comment}}"></textarea>
+                    <textarea class="form-control" id="comment" name="comment{{metadata.studentId}}" placeholder="请填写不少于50字的评论..." value="{{review.comment}}"></textarea>
                 </div>
                 <div class="review-score">
                     <div class="score-top form-group">
-                        <input type="num" min="0" max="100" name="score" class="form-control text-center input-lg" placeholder="请打分(0~100)" value="{{review.score}}">
+                        <input type="num" min="0" max="100" name="score{{metadata.studentId}}" class="form-control text-center input-lg" placeholder="请打分(0~100)" value="{{review.score}}">
                     </div>
                     <div class="{{detail.bgcolor}} text-center">
                         <div style="width:100%">

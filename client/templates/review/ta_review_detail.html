@@ -3,11 +3,11 @@
         <div class="panel panel-primary">
             <div class="tareview-sign"></div>
             <div class="tareview-content">
-                <textarea id="tacomment" name="tacomment" class="form-control" placeholder="请填写评论" value="{{taReviewInfo.comment}}"></textarea>
+                <textarea id="tacomment" name="tacomment{{Id}}" class="form-control" placeholder="请填写评论" value="{{taReviewInfo.comment}}"></textarea>
             </div>
             <div class="tareview-score">
                 <div class="score-top form-group">
-                    <input type="text" class="form-control input-lg text-center" name="tascore" placeholder="请打分(0~100)" id="tascore" value="{{taReviewInfo.score}}">
+                    <input type="text" class="form-control input-lg text-center" name="tascore{{Id}}" placeholder="请打分(0~100)" id="tascore" value="{{taReviewInfo.score}}">
                 </div>
                 <div class="score-btn text-center">
                     <div style="width:100%;">

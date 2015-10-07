@@ -56,6 +56,8 @@ body{
 /*header style*/
 
 .navbar{
+    background-color:#0d47a1;
+    border-color:#0d47a1;
     border-radius: 0px;
     margin-bottom: 10px;
 } .navbar .dropdown-menu > li > a{
@@ -147,7 +149,7 @@ body{
 } .achievements-container .col-md-6{
     padding:5px;
 } .achievements-container .panel-body{
-    padding:4px;
+    padding:0px;
 } 
 .achievements-container .panel-body img{
     width:100%;
@@ -161,11 +163,13 @@ body{
     text-align: center;
 }
 .panel-gray{
-    border-color: #bdbdbd;
+    border-color: #777;
 } .panel-gray > .panel-heading{
     color: #fff;
+    background-color: #777;
+    border-color: #777;
+} .panel-gray > .panel-heading .label-default{
     background-color: #bdbdbd;
-    border-color: #bdbdbd;
 }
 .panel-success{
     border-color:#009688;
@@ -480,13 +484,28 @@ body{
     margin: auto;
 }
 .mask {
-    position: absolute;
-    background-color: white;
-    top: 51px;
-    height: 70%;
+    display:inline-block;
     width: 100%;
-    border: 1px solid #ddd;
-    opacity: 0.4;
-    vertical-align: center;
+    text-align: center;
+    height:280px;
+    position:absolute;
+    padding-right: 11px;
+}.mask .mask-inner{
+    background-color:rgba(0,0,0,0.7);
+    height:280px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    flex:initial;
+} 
+.mask .show {
+    width: 100%;
+    color:#fff;
 }
 

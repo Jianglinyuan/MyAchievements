@@ -103,3 +103,11 @@ Template.previous.helpers({
         return getOneGroupRank(homeworkId,score,allSameGroupStudentID,classnum);
     },
 });
+
+Template.previous.events({
+    'click .pre-download': function(event){
+        event.preventDefault();
+        var url=$(event.currentTarget).attr("href");
+        window.open(url);
+    }  
+});

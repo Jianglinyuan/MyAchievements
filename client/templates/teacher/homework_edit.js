@@ -1,4 +1,4 @@
-Template.editHomework.helpers({
+Template.editHomeworkItem.helpers({
     homeworkInfo: function(){
         var homeworkId = this._id;
         return Homeworks.findOne(homeworkId);
@@ -21,12 +21,12 @@ Template.editHomework.helpers({
     }
 });
 
-Template.editHomework.onRendered(function(){
+Template.editHomeworkItem.onRendered(function(){
     Session.set("editHomeworkError",{});
     $('.datepicker').datetimepicker();
 });
 
-Template.editHomework.events({
+Template.editHomeworkItem.events({
     'submit form': function(e){
         e.preventDefault();
         var homeworkId = this._id;

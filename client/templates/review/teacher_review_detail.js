@@ -80,6 +80,14 @@ Template.teacherReviewDetail.events({
         var homeworkId = homework._id;
         var homeworkCount = Homeworks.findOne(homeworkId).count;
         var score = $("input#finalScore").val();
+        var validate = true;
+        var foo = parseFloat(score);
+        if ( isNaN(score) ){
+            validate = false;
+        }else{
+            if ( score < 0 || score > 100 )
+                validate = false;
+        };
         //将count添加进去（）
         var data = {
             classNum: classNum,
@@ -90,8 +98,12 @@ Template.teacherReviewDetail.events({
             score: score,
             count: homeworkCount,
         };
-        Reviews.insert(data);
-        alert("提交成功");
+        if ( validate ){
+            Reviews.insert(data);
+            alert("提交成功");
+        }else{
+            alert("评分输入错误");
+        }
     },
     'click .finalUpdate': function(e){
         e.preventDefault();
@@ -106,13 +118,24 @@ Template.teacherReviewDetail.events({
         });
         var reviewId = review._id;
         var score = $("input#finalUpdate").val();
-        console.log(score);
-        Reviews.update(reviewId,{
-            $set:{
-                score: score
-            }
-        });
-        alert("更新成功");
+        var validate = true;
+        var foo = parseFloat(score);
+        if ( isNaN(score) ){
+            validate = false;
+        }else{
+            if ( score < 0 || score > 100 )
+                validate = false;
+        };
+        if ( validate ){
+            Reviews.update(reviewId,{
+                $set:{
+                    score: score
+                }
+            });
+            alert("更新成功");
+        }else{
+            alert("评分输入错误");
+        }
     },
     'click .gotoReviewList': function(e){
         e.preventDefault();

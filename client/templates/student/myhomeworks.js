@@ -85,14 +85,14 @@ Template.previous.helpers({
         var homeworkId = this._id;
         var userId = Meteor.userId();
         var classnum = Meteor.user().profile.classNum;
-        var score = parseFloat(Reviews.findOne({homeworkId : homeworkId,reviewed : userId}).score);
+        var score = parseFloat(Reviews.findOne({homeworkId : homeworkId,reviewed : userId ,isFinal:true}).score);
         return getOneClassRank(homeworkId,score,classnum);
     },
     groupRank : function(){
         var homeworkId = this._id;
         var userId = Meteor.userId();
         var classnum = Meteor.user().profile.classNum;
-        var score = parseFloat(Reviews.findOne({homeworkId : homeworkId,reviewed : userId}).score);
+        var score = parseFloat(Reviews.findOne({homeworkId : homeworkId,reviewed : userId, isFinal:true}).score);
         var group = Meteor.user().profile.group;
         var allSameGroup = Meteor.users.find({'profile.group' : group}).fetch();
         var allSameGroupStudentID = [];

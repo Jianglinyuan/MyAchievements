@@ -78,21 +78,17 @@ Template.present.events({
             if ( error ){
                 errors.file = "文件类型错误";
             }else{
-
                 console.log(homeworkfile instanceof FS.File);
                 HomeworkFiles.insert(imagefile,function(error,fileObj){
                     if ( error ){
                         //...
                     }else{
                         Session.set("imageFileId",fileObj._id);
-                        $('#' + homeworkId).modal('hide');
+                        //$('#' + homeworkId).modal('hide');
+                        Session.set("fileId",fileObj._id);
                     }
                 });
-                var progressFunc = function(){
-                    return homeworkfile.uploadProgress();
-                };
                 Session.set("homeworkFilesError",{});
-                Session.set("fileId",fileObj._id);
 
             }
         });

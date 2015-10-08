@@ -44,6 +44,24 @@ Template.loginForm.events({
         });
     }
 });
+Template.findPassword.events({
+    'click .email-submit': function(e){
+        var email = $("input#email").val();
+        if ( !email ){
+            alert("请输入邮箱");
+        }else {
+            var options = {
+                email: email,
+            };
+            Accounts.forgotPassword(options, function(error){
+                if (error)
+                    alert(error.reason);
+                else
+                    alert("已发送邮箱，请查收");
+            });
+        }
+    }  
+});
 
 validateUser = function(user){
     var errors ={};

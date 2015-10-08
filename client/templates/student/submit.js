@@ -1,7 +1,7 @@
 Template.submit.onRendered(function(){
     Session.set("homeworkFilesError",{});
     Session.set("fileId","");
-    Session.set("imageFileId");
+    Session.set("imageFileId","");
 });
 Template.submit.helpers({
     errorMessage: function(filed){
@@ -18,7 +18,7 @@ Template.submit.helpers({
     }
 });
 Template.present.events({
-    'click .file-submit': function(e){
+    'click .file-submit': function(e,template){
         e.preventDefault();
         var user = Meteor.user();
         //get student data...
@@ -31,9 +31,7 @@ Template.present.events({
         //get homework data
         var homeworkId = $(e.currentTarget).attr("name");
         var githubUrl = $("input#githubUrl").val();
-        console.log(githubUrl);
         var message = $("textarea#message").val();
-        console.log(message);
         var file = $("input[name=" + homeworkId + "]")[0].files[0];
         var image = $("input[name=image" + homeworkId + "]")[0].files[0];
 
@@ -76,21 +74,26 @@ Template.present.events({
             HomeworkFiles.remove({_id: fileId});
             count--;
         }
-
         HomeworkFiles.insert(homeworkfile, function(error,fileObj){
             if ( error ){
                 errors.file = "文件类型错误";
             }else{
+
+                console.log(homeworkfile instanceof FS.File);
                 HomeworkFiles.insert(imagefile,function(error,fileObj){
                     if ( error ){
                         //...
                     }else{
                         Session.set("imageFileId",fileObj._id);
+                        $('#' + homeworkId).modal('hide');
                     }
                 });
-                //$('#' + homeworkId).modal('hide');
+                var progressFunc = function(){
+                    return homeworkfile.uploadProgress();
+                };
                 Session.set("homeworkFilesError",{});
                 Session.set("fileId",fileObj._id);
+
             }
         });
     },

@@ -89,6 +89,7 @@ Template.achievements.onRendered(function(){
             yAxis: [{
                 max:classCount,
                 reversed: true,
+                showFirstLabel: false,
                 allowDecimals: false,
                 title: {
                     text: 'Class rank'
@@ -97,7 +98,7 @@ Template.achievements.onRendered(function(){
                 max:allSameGroup.length,
                 reversed: true,
                 opposite:true,
-                min: 1,
+                startOnTick: false,
                 tickInterval: 1,
                 gridLineDashStyle: 'dot',
                 allowDecimals: false,

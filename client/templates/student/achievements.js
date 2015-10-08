@@ -89,23 +89,11 @@ Template.achievements.onRendered(function(){
             yAxis: [{
                 max:classCount,
                 min:1,
-                tickInterval: 20,
+                tickInterval: 30,
                 reversed: true,
-                showFirstLabel: false,
                 allowDecimals: false,
                 title: {
                     text: 'Class rank'
-                }
-            },{
-                max:allSameGroup.length,
-                reversed: true,
-                opposite:true,
-                startOnTick: false,
-                tickInterval: 1,
-                gridLineDashStyle: 'dot',
-                allowDecimals: false,
-                title: {
-                    text:'Group rank'
                 },
                 labels: {
                     formatter:function(){

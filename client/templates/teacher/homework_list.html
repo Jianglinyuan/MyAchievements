@@ -13,7 +13,9 @@
 
     <div class="col-md-6">
         <div class="panel panel-primary">
-            <div class="panel-heading">作业{{count}}:{{title}}</div>
+            <div class="panel-heading">
+                作业{{count}}:{{title}}
+            </div>
             <div class="panel-body">
                 <p>
                     <span>班级1:</span>
@@ -35,7 +37,7 @@
 
             </div>
             <div class="panel-footer">
-                <a href="#">作业链接</a>
+                <a href="{{url}}">作业链接</a>
                 {{#if isTeacher}}
                 <a href="{{pathFor 'editHomework'}}">编辑</a>
                 {{/if}}

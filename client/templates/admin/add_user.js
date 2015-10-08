@@ -88,13 +88,13 @@ Template.addUser.events({
             while(worksheet["A"+cell+""].v != null){
                 var studentId = worksheet["A"+cell+""].v;
                 var name = worksheet["B"+cell+""].v;
-                var email = worksheet["C"+cell+""].v;
+                //var email = worksheet["C"+cell+""].v;
                 var group = worksheet["D"+cell+""].v;                        
                 if(studentId){
                     var  data = {
                         username: ""+studentId,
                         password: ""+studentId,
-                        email: email,
+                        email: "",
                         profile: {
                             name: ""+name,
                             root: "student",

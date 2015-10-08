@@ -43,11 +43,13 @@ Template.reviewItem.helpers({
         else return false;
     },
     img: function(){
+        var studentId = this.metadata.studentId;
         var classNum = this.metadata.classNum;
         var homeworkId = this.metadata.homeworkId;
         var reviewedGroup = this.metadata.group;
 
         return HomeworkFiles.findOne({
+            'metadata.studentId': studentId,
             'metadata.classNum': classNum,
             'metadata.group': reviewedGroup,
             'metadata.homeworkId': homeworkId,
@@ -103,9 +105,7 @@ Template.reviewItem.events({
         var score = $("input[name=score"+template.data.metadata.studentId+"]").val();
 
         var validate = true;
-        var foo = parseFloat(score);
-        console.log(foo);
-        if ( isNaN(foo) ){
+        if ( isNaN(score) ){
             validate = false;
         }
         else {

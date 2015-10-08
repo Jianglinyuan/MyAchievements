@@ -87,7 +87,7 @@ Template.achievements.onRendered(function(){
                 categories: categories2 
             },
             yAxis: [{
-                max:classCount,
+                max:180,
                 min:1,
                 tickInterval: 30,
                 reversed: true,

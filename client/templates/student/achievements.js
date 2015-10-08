@@ -88,22 +88,24 @@ Template.achievements.onRendered(function(){
             },
             yAxis: [{
                 max:classCount,
+                min:1,
+                tickInterval: 20,
                 reversed: true,
                 allowDecimals: false,
                 title: {
                     text: 'Class rank'
-                }
-            },{
-                max:allSameGroup.length,
-                reversed: true,
-                opposite:true,
-                min: 1,
-                tickInterval: 1,
-                gridLineDashStyle: 'dot',
-                allowDecimals: false,
-                title: {
-                    text:'Group rank'
                 },
+                labels: {
+                    formatter:function(){
+                        if(this.value == 0) { 
+                            this.value = 1;
+                            return this.value;
+                        }
+                        else{
+                            return this.value;
+                        }
+                    }
+                }
             }],
             credits:{
                 enabled: false
@@ -113,11 +115,6 @@ Template.achievements.onRendered(function(){
                 name: 'class rank',
                 data: classRank,
                 color: '#ef6c00'
-            }, {
-                yAxis:1,
-                name: 'group rank',
-                data: groupRank,
-                color: '#0d47a1'
             }]
         });
     });

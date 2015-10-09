@@ -15,18 +15,23 @@
         <div class="input-filed">
             <div class="form-group {{errorClass 'username'}}">
                 <label for="username">用户名</label>
-                <input type="text" class="form-control" name="username" placeholder="请输入您的用户名...">
+                <input type="text" value="{{username}}" class="form-control" name="username" autofocus placeholder="请输入您的用户名...">
                 <span class="help-block">{{errorMessage 'username'}}</span>
             </div>
             <div class="form-group {{errorClass 'password'}}">
                 <label for="password">密码</label>
-                <input type="password" class="form-control" name="password" placeholder="请输入您的密码...">
+                <input type="password" value="{{passowrd}}" class="form-control" name="password" placeholder="请输入您的密码...">
                 <span class="help-block">{{errorMessage 'password'}}</span>
             </div>
             <div class="add-control">
                 <div class="checkbox-control">
                     <label>
-                        <input type="checkbox" name="remember"> 记住密码
+                        {{#if check}}
+                        <input type="checkbox" checked name="remember">
+                        {{else}}
+                        <input type="checkbox" name="remember">
+                        {{/if}}
+                         记住密码
                     </label>
                 </div>
                 <a href="#" class="find-password" data-toggle="modal" data-target="#findPassword">找回密码</a>

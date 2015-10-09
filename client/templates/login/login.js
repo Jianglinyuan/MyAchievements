@@ -10,12 +10,23 @@ Template.loginForm.helpers({
         return Session.get('loginError')[filed] ? 'has-error' : '';
     }
 });
-
+Template.loginForm.helpers({
+    username: function(){
+            return localStorage.username;
+    },
+    password: function(){
+            return localStorage.password;
+    },
+    check: function(){
+            return localStorage.check;
+    }
+});
 Template.loginForm.events({
     'submit form': function(e){
         e.preventDefault();
         var username = $(e.target).find('[name=username]').val();
         var password = $(e.target).find('[name=password]').val();
+        var remember = $(e.target).find('[name=remember]');
 
         var userAttributes = {
             username: username,
@@ -40,6 +51,15 @@ Template.loginForm.events({
                 }else if(user.profile.root === "student"){
                     Router.go("student");
                 }
+                if(remember.is(":checked")){//记住密码
+                    localStorage.username=username;
+                    localStorage.password=password;
+                    localStorage.check=true;
+                    }else{
+                    localStorage.username="";
+                    localStorage.password="";
+                    localStorage.check=false;
+                    }
             }
         });
     }

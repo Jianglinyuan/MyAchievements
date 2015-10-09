@@ -28,6 +28,12 @@ Template.changePassword.events({
             else
                 alert("密码修改成功!");
         });
+    },
+    'click .submit': function(){
+       var email = $("input[name=changeemail]").val();
+       var userId = Meteor.user()._id;
+       Accounts.addEmail(userId,email);
+
     }
 });
 

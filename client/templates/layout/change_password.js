@@ -29,11 +29,11 @@ Template.changePassword.events({
                 alert("密码修改成功!");
         });
     },
-    'click .submit': function(){
-       var email = $("input[name=changeemail]").val();
-       var userId = Meteor.user()._id;
-       Accounts.addEmail(userId,email);
+    //'click .submit': function(){
+       //var email = $("input[name=changeemail]").val();
+       //var userId = Meteor.user()._id;
+       //Meteor.users.update(userId,{$set:{"email": email}});
 
-    }
+    //}
 });
 

@@ -55,11 +55,11 @@ Template.loginForm.events({
                     localStorage.username=username;
                     localStorage.password=password;
                     localStorage.check=true;
-                    }else{
+                }else{
                     localStorage.username="";
                     localStorage.password="";
                     localStorage.check=false;
-                    }
+                }
             }
         });
     }

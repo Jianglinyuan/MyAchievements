@@ -36,6 +36,8 @@ Template.teacherReviewList.onRendered(function(){
     var classNumShow = Session.get("classNumShow");
     if ( classNumShow === 1 ) $('#myTabs a[href=#class1]').tab('show');
     else if( classNumShow === 2 ) $('#myTabs a[href=#class2]').tab('show');
+    var bodyHeight = Session.get("bodyHeight");
+    document.body.scrollTop = bodyHeight;
 });
 
 Template.showMembers.helpers({
@@ -116,6 +118,10 @@ Template.membersContent.events({
         e.preventDefault();
         var homeworks = Homeworks.find().fetch();
         var homeworkId = homeworks[0]._id;
+        console.log(template.data._id);
+        var scrHeight = document.body.scrollTop;
+        console.log(scrHeight);
+        Session.set("bodyHeight",scrHeight);
         Router.go('teacherReviewDetail',
                 {
                     'homeworkId': homeworkId,

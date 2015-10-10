@@ -12,7 +12,8 @@ Template.header.helpers({
             attribute.root = "助教";
         }else {
             attribute.root = user && user.username;
-        }
+        };
+        attribute.group = user && user.profile.group;
         return attribute;
     }
 });

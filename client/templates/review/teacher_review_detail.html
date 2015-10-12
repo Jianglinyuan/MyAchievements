@@ -1,8 +1,29 @@
 <template name="teacherReviewDetail">
     <div class="review-header">
-        <div class="col-md-3 col-xs-3 col-lg-3 text-center">Group{{info.profile.group}}: {{info.username}} {{info.profile.name}}</div>
-        <div class="col-md-6 col-xs-6 col-lg-6 text-center">{{hwinfo.title}}</div>
-        <div class="col-md-3 col-xs-3 col-lg-3 text-center"><a href="#" class="gotoReviewList">返回</a></div>
+        <div class="col-md-4 col-xs-4 col-lg-4 text-center">Group{{info.profile.group}}: {{info.username}} {{info.profile.name}}
+            <p>
+            {{#if zip}}
+            <a href="{{zip.url}}" class="downloadSource">源代码</a>
+            {{else}}
+            <p>该学生没有上传作业</p>
+            {{/if}}
+            {{#if haveGithubUrl}}
+            <a href="{{zip.metadata.githubUrl}}" target="view_point">github链接</a>
+            {{/if}}
+            </p>
+        </div>
+        <div class="col-md-4 col-xs-4 col-lg-4 text-center">{{hwinfo.title}}</div>
+        <div class="col-md-4 col-xs-4 col-lg-4 text-right">
+            {{#if firstOne}}
+            {{else}}
+            <a href="#" class="gotoPre">上一位</a>
+            {{/if}}
+            <a href="#" class="gotoReviewList">返回</a>
+            {{#if lastOne}}
+            {{else}}
+            <a href="#" class="gotoNext">下一位</a>
+            {{/if}}
+        </div>
     </div>
     {{#each myReviews}}
         {{> showMyReview}}

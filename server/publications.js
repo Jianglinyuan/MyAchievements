@@ -27,6 +27,15 @@ Meteor.publish("singleHomework", function(homeworkId){
     return Homeworks.find(homeworkId);
 });
 
+Meteor.publish("myHwHomeworkFile", function(homeworkId,studentId){
+    this.studentId = studentId;
+    this.homeworkId = homeworkId;
+    return HomeworkFiles.find({
+        "metadata.studentId": studentId,
+        "metadata.homeworkId": homeworkId
+    });
+});
+
 //取到当前作业，当前班级的所有HomeworkFiles
 Meteor.publish("hwHomeworkFiles", function(homeworkId){
     var student = Meteor.users.findOne(this.userId);

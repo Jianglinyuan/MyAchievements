@@ -67,6 +67,48 @@ Template.teacherReviewDetail.helpers({
             data.classType = "finalScore";
         }
         return data;
+    },
+    firstOne: function(){
+        var userId = this[0]._id;
+        var classNum = this[0].profile.classNum;
+        var allusers = Meteor.users.find({"profile.classNum": classNum},{sort:{
+            "profile.group": 1,
+            username: 1
+        }}).fetch();
+        if ( allusers[0]._id === userId ) return true;
+        return false;
+    },
+    lastOne: function(){
+        var userId = this[0]._id;
+        var classNum = this[0].profile.classNum;
+        var allusers = Meteor.users.find({"profile.classNum": classNum},{sort:{
+            "profile.group": 1,
+            username: 1
+        }}).fetch();
+        var last = allusers.length - 1;
+        if ( allusers[last]._id === userId ) return true;
+        return false;
+    },
+    zip: function(){
+        var studentId = this[0]._id;
+        var homeworkId = this[1]._id;
+        var homeworkfiles = HomeworkFiles.findOne({
+            'metadata.studentId': studentId,
+            'metadata.homeworkId': homeworkId,
+            'metadata.fileImage': {$ne: 1}
+        });
+        return homeworkfiles;
+    },
+    haveGithubUrl: function(){
+        var studentId = this[0]._id;
+        var homeworkId = this[1]._id;
+        var homeworkfiles = HomeworkFiles.findOne({
+            'metadata.studentId': studentId,
+            'metadata.homeworkId': homeworkId,
+            'metadata.fileImage': {$ne: 1}
+        });
+        if ( homeworkfiles && homeworkfiles.metadata.githubUrl ) return true;
+        else return false;
     }
 });
 Template.teacherReviewDetail.events({
@@ -147,7 +189,61 @@ Template.teacherReviewDetail.events({
         else Session.set("classNumShow", 2);
         Router.go("teacherReviewList", {"_id": homeworkId});
 
+    },
+    'click .gotoNext': function(e){
+        e.preventDefault();
+        var homeworkId = this[1]._id;
+        var userId = this[0]._id;
+        var user = Meteor.users.findOne(userId);
+        console.log(user);
+        var classNum = user && user.profile.classNum;
+        var allusers = Meteor.users.find({"profile.classNum": classNum},{sort:{
+            "profile.group": 1,
+            username: 1
+        }}).fetch();
+        var nextOneIndex;
+        for ( var i = 0 ; i < allusers.length; i ++ ){
+            if ( allusers[i]._id === user._id ){
+                nextOneIndex = i+1;
+                break;
+            }
+        };
+        var nextOneId = allusers[nextOneIndex]._id;
+        Router.go("teacherReviewDetail",{
+            "homeworkId": homeworkId,
+            "studentId": nextOneId
+        });
+    },
+    'click .gotoPre': function(e){
+        e.preventDefault();
+        var homeworkId = this[1]._id;
+        var userId = this[0]._id;
+        var user = Meteor.users.findOne(userId);
+        console.log(user);
+        var classNum = user && user.profile.classNum;
+        var allusers = Meteor.users.find({"profile.classNum": classNum},{sort:{
+            "profile.group": 1,
+            username: 1
+        }}).fetch();
+        var preOneIndex;
+        for ( var i = 0 ; i < allusers.length; i ++ ){
+            if ( allusers[i]._id === user._id ){
+                preOneIndex = i-1;
+                break;
+            }
+        };
+        var preOneId = allusers[preOneIndex]._id;
+        Router.go("teacherReviewDetail",{
+            "homeworkId": homeworkId,
+            "studentId": preOneId
+        });
+    },
+    'click .downloadSource': function(e){
+        e.preventDefault();
+        var url=$(e.currentTarget).attr("href");
+        window.open(url);
     }
+
 });
 
 Template.showMyReview.helpers({
@@ -162,3 +258,5 @@ Template.showTaReviews.helpers({
         return Meteor.users.findOne(userId);
     }
 });
+
+

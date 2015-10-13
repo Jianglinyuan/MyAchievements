@@ -75,6 +75,17 @@ Meteor.publish("hwReviews", function(homeworkId){
         homeworkId: homeworkId
     });
 });
+
+Meteor.publish("myHwReviews", function(homeworkId){
+    this.homeworkId = homeworkId;
+    var student = Meteor.users.findOne(this.userId);
+    var classNum = student && student.profile && student.profile.classNum;
+    return Reviews.find({
+        classNum: classNum,
+        homeworkId: homeworkId,
+        reviewed: this.userId
+    });
+});
 //取到当前作业下所有最终评分的Reviews
 Meteor.publish("thisHwReviews", function(homeworkId){
     this.homeworkId = homeworkId;

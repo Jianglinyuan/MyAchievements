@@ -307,7 +307,14 @@ body{
     background-color: #009688;
     border-radius:4px 0 0 4px; 
     flex:initial;
-} .other-review-body .panel .other-review-comment{
+} .other-review-body .panel .review-sign-ta{
+    float:left;
+    width:1%;
+    margin-top:-1px;
+    background-color: #337ab7;
+    border-radius:4px 0 0 4px; 
+    flex:initial;
+}.other-review-body .panel .other-review-comment{
     padding:10px 15px;
     float: left;
     width:82%;
@@ -330,6 +337,26 @@ body{
     align-items: center;
     flex:initial;
 } .other-review-body .other-review-score .showscore{
+    width:100%;
+    font-size:30px;
+    color:#fff;
+} .other-review-body .other-review-score-ta{
+    float:left;
+    width:17%;
+    background-color:#337ab7;
+    border-radius:0 3px 3px 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    flex:initial;
+} .other-review-body .other-review-score-ta .showscore{
+    
     width:100%;
     font-size:30px;
     color:#fff;

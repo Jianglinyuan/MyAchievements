@@ -142,10 +142,8 @@ Template.reviewItem.events({
                         score: score
                     } 
                 });
-                alert("更新成功");
             } else {
                 Reviews.insert(newReview);
-                alert("提交成功")
             }
         }else{
             alert("评分输入错误");

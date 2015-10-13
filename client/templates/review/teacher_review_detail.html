@@ -25,13 +25,13 @@
             {{/if}}
         </div>
     </div>
+    {{#if isTa}}
+    {{> taReview}}
+    {{/if}}
     {{#each myReviews}}
         {{> showMyReview}}
     {{/each}}
     <div class="review-footer">
-        {{#if isTa}}
-            {{> taReview}}
-        {{/if}}
         {{#if isTeacher}}
             {{#each taReviews }}
                 {{> showTaReviews}}

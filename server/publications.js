@@ -94,6 +94,13 @@ Meteor.publish("thisHwReviews", function(homeworkId){
         isFinal: true
     });
 });
+Meteor.publish("thisHwTaReviews", function(homeworkId){
+    this.homeworkId = homeworkId;
+    return Reviews.find({
+        homeworkId: homeworkId,
+        isTa: true
+    });
+});
 
 Meteor.publish("myReviews", function(homeworkId,studentId){
     this.homeworkId = homeworkId;

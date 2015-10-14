@@ -56,42 +56,6 @@ Template.showMembers.helpers({
 });
 
 Template.membersContent.helpers({
-    zip: function(){
-        var studentId = this._id;
-        var homework = Homeworks.find().fetch();
-        var homeworkId = homework[0]._id;
-        var homeworkfiles = HomeworkFiles.findOne({
-            'metadata.studentId': studentId,
-            'metadata.homeworkId': homeworkId,
-            'metadata.fileImage': {$ne: 1}
-        });
-        console.log(homeworkfiles);
-        return homeworkfiles;
-    },
-    haveMessage: function(){
-        var studentId = this._id;
-        var homework = Homeworks.find().fetch();
-        var homeworkId = homework[0]._id;
-        var homeworkfiles = HomeworkFiles.findOne({
-            'metadata.studentId': studentId,
-            'metadata.homeworkId': homeworkId,
-            'metadata.fileImage': {$ne: 1}
-        });
-        if ( homeworkfiles.metadata.message !== "" ) return true;
-        else return false;
-    },
-    haveUrl: function(){
-        var studentId = this._id;
-        var homework = Homeworks.find().fetch();
-        var homeworkId = homework[0]._id;
-        var homeworkfiles = HomeworkFiles.findOne({
-            'metadata.studentId': studentId,
-            'metadata.homeworkId': homeworkId,
-            'metadata.fileImage': {$ne: 1}
-        });
-        if ( homeworkfiles.metadata.githubUrl !== "" ) return true;
-        else return false;
-    },
     finalScore: function(){
         var homework = Homeworks.find().fetch();
         var homeworkId = homework[0]._id;
@@ -100,6 +64,21 @@ Template.membersContent.helpers({
             homeworkId: homeworkId,
             reviewed: reviewed,
             isFinal: true
+        });
+        if ( review && review.score ){
+            return review.score;
+        }else{
+            return "未评分";
+        }
+    },
+    TaScore: function(){
+        var homework = Homeworks.find().fetch();
+        var homeworkId = homework[0]._id;
+        var reviewed = this._id;
+        var review = Reviews.findOne({
+            homeworkId: homeworkId,
+            reviewed: reviewed,
+            isTa: true
         });
         if ( review && review.score ){
             return review.score;

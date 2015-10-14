@@ -42,8 +42,9 @@
                 <tr>
                     <td class="col-md-3 col-xs-3 col-lg-3 text-center">学号</td>
                     <td class="col-md-3 col-xs-3 col-lg-3 text-center">姓名</td>
-                    <td class="col-md-3 col-xs-3 col-lg-3 text-center">评分</td>
-                    <td class="col-md-3 col-xs-3 col-lg-3 text-center">...</td>
+                    <td class="col-md-2 col-xs-2 col-lg-2 text-center">评分</td>
+                    <td class="col-md-2 col-xs-2 col-lg-2 text-center">TA评分</td>
+                    <td class="col-md-2 col-xs-2 col-lg-2 text-center">...</td>
                 </tr>
             </thead>
             {{#each members}}
@@ -59,8 +60,9 @@
             <td class="col-md-3 col-xs-3 col-lg-3 text-center">{{username}}</td>
             <td class="col-md-3 col-xs-3 col-lg-3 text-center">{{profile.name}}</td>
             
-            <td class="col-md-3 col-xs-3 col-lg-3 text-center">{{finalScore}}</td>
-            <td class="col-md-3 col-xs-3 col-lg-3 text-center"><a href="#" class="gotoReview">评审</a></td>
+            <td class="col-md-2 col-xs-2 col-lg-2 text-center">{{finalScore}}</td>
+            <td class="col-md-2 col-xs-2 col-lg-2 text-center">{{TaScore}}</td>
+            <td class="col-md-2 col-xs-2 col-lg-2 text-center"><a href="#" class="gotoReview">评审</a></td>
         </tr>
     </tbody>
 </template>

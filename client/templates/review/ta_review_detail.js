@@ -47,10 +47,8 @@ Template.taReview.events({
                         score: score
                     }
                 });
-                alert("更新成功");
             }else{
                 Reviews.insert(newReview);
-                alert("提交成功");
             }
         }else{
             alert("评分输入错误");
@@ -79,8 +77,16 @@ Template.taReview.helpers({
         };
         if ( reviewItem && reviewItem.comment && reviewItem.score ){
             data.type = "更新";
+            data.sign = "tareview-sign";
+            data.contentStyle = "tareview-content";
+            data.btn = "score-btn";
+            data.panel = "panel-primary";
         } else {
             data.type = "提交";
+            data.sign = "tareview-sign-unsubmit";
+            data.contentStyle = "tareview-content-unsubmit";
+            data.btn = "score-btn-unsubmit";
+            data.panel = "panel-unsubmit";
         };
         return data;
     },

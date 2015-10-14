@@ -368,6 +368,8 @@ body{
     margin: 0 5%;
 } .tareview-body .panel{
     height: 200px;
+} .tareview-body .panel .panel-unsubmit{
+    border-color:#ef6c00; 
 }.tareview-body .tareview-sign{
     float:left;
     width:1%;
@@ -375,15 +377,32 @@ body{
     margin-top:-1px;
     background-color: #337ab7;
     border-radius:4px 0 0 4px;
+} .tareview-body .tareview-sign-unsubmit{
+    float:left;
+    width:1%;
+    height:200px;
+    margin-top:-1px;
+    background-color: #ef6c00;
+    border-radius:4px 0 0 4px;
 } .tareview-body .panel .tareview-content{
     float:left;
     width:82%;
     height:198px;
     padding:10px;
     border-right: solid 1px #337ab7;
-} .tareview-body .panel .tareview-content textarea{
+} .tareview-body .panel .tareview-content-unsubmit{
+    float:left;
+    width:82%;
+    height:198px;
+    padding:10px;
+    border-right: solid 1px #ef6c00;
+}.tareview-body .panel .tareview-content textarea{
     height: 100%;
     font-size:15px;
+    width: 100%;
+} .tareview-body .panel .tareview-content-unsubmit textarea{
+    height: 100%;
+    font-size: 15px;
     width: 100%;
 }.tareview-body .panel .tareview-score{
     float:left;
@@ -409,9 +428,26 @@ body{
     -webkit-align-items: center;
     align-items: center;
     flex:initial;
-} .tareview-body .panel .tareview-score .score-btn input{
+} .tareview-body .panel .tareview-score .score-btn-unsubmit{
+    height:152px;
+    background-color: #ef6c00;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    flex:initial;
+}.tareview-body .panel .tareview-score .score-btn input{
     width: 80%;
     border-color:#fff;
+} .tareview-body .panel .tareview-score .score-btn-unsubmit input{
+    width: 80%;
+    border-color:#fff;
+    background-color: #ef6c00;
 }
 .teacher-review-body .panel .review-sign-ta{
     float:left;

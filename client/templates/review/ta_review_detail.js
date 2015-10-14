@@ -66,31 +66,46 @@ Template.taReview.helpers({
         var homeworkId = homework._id;
         var homeworkCount = Homeworks.findOne(homeworkId).count;
         var reviewItem = Reviews.findOne({
+            homeworkId: homeworkId,
             classNum: classNum,
             reviewed: reviewed,
             reviewer: reviewer,
             isTa: true
         });
-        var data= {
-            score: reviewItem.score,
-            comment: reviewItem.comment
-        };
+        console.log(reviewItem);
+        var data= {};
         if ( reviewItem && reviewItem.comment && reviewItem.score ){
-            data.type = "更新";
+            data.panel = "panel-primary";
             data.sign = "tareview-sign";
             data.contentStyle = "tareview-content";
             data.btn = "score-btn";
-            data.panel = "panel-primary";
-        } else {
-            data.type = "提交";
+            data.type = "更新";
+        }else{
+            data.panel = "panel-unsubmit";
             data.sign = "tareview-sign-unsubmit";
             data.contentStyle = "tareview-content-unsubmit";
             data.btn = "score-btn-unsubmit";
-            data.panel = "panel-unsubmit";
+            data.type = "提交"; 
         };
         return data;
     },
     Id: function(){
         return Meteor.userId();
+    },
+    data: function(){
+        var user = this[0];
+        var reviewed = user._id;
+        var reviewer = Meteor.userId();
+        var classNum = user && user.profile && user.profile.classNum;
+        var homework = this[1];
+        var homeworkId = homework._id;
+        var homeworkCount = Homeworks.findOne(homeworkId).count;
+        return Reviews.findOne({
+            homeworkId: homeworkId,
+            classNum: classNum,
+            reviewed: reviewed,
+            reviewer: reviewer,
+            isTa: true
+        });
     }
 });

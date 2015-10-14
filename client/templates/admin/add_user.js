@@ -64,7 +64,7 @@ Template.addUser.events({
                 $('#myTabs a[href="#alluser"]').tab('show');
             }
         });
-        Meteor.loginWithPassword("admin","admin");
+        Meteor.loginWithPassword("admin","admin007");
     },
 
     'click .excel-submit': function(e){
@@ -103,7 +103,7 @@ Template.addUser.events({
                         },
                     };
                     Accounts.createUser(data);
-                    Meteor.loginWithPassword("admin","admin");
+                    Meteor.loginWithPassword("admin","admin007");
                     cell++;
                 };
             };

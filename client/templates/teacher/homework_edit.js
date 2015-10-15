@@ -93,5 +93,14 @@ Template.editHomeworkItem.events({
             if ( error ) alert(error.reason);
             else alert("作业更新成功");
         });
+    },
+    'click .hw-delete': function(e){
+        e.preventDefault();
+        var homeworkId = this._id;
+        if ( confirm("确定删除作业2?") ){
+            Homeworks.remove(homeworkId);
+            Router.go("teacher");
+        }
     }
+
 });

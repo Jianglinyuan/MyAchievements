@@ -100,12 +100,25 @@ Template.present.events({
         $('#' + homeworkId).modal('hide');
     }
 });
-
-validateHomeworkFiles = function(file,image){
+validateHomeworkFiles = function(file, image) {
     var errors = {};
-    if ( !file )
+    var fileAllowed = ["zip", "rar"];
+    var imageAllowed = ["jpg", "jpeg", "gif", "png"]
+    if (!file)
         errors.file = "请提交作业源文件";
-    if ( !image )
-        errors.image = "请上传作业预览图";
+    else {
+        var fileType = file.name.split(".");
+        var length=fileType.length;
+    if ($.inArray(fileType[length-1], fileAllowed) == -1)
+        errors.file = "请提交Rar或者Zip格式文件"
+    }
+    if (!image)
+         errors.image = "请上传作业预览图";
+    else {
+         var imageType = image.name.split(".");
+        var length=imageType.length;
+    if ($.inArray(imageType[length-1], imageAllowed) == -1)
+      errors.file = "图片文件格式错误"
+    }
     return errors;
 }

@@ -109,7 +109,7 @@ validateHomeworkFiles = function(file, image) {
     else {
         var fileType = file.name.split(".");
         var length=fileType.length;
-    if ($.inArray(fileType[length-1], fileAllowed) == -1)
+    if ($.inArray(fileType[length-1].toLowerCase(), fileAllowed) == -1)
         errors.file = "请提交Rar或者Zip格式文件"
     }
     if (!image)
@@ -117,8 +117,8 @@ validateHomeworkFiles = function(file, image) {
     else {
          var imageType = image.name.split(".");
         var length=imageType.length;
-    if ($.inArray(imageType[length-1], imageAllowed) == -1)
-      errors.file = "图片文件格式错误"
+    if ($.inArray(imageType[length-1].toLowerCase(), imageAllowed) == -1)
+      errors.image = "图片文件格式错误"
     }
     return errors;
 }
